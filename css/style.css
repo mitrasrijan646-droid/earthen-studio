@@ -207,10 +207,12 @@ a:focus, a:hover {
 	width:100%; 
 	top:0; 
 	border-bottom:1px solid rgba(255,255,255,.25);
+	/* background:url(../images/header-bg.png) no-repeat left top;
+	background-size:cover; */
 	z-index:100;
 }
 .mobile-header.scrolled{
-	background-color: rgba(255, 255, 255, .65);
+	background-color: rgba(142, 91, 64, .65);
     transition: 0.5s;
     width: 100%;
     padding:10px 0;
@@ -603,7 +605,7 @@ a:focus, a:hover {
     justify-content: flex-end;
     align-items: center;
     min-height: 520px;
-    padding: 40px;
+    padding: 40px 0;
 }
 .ap-card{
 	background:rgba(255,255,255,.90);
