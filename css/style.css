@@ -257,13 +257,17 @@ a:focus, a:hover {
     border:none;
     outline:none;
     right:0;
+	transition: transform 0.4s ease;
+}
+.openbtn.active {
+    transform: rotate(180deg);
 }
 .openbtn:hover {background-color:transparent;}
 #main {
     transition: margin-right .5s;
     padding: 0;
 	float:right;
-	margin-top:15px;
+	margin-top:0;
 }
 #main a.bktxt:hover{background:#FFF; color:#000;}
 #main a i.fas{
@@ -761,7 +765,7 @@ a:focus, a:hover {
 .lwrbxwrppr a.animate{opacity: 1; transform: translateY(0);}
 .upprftr{background:#3c3d40; border-bottom:50px solid #a1a47f;}
 .footerwrpr {
-	padding:50px 0;
+	padding:60px 0;
 	display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

@@ -43,11 +43,8 @@
                 
                 <div class="col-sm-6 col-xs-4 no-pad">
                 	<div id="main">
-                        <a href="contact.html" class="">
-                        	<i class="fas fa-envelope logo-parallax"></i>
-                        </a>
                    		<button class="openbtn" onclick="openNav()">
-                            <img src="images/mobile-nav.svg" class="img-responsive logo-parallax" alt=""/>
+                            <img src="images/mobile-nav.png" class="img-responsive logo-parallax" alt=""/>
                         </button>
                         <div class="clearfix"></div>
                 	</div>
@@ -402,6 +399,9 @@ $(window).on("load resize", function() {
 </script>
 <script type="text/javascript">
 function openNav() {
+	const btn = document.querySelector('.openbtn');
+    btn.classList.toggle('active');
+	
   document.getElementById("mySidebar").style.width = "85%";
   document.getElementById("main").style.marginright = "85%";
 }
@@ -453,25 +453,7 @@ $(function() {
     });
 });
 </script>
-<script type="text/javascript">
-function myFunction() {
-  location.replace("product.html")
-}
-</script>
-<script type="text/javascript">
-function myFunction1() {
-  location.replace("service.html")
-}
-</script>
-<script type="text/javascript">
-$('.nav.navbar-nav li.dropdown').hover(
-        function () {
-            $('.slider-opacity').css({"opacity": 1, "visibility": "visible"});
-        }, function () {
-         $('.slider-opacity').css({"opacity": 0, "visibility": "hidden"});
-        }
-);
-</script>
+
 <script type="text/javascript">
 gsap.to(".logo-parallax", {
   y: -15, // small movement for premium feel
