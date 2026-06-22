@@ -123,7 +123,6 @@ a:focus, a:hover {
 }
 .navbar #myNavbar ul.navbar-nav li ul.dropdown-menu li{margin:0;}
 .navbar #myNavbar ul.navbar-nav li ul.dropdown-menu li a:hover:after{display:none;}
-/* #myNavbar ul li.dropdown ul.dropdown-menu li a:hover{color:#FFF;} */
 #myNavbar ul li.dropdown ul.dropdown-menu li a.nbrdr{border-bottom:none;}
 .navbar-nav>li>.dropdown-menu{margin-top:0 !important;}
 @media screen and (min-width:992px) and (max-width:1199px){
@@ -167,6 +166,7 @@ a:focus, a:hover {
 .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{color:#b7944c;}
 }
 /* NEW CSS STARTS HERE */
+.container{max-width:1300px!important; width: 100% !important;}
 .sectnbx{padding:120px 0;}
 .bordradius{border-radius:20px;}
 .sidenav{margin-bottom:30px; background:#f6f5f1; padding:12px 0; border-radius: 6px;}
@@ -203,16 +203,15 @@ a:focus, a:hover {
 .mobile-header{ 
 	position:fixed; 
 	z-index:99; 
-	padding:20px 0; 
+	padding:10px 0; 
 	width:100%; 
 	top:0; 
-	border-bottom:1px solid rgba(255,255,255,.25);
-	/* background:url(../images/header-bg.png) no-repeat left top;
-	background-size:cover; */
+	border-bottom:1px solid #e5dccb;
+	background:#FFF;
 	z-index:100;
 }
 .mobile-header.scrolled{
-	background-color: rgba(142, 91, 64, .65);
+	background-color: rgba(255, 255, 255, .95);
     transition: 0.5s;
     width: 100%;
     padding:10px 0;
@@ -261,15 +260,11 @@ a:focus, a:hover {
     right:0;
 	transition: transform 0.4s ease;
 }
-.openbtn.active {
-    transform: rotate(180deg);
-}
-.openbtn:hover {background-color:transparent;}
 #main {
     transition: margin-right .5s;
     padding: 0;
 	float:right;
-	margin-top:0;
+	margin-top:20px;
 }
 #main a.bktxt:hover{background:#FFF; color:#000;}
 #main a i.fas{
@@ -500,9 +495,9 @@ a:focus, a:hover {
     }
 }
 .bnnrbxtxt h2{
-	/* font-size:35px; */
 	text-align:left;
 	color:#FFF;
+	font-weight:200;
 	font-family:"sofia-pro";
 	text-transform:uppercase;
 }
@@ -781,6 +776,28 @@ a:focus, a:hover {
     gap:25px;
 }
 .footerwrprbx p{color:#FFF;}
+.prdctlstsctn{}
+.prdctlstsctn h1{
+	text-transform:uppercase;
+	color:#3c3d40;
+	text-align:left;
+	/* margin:0 0 200px; */
+	font-size:100px;
+	font-weight:100;
+	font-family: "sofia-pro",sans-serif; 
+}
+.projects-gallery{
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap:10px;
+}
+.project-card{ overflow:hidden; border-radius:10px;}
+.project-card img{
+    width:100%;
+	transition:0.6s ease;
+    display:block;
+}
+.project-card img:hover{ transform:scale(1.08);}
 /* MEDIA QUERY CSS STARTS HERE */
 @media only screen and (orientation:portrait){}
 @media screen and (max-width:1366px){
