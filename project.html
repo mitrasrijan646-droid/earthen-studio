@@ -145,16 +145,16 @@
 						<img src="images/project/project-image-two.jpg" class="img-responsive" alt=""/>
 					</div>
 					<div class="project-card">
-						<img src="images/project/project-image-one.jpg" class="img-responsive" alt=""/>
+						<img src="images/project/project-image-three.jpg" class="img-responsive" alt=""/>
 					</div>
 					<div class="project-card">
-						<img src="images/project/project-image-one.jpg" class="img-responsive" alt=""/>
+						<img src="images/project/project-image-four.jpg" class="img-responsive" alt=""/>
 					</div>
 					<div class="project-card">
-						<img src="images/project/project-image-one.jpg" class="img-responsive" alt=""/>
+						<img src="images/project/project-image-five.jpg" class="img-responsive" alt=""/>
 					</div>
 					<div class="project-card">
-						<img src="images/project/project-image-one.jpg" class="img-responsive" alt=""/>
+						<img src="images/project/project-image-six.jpg" class="img-responsive" alt=""/>
 					</div>
 				</div>
 				
@@ -174,7 +174,41 @@
 				</div>
 				<div class="container">
 					<div class="row">
-						
+						<div class="col-md-12">
+							
+							<div class="prdct-cards-wrap">
+								<div class="prdct-card prdct-card-white">
+									<h1>Residential<br>Projects</h1>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<a href="#" class="prdct-view-link ap-btn">
+										VIEW OUR PROJECTS
+										<span class="prdct-circle">
+											<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<line x1="5" y1="12" x2="19" y2="12"></line>
+												<polyline points="12 5 19 12 12 19"></polyline>
+											</svg>
+										</span>
+									</a>
+								</div>
+								
+								<div class="prdct-card prdct-card-gold">
+									<h1>Commercial<br>Projects</h1>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									<a href="#" class="prdct-view-link ap-btn">
+										VIEW OUR PROJECTS
+										<span class="prdct-circle">
+											<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+												<line x1="5" y1="12" x2="19" y2="12"></line>
+												<polyline points="12 5 19 12 12 19"></polyline>
+											</svg>
+										</span>
+									</a>
+								</div>
+								
+							</div>
+							
+							<div class="clearfix"></div>
+						</div>
 					</div>
 				</div>
 				<div class="clearfix"></div>
@@ -333,7 +367,7 @@ gsap.to(".logo-parallax", {
         });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('.ap-card, .ap-card h2, .ap-card p, .lwrbxwrppr h2, .lwrbxwrppr h1, .lwrbxwrppr a').forEach(el => {
+    document.querySelectorAll('.ap-card, .ap-card h2, .ap-card p, .lwrbxwrppr h2, .lwrbxwrppr h1, .lwrbxwrppr a, .prdct-card-white, .prdct-card-gold, .prdct-card h1, .prdct-card p, .prdct-view-link').forEach(el => {
         observer.observe(el);
     });
 }
