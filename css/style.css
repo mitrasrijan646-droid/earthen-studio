@@ -166,6 +166,10 @@ a:focus, a:hover {
 .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover{color:#b7944c;}
 }
 /* NEW CSS STARTS HERE */
+.breadcrumb{ background:transparent; padding:0;}
+.breadcrumb li{font-family: "sofia-pro", sans-serif;}
+.breadcrumb li a{color:#FFF;}
+.breadcrumb li.active{color:#FFF;}
 .container{max-width:1300px!important; width: 100% !important;}
 .sectnbx{padding:120px 0;}
 .bordradius{border-radius:20px;}
@@ -888,7 +892,43 @@ a:focus, a:hover {
 .prdct-circle svg { width: 14px; height: 14px;}
 .prdct-view-link:hover{transform: translateY(-5px);}
 .prdct-view-link:hover .prdct-circle{transform: transform: scale(1.08);}
-/* .prdct-view-link:hover .prdct-circle svg{transform: translateY(-5px);} */
+.prjctsctn{margin-top:60px;}
+.prjctsctncntnr{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+	gap:60px;
+}
+.prjctsctn-header{
+	display:grid;
+	grid-template-columns:1.9fr 1.5fr;
+	gap:40px;
+	align-items:center;
+}
+.prjctsctn-header-box{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+	gap:5px;
+}
+.prjctsctn-header-box h1{color:#FFF; text-align:left; margin:0;}
+.prjctsctn-header-box h2{
+	font-family: "sofia-pro",sans-serif; 
+	text-transform:uppercase;
+	color:#fee485;
+	font-size: clamp(10px, 10vw, 60px);
+	font-weight:900;
+	text-align:left;
+	margin:0;
+}
+.prjctsctn-header-box:last-child{
+	border-top:1px solid #FFF;
+	border-bottom:1px solid #FFF;
+	padding:25px 0;
+}
+.prjctsctn-header-box p{color:#FFF;}
 /* MEDIA QUERY CSS STARTS HERE */
 @media only screen and (orientation:portrait){}
 @media screen and (max-width:1366px){
