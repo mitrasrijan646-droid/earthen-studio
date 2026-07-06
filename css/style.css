@@ -1,6 +1,18 @@
+:root{
+    --bg-terracotta:#96613F;
+    --bg-terracotta-deep:#7A4C32;
+    --card-clay:#C67B4C;
+    --card-clay-deep:#B06E44;
+    --gold:#ECC873;
+    --cream:#F4EBDD;
+    --ink:#2E1F16;
+    --line: rgba(244,235,221,0.25);
+  }
+
+*{ box-sizing:border-box; }
 html {scroll-behavior: smooth;}
 li, td, table, tr, th, thead, input, label, select, textarea , button {
-	font-family: "akzidenz-grotesk-next",sans-serif;
+	font-family: "Baskervville", serif;
 	font-weight:400;
 	font-size:16px;
 	color:#010000;
@@ -902,13 +914,13 @@ a:focus, a:hover {
 .prdct-view-link:hover{transform: translateY(-5px);}
 .prdct-view-link:hover .prdct-circle{transform: transform: scale(1.08);}
 .prjctsctn{margin-top:60px;}
-.prjctsctncntnr{
+/* .prjctsctncntnr{
 	display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 	gap:60px;
-}
+} */
 .prjctsctn-header{
 	display:grid;
 	grid-template-columns:1.9fr 1.5fr;
@@ -940,91 +952,111 @@ a:focus, a:hover {
 }
 .prjctsctn-header-box p{color:#FFF;}
 .projct-slider{margin-top:40px;}
-.project-swiper { width: 100%; overflow: visible;}
-.project-swiper .swiper-slide { aspect-ratio:5.5/2;} 
-.project-swiper .swiper-slide.slide-wide { }
-.swiper-slide{
-	display:grid !important;
-	grid-template-columns:3.5fr 1.5fr;
-	align-items:flex-start;
+.slider-viewport{ position:relative; overflow:hidden;  }
+.slider-track{
+    display:flex;
+    transition: transform 0.65s cubic-bezier(.65,0,.35,1);
+    will-change: transform;
 }
-.slide-inner {
-	width:auto;
-	height: 100%;
-	overflow: hidden;
+.slide{
+    flex: 0 0 100%;
+    display:grid;
+    grid-template-columns:2fr 3.9fr 3fr 1.5fr;
+    gap:5px;
+    min-height:450px;
 }
-.slide-inner img {
-	width: 100%;
-	height:100%;
-	display: block;
+.photo-card{
+    position:relative;
+    border-radius:4px;
+    overflow:hidden;
+    background-size:cover;
+    background-position:center;
+    min-height:100%;
+	border-radius:15px;
+    transition: transform .5s ease;
 }
-/* Card fixed to right side, always visible */
-.slide-card {
-	background:#b27352;
-    backdrop-filter: blur(2px);
-    padding:50px 30px;
-    border-radius:20px;
-	gap:50px;
+.photo-card:hover{transform: scale(1.015);}
+.text-card{
+    background:#b27352;
+    border-radius: 15px;
+    padding: 36px 30px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    height: 100%;
     align-items: flex-start;
-}
-.slide-card h3 {
-	color: #FFF;
-	font-size:40px;
-	font-weight:300;
-	font-family:"sofia-pro";
-}
-.slide-card h4 {
-	font-style: italic;
-	color: #FFF;
+	gap:40px;
+ }
+.text-card h1{
+	text-align:left;
+	color:#FFF;
 	font-size:35px;
-	font-weight: 400;
+	font-family:"sofia-pro";
+	margin:0;
 }
-.slide-card p {
-	color: #FFF;
-	font-size:25px;
-	line-height:32px;
-	margin: 0;
+.text-card .eyebrow{ color:#FFF; margin:0 0 14px; font-size:30px; text-align:left; font-family: "Baskervville", serif;}
+.text-card p{
+    font-size:18px;
+    line-height:24px;
+    margin:0;
+	color:#FFF;
 	font-family: "Baskervville", serif;
 }
-.project-swiper-controls {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin-top:20px;
+.slider-controls{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:30px;
 }
-.project-swiper-nav { display: flex; gap: 15px;}
-.swiper-button-prev-custom,
-.swiper-button-next-custom {
-	width: 38px;
-	height: 38px;
-	border: 1.5px solid #f2cf8e;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: #f2cf8e;
-	cursor: pointer;
-	transition: background 0.2s ease;
+.arrows{display:flex; gap:14px;}
+.arrow-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid var(--gold);
+    background:transparent;
+    color: var(--gold);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition: background .25s ease, color .25s ease, transform .15s ease;
 }
-.swiper-button-prev-custom:hover,
-.swiper-button-next-custom:hover {
-	background: rgba(242, 207, 142, 0.15);
+.arrow-btn:hover{ background: var(--gold); color: var(--bg-terracotta-deep); }
+.arrow-btn:active{ transform: scale(0.94); }
+.arrow-btn svg{ width:16px; height:16px; }
+.dots{ display:flex; gap:9px;}
+.dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background: rgba(243,233,221,0.4);
+    border:none;
+    padding:0;
+    cursor:pointer;
+    transition: all .25s ease;
 }
-.swiper-pagination-custom { display: flex; gap: 6px; justify-content: flex-end;}
-.swiper-pagination-custom .swiper-pagination-bullet {
-	width:10px;
-	height:10px;
-	background: #f2cf8e;
-	opacity: 0.4;
-	border-radius: 50%;
-	margin: 0 !important;
-	cursor: pointer;
+.dot.active{
+    background: var(--gold);
+    width:22px;
+    border-radius:4px;
 }
-.swiper-pagination-custom .swiper-pagination-bullet-active { opacity: 1;}
+.cta-btn{
+  align-self: flex-start;
+  margin-top: 18px;
+  padding: 10px 0;
+  border: 1px solid var(--clay);
+  background: transparent;
+  color:#FFF;
+  letter-spacing:0;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.cta-btn:hover{
+  background: var(--clay);
+  color: #fff;
+}
+.slide-counter{ font-size:0.85rem; color: rgba(243,233,221,0.7);}
 .residential-projects-inner {
     display: grid;
 	grid-template-columns:1.8fr 3.8fr;
@@ -1124,6 +1156,27 @@ a:focus, a:hover {
 .lwrbx .lrbxcntnr .lwrbxwrppr:last-child h1{text-align:center;}
 .lwrbx .lrbxcntnr .lwrbxwrppr h2{color:#FFF;}
 .lwrbx .lrbxcntnr .lwrbxwrppr h1{text-align:left; color:#FFF;}
+.lwrbx .lrbxcntnr .lwrbxwrppr.maroonbx{background:#bd7a57;}
+.prjctsctn-gallery-details{padding-bottom:0; padding-top:80px;}
+.frstrow{
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	align-items:center;
+}
+.frstrow .frstrowbx{
+	display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:20px;
+}
+.frstrow .frstrowbx:first-child{padding-left:6vw;}
+.frstrow .frstrowbx h1{color:#fee485; text-align:left; font-style:italic;}
+.frstrow .frstrowbx h2{
+	color:#fee485; 
+	text-align:left; 
+	font-size:100px;
+	font-family:"sofia-pro";
+}
 /* MEDIA QUERY CSS STARTS HERE */
 @media only screen and (orientation:portrait){}
 @media screen and (max-width:1366px){
