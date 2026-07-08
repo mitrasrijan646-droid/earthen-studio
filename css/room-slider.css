@@ -1,0 +1,109 @@
+/* ===== Room list (left panel) ===== */
+
+.room-list{
+    list-style:none;
+    margin:28px 0 0;
+    padding:0;
+}
+
+.room-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 0;
+    border-bottom:1px solid rgba(255,255,255,0.25);
+    cursor:pointer;
+    transition:color .2s ease;
+}
+
+.room-item .room-label{
+    font-size:14px;
+    color:rgba(255,255,255,0.85);
+    transition:color .2s ease, font-weight .2s ease;
+}
+
+/* empty circle icon, default state */
+.room-item .room-icon{
+    width:14px;
+    height:14px;
+    flex-shrink:0;
+    position:relative;
+}
+.room-item .room-icon::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    border:1.5px solid rgba(255,255,255,0.55);
+    border-radius:50%;
+}
+
+/* active state: filled heart look + gold label */
+.room-item.active .room-icon::before{
+    border-color:#f6d9a8;
+    background:#f6d9a8;
+}
+.room-item.active .room-label{
+    color:#f6d9a8;
+    font-weight:600;
+}
+
+/* ===== Slider (right panel) ===== */
+
+.room-slider-wrap{
+    position:relative;
+    overflow:hidden;
+
+}
+
+.room-slider{
+    position:relative;
+    width:100%;
+}
+
+.room-slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transform:translateX(40px);
+    transition:opacity .4s ease, transform .4s ease;
+    pointer-events:none;
+}
+
+.room-slide.active{
+    opacity:1;
+    transform:translateX(0);
+    pointer-events:auto;
+}
+
+/* direction classes added briefly by JS so the outgoing slide exits
+   the opposite way from the incoming slide's entrance */
+.room-slide.exit-left{
+    transform:translateX(-40px);
+}
+.room-slide.exit-right{
+    transform:translateX(40px);
+}
+
+.room-slider img{
+    width:100%;
+    height:100%;
+    display:block;
+}
+
+.slider-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    border:none;
+    background:rgba(255,255,255,0.8);
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+    z-index:2;
+}
+.slider-arrow.prev{ left:16px; }
+.slider-arrow.next{ right:16px; }
+.slider-arrow:hover{ background:#fff; }
