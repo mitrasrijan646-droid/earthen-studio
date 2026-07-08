@@ -931,7 +931,7 @@ a:focus, a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-	gap:5px;
+	gap:25px;
 }
 .prjctsctn-header-box h1{color:#FFF; text-align:left; margin:0;}
 .prjctsctn-header-box h2{
@@ -943,10 +943,11 @@ a:focus, a:hover {
 	text-align:left;
 	margin:0;
 }
-.prjctsctn-header-box:last-child{
+.prjctsctn-header-box:last-child div{
 	border-top:1px solid #FFF;
 	border-bottom:1px solid #FFF;
 	padding:25px 0;
+	margin-top:100px;
 }
 .prjctsctn-header-box p{color:#FFF;}
 .projct-slider{margin-top:40px;}
@@ -1063,7 +1064,12 @@ a:focus, a:hover {
     justify-content: center;
 }
 /* Left column */
-.rp-left { flex-shrink: 0;}
+.rp-left { 
+	display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 150px;
+}
 .rp-heading h4{
 	font-size:30px;
 	font-weight: 600;
@@ -1280,7 +1286,7 @@ a:focus, a:hover {
 	margin:100px 0;
 	display:grid;
 	grid-template-columns:1fr 2fr;
-	vertical-align:flex-start;
+	align-items:flex-start;
 }
 .clntsctnbx:first-child{margin:50px 0; padding-right:6vw;}
 .clntsctnbx{
@@ -1304,6 +1310,27 @@ a:focus, a:hover {
 .clntsctnbx p.clntname{color:#000; font-family:"sofia-pro"; font-size:16px;}
 .clntsctnbx svg{fill:#7f7f7f; height:30px; margin-bottom:10px;}
 .clntsctnbx svg.rghticon{float:right; margin-top:-20px; rotate:-180deg;}
+.othrs-prjctsctn{
+	display:grid;
+	grid-template-columns:1fr 1.5fr;
+	align-items:center;
+}
+.othrs-prjctsctnbx h1{text-align:left; font-family:"sofia-pro";}
+.othrs-prjctsctnbx:last-child{
+	display:flex;
+	gap:15px;
+}
+.othrs-prjctsctnbx div{position:relative;}
+.othrs-prjctsctnbx div img{
+	width:auto;
+}
+.othrs-prjctsctnbx div h3{
+	color:#fee485; 
+	font-family:"sofia-pro"; 
+	font-size:35px;
+	margin-top:-80px;
+}
+.othrs-prjctsctnbx div:last-child{ margin-top:-60px;}
 /* MEDIA QUERY CSS STARTS HERE */
 @media only screen and (orientation:portrait){}
 @media screen and (max-width:1366px){
