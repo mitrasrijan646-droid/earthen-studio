@@ -23,7 +23,7 @@
 <!-- InstanceEndEditable -->
 </head>
 
-<body>
+<body id="">
 <!-- InstanceBeginEditable name="EditRegion7" -->
 
 <!-- InstanceEndEditable -->
@@ -46,6 +46,7 @@
                    		<button class="openbtn" onclick="openNav()">
                             <img src="images/mobile-nav.png" class="img-responsive logo-parallax" alt=""/>
                         </button>
+                        <p class="logo-parallax"><a href="#" target="_blank">Instagram</a></p>
                         <div class="clearfix"></div>
                 	</div>
                 </div>
@@ -68,21 +69,22 @@
                             	<img src="images/mobile-nav-close.svg" class="img-responsive" alt=""/>
                             </a>
                             <div class="mblnav">
-                            	<a href="index.html" class="hvr-fade">Home</a>
-                                <a href="about-us.html" class="hvr-fade">About Us</a>
+                            	<a href="#" class="hvr-fade">Home</a>
+                                <a href="#" class="hvr-fade">About Us</a>
                                 <div class="panel-group" id="accordion">
                                     <div class="panel panel-default">
                                     	<div class="panel-heading">
                                             <h4 class="panel-title">
-                                              	<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Our Services <i class="fas fa-chevron-down"></i></a>
+                                              	<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Our Projects <i class="fas fa-chevron-down"></i></a>
                                             </h4>
                                         </div>
                                         <div id="collapse2" class="panel-collapse collapse">
                                         	<div class="panel-body">
                                             	<div class="panel1">
                                                     <ul>
-                                                    	<li><a href="service-silica-sand-mining.html" class="hvr-sweep-to-right">Silica Sand Mining</a></li>
-                                                        <li><a href="service-limestone-mining.html" class="hvr-sweep-to-right">Limestone Mining</a></li>
+                                                    	<li><a href="#" class="hvr-sweep-to-right">Project Ranaghat</a></li>
+                                                        <li><a href="#" class="hvr-sweep-to-right">Project Victoria Vista</a></li>
+                                                         <li><a href="project-residential-mani-vista.html" class="hvr-sweep-to-right">Project Mani Vista</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -91,27 +93,8 @@
                                     
                                 </div>
                                 
-                                <div class="panel-group" id="accordion">
-                                    <div class="panel panel-default">
-                                    	<div class="panel-heading">
-                                            <h4 class="panel-title">
-                                              	<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Our Products <i class="fas fa-chevron-down"></i></a>
-                                            </h4>
-                                        </div>
-                                        <div id="collapse3" class="panel-collapse collapse">
-                                        	<div class="panel-body">
-                                            	<div class="panel1">
-                                                    <ul>
-                                                    	<li><a href="product-silica-sand.html" class="hvr-sweep-to-right">Silica Sand</a></li>
-                                                        <li><a href="product-calcium-carbonate.html" class="hvr-sweep-to-right">Calcium Carbonate</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </div>
-                                <a href="contact.html" class="hvr-fade">Contact</a>
+                                
+                                <a href="#" class="hvr-fade">Contact</a>
                             </div>
                             <div class="clearfix"></div>
 						</div>
@@ -228,12 +211,12 @@
 							<div class="rp-tab active" data-target="rp-panel-1">
 								<span class="rp-tab-title">Ranaghat</span>
 								<span class="rp-tab-link">
-									<a href="project-residential-mani-vista.html">View project</a>
+									<a href="#">View project</a>
 								</span>
 							</div>
 							<div class="rp-tab" data-target="rp-panel-2">
 								<span class="rp-tab-title">Mani Vista</span>
-								<span class="rp-tab-link"><a href="#">View project</a></span>
+								<span class="rp-tab-link"><a href="project-residential-mani-vista.html">View project</a></span>
 							</div>
 							<!-- <div class="rp-tab" data-target="rp-panel-3">
 								<span class="rp-tab-title">Project name</span>
@@ -385,18 +368,6 @@ function closeNav() {
 
 <script type="text/javascript">
 $(function() {
-    var header = $(".navbar");
-    $(window).scroll(function() {    
-        var scroll = $(window).scrollTop();
-        if (scroll >= 10) {
-            header.addClass("scrolled");
-        } else {
-            header.removeClass("scrolled");
-        }
-    });
-});
-
-$(function() {
     var header = $(".mobile-header");
     $(window).scroll(function() {    
         var scroll = $(window).scrollTop();
@@ -439,7 +410,7 @@ const SLIDES = [
 	  { url: "images/project/resdential/slider/set-1/Living-area-right-image.jpg", tag: "Foyer detail"}
     ],
 	
-    title: "Ranaghat",
+    title: "Victoria Vista",
 	eyebrow: " Living Area",
     description: "A South Kolkata home where heritage joinery meets soft, contemporary upholstery. Every surface was chosen to age well, in keeping with the family's four-generation history in the house.",
     cta: "View project"
@@ -450,7 +421,7 @@ const SLIDES = [
       { url: "images/project/resdential/slider/Set-2/Dining-space-centre-image.jpg", tag: "Living area" },
       { url: "images/project/resdential/slider/Set-2/Dining-space-right-image.jpg", tag: "Reading chair" }
     ],
-    title: "Ranaghat",
+    title: "Victoria Vista",
 	eyebrow: "Dining Space",
     description: "A 19th-floor apartment designed around its view. Furniture sits low and the palette stays muted, so the skyline — not the room — is what a guest notices first.",
     cta: "View project"
@@ -461,7 +432,7 @@ const SLIDES = [
       { url: "images/project/resdential/slider/Set-3/Master-bedroom-centre-image.jpg", tag: "Living area" },
       { url: "images/project/resdential/slider/Set-3/Master-bedroom-right-image.jpg", tag: "Reading chair" }
     ],
-    title: "Ranaghat",
+    title: "Victoria Vista",
 	eyebrow: "Bed Room",
     description: "A 19th-floor apartment designed around its view. Furniture sits low and the palette stays muted, so the skyline — not the room — is what a guest notices first.",
     cta: "View project"
@@ -472,7 +443,7 @@ const SLIDES = [
       { url: "images/project/resdential/slider/Set-4/Kids-bedroom-centre-image.jpg", tag: "Living area" },
       { url: "images/project/resdential/slider/Set-4/Kids-bedroom-right-image.jpg", tag: "Reading chair" }
     ],
-    title: "Ranaghat",
+    title: "Victoria Vista",
 	eyebrow: "Kid's Bed Room",
     description: "A 19th-floor apartment designed around its view. Furniture sits low and the palette stays muted, so the skyline — not the room — is what a guest notices first.",
     cta: "View project"
@@ -483,7 +454,7 @@ const SLIDES = [
       { url: "images/project/resdential/slider/Set-5/Guest-bedroom-centre-image.jpg", tag: "Living area" },
       { url: "images/project/resdential/slider/Set-5/Guest-bedroom-right-image.jpg", tag: "Reading chair" }
     ],
-    title: "Ranaghat",
+    title: "Victoria Vista",
 	eyebrow: "Guest Bed Room",
     description: "A 19th-floor apartment designed around its view. Furniture sits low and the palette stays muted, so the skyline — not the room — is what a guest notices first.",
     cta: "View project"

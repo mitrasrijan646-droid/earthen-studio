@@ -185,7 +185,7 @@ a:focus, a:hover {
 	text-transform:uppercase;
 }
 .ftrdtxt span{font-style:italic; font-family: "Baskervville", serif; text-transform:capitalize;}
-.breadcrumb{ background:transparent; padding:0;}
+.breadcrumb{ background:transparent; padding:0; margin-bottom:0;}
 .breadcrumb li{font-family: "sofia-pro", sans-serif;}
 .breadcrumb li a{color:#FFF;}
 .breadcrumb li.active{color:#FFF;}
@@ -224,21 +224,33 @@ a:focus, a:hover {
 .sidenav ul li a.active{background:#35d397; color:#FFF;}	
 .sidenav ul li:last-child{border-bottom:none;}
 .mobile-header{ 
-	position:fixed; 
-	z-index:99; 
-	padding:10px 0; 
-	width:100%; 
-	top:0; 
-	border-bottom:1px solid #e5dccb;
-	background:#FFF;
-	z-index:100;
+	position: fixed; 
+	z-index: 100; 
+	padding: 10px 0; 
+	width: 100%; 
+	top: 0; 
+	border-bottom: 1px solid rgba(255,255,255,.25);
 }
-.mobile-header.scrolled{
-	background-color: rgba(255, 255, 255, .95);
-    transition: 0.5s;
-    width: 100%;
-    padding:10px 0;
+.mobile-header p a{color:#FFF;}
+.mobile-header img{filter: brightness(0) invert(1);}
+.mobile-header::before{
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-color: rgba(255, 255, 255, .75);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	opacity: 0;
+	transition: 0.5s;
+	z-index: -1;
+	pointer-events: none;
 }
+.mobile-header.scrolled img{filter:none;}
+.mobile-header.scrolled p a{color:#000;}
+.mobile-header.scrolled::before{ opacity: 1;}
+.mobile-header.scrolled{ background-color: transparent; /* let the ::before show through instead */ transition: 0.5s;}
+#projctbdy .mobile-header img{filter:none;}
+#projctbdy .mobile-header p a{color:#000;}
 .sidebar {
 	height: 100%;
 	width: 0;
@@ -261,7 +273,7 @@ a:focus, a:hover {
     border-bottom: 1px solid #ddd;
     font-size:20px;
 }
-.sidebar a img{padding:0; outline:none;}
+.sidebar a img{padding:0; outline:none; filter: none;}
 .sidebar a.hvr-fade:hover{background:#890000; color:#FFF;}
 .sidebar .closebtn {
 	position: absolute;
@@ -284,10 +296,14 @@ a:focus, a:hover {
 	transition: transform 0.4s ease;
 }
 #main {
-    transition: margin-right .5s;
+   transition: margin-right .5s;
     padding: 0;
-	float:right;
-	margin-top:20px;
+    float: right;
+    margin-top:15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
 }
 #main a.bktxt:hover{background:#FFF; color:#000;}
 #main a i.fas{
@@ -912,6 +928,7 @@ a:focus, a:hover {
 .prdct-view-link:hover{transform: translateY(-5px);}
 .prdct-view-link:hover .prdct-circle{transform: transform: scale(1.08);}
 .prjctsctn{margin-top:60px;}
+.prjctsctn-gallery{padding-bottom:60px;}
 .prjctsctncntnr{
 	display: flex;
     flex-direction: column;
@@ -951,18 +968,19 @@ a:focus, a:hover {
 }
 .prjctsctn-header-box p{color:#FFF;}
 .projct-slider{margin-top:40px;}
-.slider-viewport{ position:relative; overflow:hidden;  }
+.slider-viewport{ position:relative; overflow:hidden; }
 .slider-track{
     display:flex;
     transition: transform 0.65s cubic-bezier(.65,0,.35,1);
     will-change: transform;
+	aspect-ratio:6/2.2;
 }
 .slide{
     flex: 0 0 100%;
     display:grid;
     grid-template-columns:2fr 3.9fr 3fr 1.5fr;
-    gap:5px;
-    min-height:450px;
+    gap:15px;
+    /* min-height:500px; */
 }
 .photo-card{
     position:relative;
@@ -972,9 +990,7 @@ a:focus, a:hover {
     background-position:center;
     min-height:100%;
 	border-radius:15px;
-    transition: transform .5s ease;
 }
-.photo-card:hover{transform: scale(1.015);}
 .text-card{
     background:#b27352;
     border-radius: 15px;
@@ -1165,26 +1181,29 @@ a:focus, a:hover {
 .frstrow{
 	display:grid;
 	grid-template-columns:1fr 1fr;
-	align-items:flex-start;
+	align-items:center;
 }
 .frstrow .frstrowbx{
 	display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap:20px;
+    gap:25px;
 }
-.frstrow .frstrowbx:first-child{ padding:60px 5vw 90px;}
-.frstrow .frstrowbx h1{color:#fee485; text-align:left; font-style:italic; margin:0;}
+.frstrow .frstrowbx.rowbxup{margin-top:-95px;}
+.frstrow .frstrowbx:first-child{ padding:0 3vw 20px;}
+.frstrow .frstrowbx h1{color:#fee485; text-align:left; font-style:italic; margin:0 0;}
 .frstrow .frstrowbx h2{
 	color:#fee485; 
 	text-align:left; 
 	font-size:100px;
+	margin:0;
 	font-family:"sofia-pro";
 }
 .area-list{
     list-style:none;
     margin:0;
     padding:0;
+	max-width: 400px;
 }
 .area-item{
     display:flex;
@@ -1198,13 +1217,15 @@ a:focus, a:hover {
     border-right:none;
     width:100%;
     text-align:left;
-    color: rgba(244,235,221,0.65);
-    font-weight:400;
+    color:#fee485;
+    font-weight:200;
     transition: color .25s ease;
 	margin-bottom:15px;
 	padding: 5px 0 10px;
-	font-family:"sofia-pro"; 
+	font-family:"sofia-pro";
+	font-size:20px;
 }
+.area-item:hover{color:#;}
 .area-item:first-child{ padding-top:0;}
 .area-item svg{
     width:16px;
@@ -1222,11 +1243,9 @@ a:focus, a:hover {
     fill:none;
     transition: fill .25s ease, stroke .25s ease;
 }
-.area-item:hover{ color: var(--cream); }
-.area-item.active{ color: var(--cream); font-weight:700;}
+.area-item:hover{ color:#fee485; }
+.area-item.active{ color: #fee485; font-weight:700;}
 .area-item.active svg{ fill: var(--gold); stroke: var(--gold);}
-.hero{
-}
 /* ---------- Right image slider ---------- */
 .slider-panel{
 	flex: 1;
@@ -1254,9 +1273,8 @@ a:focus, a:hover {
     height:48px;
     border-radius:50%;
     border:none;
-    background: rgba(244,235,221,0.25);
-    backdrop-filter: blur(3px);
-    color: var(--cream);
+    background: rgba(244,235,221,0.75);
+    color:#000;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -1293,12 +1311,12 @@ a:focus, a:hover {
 	display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 45px;
+    gap:25px;
 }
 .parallax-section-service {
     position: relative;
     background-image: url(../images/bird-icon.png);
-    background-position: 0 20%;
+    background-position:0 3%;
     background-repeat: no-repeat;
     background-size: inherit;
     min-height: auto;
@@ -1316,21 +1334,18 @@ a:focus, a:hover {
 	align-items:center;
 }
 .othrs-prjctsctnbx h1{text-align:left; font-family:"sofia-pro";}
-.othrs-prjctsctnbx:last-child{
-	display:flex;
-	gap:15px;
-}
-.othrs-prjctsctnbx div{position:relative;}
-.othrs-prjctsctnbx div img{
-	width:auto;
-}
-.othrs-prjctsctnbx div h3{
-	color:#fee485; 
-	font-family:"sofia-pro"; 
+.othrs-prjctsctnbx:last-child{ display:flex; gap:15px;}
+.othrs-prjctsctnbx .othrimgbx{position:relative; transition: opacity 0.9s ease, transform 0.9s ease;}
+.othrs-prjctsctnbx .othrimgbx:hover{transform: translateY(-10px);}
+.othrs-prjctsctnbx .othrimgbx img{width:auto;}
+.othrs-prjctsctnbx .othrimgbx h3{
+	color:#FFF; 
 	font-size:35px;
 	margin-top:-80px;
+	transition: opacity 0.9s ease, transform 0.9s ease;
 }
-.othrs-prjctsctnbx div:last-child{ margin-top:-60px;}
+.othrs-prjctsctnbx .othrimgbx:hover h3{transform: translateY(-8px);}
+.othrs-prjctsctnbx .othrimgbx:last-child{ margin-top:-60px;}
 /* MEDIA QUERY CSS STARTS HERE */
 @media only screen and (orientation:portrait){}
 @media screen and (max-width:1366px){
