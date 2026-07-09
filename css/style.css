@@ -226,7 +226,7 @@ a:focus, a:hover {
 .mobile-header{ 
 	position: fixed; 
 	z-index: 100; 
-	padding: 10px 0; 
+	padding: 20px 0; 
 	width: 100%; 
 	top: 0; 
 	border-bottom: 1px solid rgba(255,255,255,.25);
@@ -237,7 +237,7 @@ a:focus, a:hover {
 	content: "";
 	position: absolute;
 	inset: 0;
-	background-color: rgba(255, 255, 255, .75);
+	background-color: rgba(0, 0, 0, .55);
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
 	opacity: 0;
@@ -245,12 +245,12 @@ a:focus, a:hover {
 	z-index: -1;
 	pointer-events: none;
 }
-.mobile-header.scrolled img{filter:none;}
+.mobile-header.scrolled img{filter: grayscale(100%) brightness(0.9);}
 .mobile-header.scrolled p a{color:#000;}
-.mobile-header.scrolled::before{ opacity: 1;}
-.mobile-header.scrolled{ background-color: transparent; /* let the ::before show through instead */ transition: 0.5s;}
-#projctbdy .mobile-header img{filter:none;}
-#projctbdy .mobile-header p a{color:#000;}
+.mobile-header::before{ opacity: 1;}
+.mobile-header.scrolled{ background-color:rgba(255,255,255,.65); /* let the ::before show through instead */ transition: 0.5s;}
+.mobile-header.projctbdy img{filter:none;}
+.mobile-header.projctbdy p a{color:#000;}
 .sidebar {
 	height: 100%;
 	width: 0;
@@ -299,7 +299,7 @@ a:focus, a:hover {
    transition: margin-right .5s;
     padding: 0;
     float: right;
-    margin-top:15px;
+    margin-top:0;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

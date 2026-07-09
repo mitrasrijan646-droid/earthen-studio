@@ -28,7 +28,7 @@
 
 <!-- TemplateEndEditable -->
 
-<div class="mobile-header" id="">
+<div class="mobile-header projctbdy" id="">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
@@ -36,8 +36,7 @@
 				<div class="col-sm-6 col-xs-6 no-pad">
 					<div class="logoBox">
 						<a class="navbar-brand" href="../index.html" id="">
-							<img src="images/logo-new.svg" class="img-responsive logo-parallax" alt=""/>
-                           <!-- <img src="images/logo-white.svg" class="img-responsive logo-parallax" alt=""/>-->
+							<img src="images/logo.png" class="img-responsive logo-parallax" alt=""/>
 						</a>
 					</div>
 				</div>
@@ -85,7 +84,7 @@
                                                     <ul>
                                                     	<li><a href="#" class="hvr-sweep-to-right">Project Ranaghat</a></li>
                                                         <li><a href="#" class="hvr-sweep-to-right">Project Victoria Vista</a></li>
-                                                        <li><a href="../project-residential-mani-vista.html" class="hvr-sweep-to-right">Project Mani Vista</a></li>
+                                                         <li><a href="../project-residential-mani-vista.html" class="hvr-sweep-to-right">Project Mani Vista</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
