@@ -10,7 +10,6 @@
 *{ box-sizing:border-box; }
 html {scroll-behavior: smooth;}
 li, td, table, tr, th, thead, input, label, select, textarea , button {
-	font-family: "Baskervville", serif;
 	font-weight:400;
 	font-size:16px;
 	color:#010000;
@@ -237,7 +236,7 @@ a:focus, a:hover {
 	content: "";
 	position: absolute;
 	inset: 0;
-	background-color: rgba(0, 0, 0, .55);
+	background-color: rgba(0, 0, 0, .35);
 	backdrop-filter: blur(20px);
 	-webkit-backdrop-filter: blur(20px);
 	opacity: 0;
@@ -245,12 +244,16 @@ a:focus, a:hover {
 	z-index: -1;
 	pointer-events: none;
 }
+.mobile-header.scrolled::before{background-color: rgba(255, 255, 255, .25);}
 .mobile-header.scrolled img{filter: grayscale(100%) brightness(0.6);}
-.mobile-header.scrolled p a{color:#FFF;}
+.mobile-header.scrolled p a{color:#000;}
 .mobile-header::before{ opacity: 1;}
-.mobile-header.scrolled{ background-color:rgba(255,255,255,.75); /* let the ::before show through instead */ transition: 0.5s;}
-.mobile-header.projctbdy img{filter:none;}
-.mobile-header.projctbdy p a{color:#000;}
+.mobile-header.scrolled{ background-color:rgba(255,255,255,.55); /* let the ::before show through instead */ transition: 0.5s;}
+/* .mobile-header.projctbdy::before{background-color: rgba(0, 0, 0, .55);} */
+.mobile-header.projctbdy img{filter: brightness(0) invert(1);}
+.mobile-header.projctbdy.scrolled img{filter: none;}
+.mobile-header.projctbdy p a{color:#FFF;}
+.mobile-header.projctbdy.scrolled p a{color:#000;}
 .sidebar {
 	height: 100%;
 	width: 0;
@@ -747,7 +750,7 @@ a:focus, a:hover {
 }
 #whatSection .ap-card.visible { opacity: 1; transform: translateY(0);}
 #whatSection .ap-card h2{text-align:center;}
-#whatSection .ap-card p{color:#FFF; text-align:center; font-size:30px; line-height:40px; text-transform:uppercase;}
+#whatSection .ap-card p{color:#FFF; text-align:center; font-size:35px; line-height:45px; text-transform:uppercase;}
 #whatSection .ap-card:after{display:none;}
 .whatnavsctn{
 	display: grid;
@@ -1346,6 +1349,233 @@ a:focus, a:hover {
 }
 .othrs-prjctsctnbx .othrimgbx:hover h3{transform: translateY(-8px);}
 .othrs-prjctsctnbx .othrimgbx:last-child{ margin-top:-60px;}
+.innrbnr .evntbxbnnr{min-height:80vh;}
+.innrbnr .evntbxbnnr .bannrbx{top: 100px;}
+.innrbnr .evntbxbnnr .bannrbx .bannrbxcntnt h1{
+	color:#8e5b40;
+	font-style:italic;
+}
+.innrbnr .evntbxbnnr .imgbx img {object-fit: inherit; height:auto;}
+.prflcntn{
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	align-items:center;
+	gap:80px;
+}
+.prflcntnbx h1{
+	text-transform:uppercase;
+	color:#efd6ae;
+	font-family:"sofia-pro";
+	margin:0 0 20px;
+	font-size:100px;
+	text-align:left;
+	font-weight:100;
+	opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.prflcntnbx h1.animate{opacity: 1; transform: translateY(0px);}
+.prflcntnbx h2{ 
+	color:#efd6ae; 
+	text-align:left; 
+	font-weight:400; 
+	font-size:30px;
+	opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.prflcntnbx h2.animate{opacity: 1; transform: translateY(0px);}
+.yllwbx{
+	background:#fee485;
+	padding:50px 20px;
+	transition: opacity 0.9s ease, transform 0.9s ease;
+	display:grid;
+	grid-template-columns:1fr 1fr;
+}
+.yllwbx:hover{transform: translateY(-5px);}
+.yllwbx.animate{opacity: 1; transform: translateY(0px);}
+.yllwbx h1{
+	opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+	font-family: "Baskervville", serif;
+	color:#000;
+	font-size:50px;
+	text-transform:capitalize;
+	font-style:italic;
+}
+.yllwbx p{
+	margin-bottom:15px;
+	font-size:20px;
+	line-height:25px;
+	color:#000;
+	opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.yllwbx p.animate{opacity: 1; transform: translateY(0px);}
+.blfsctn{background:url(../images/about/about-bg.jpg) no-repeat left top #e8e4da fixed;}
+.blfsctn h1{
+	opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.blfsctn h1.animate{opacity: 1; transform: translateY(0px);}
+.blfsctn h2{
+	color:#817c6a;
+	font-size:65px;
+	font-family:"sofia-pro";
+	text-transform:uppercase;
+	opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.blfsctn h2.animate{opacity: 1; transform: translateY(0px);}
+.grid {
+	margin-top:100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  /* Intro yellow panel */
+  .intro {
+    background: #F2D869;
+    border-radius: 18px;
+    padding:24px 34px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .intro p {
+    color: #000;
+    text-align: center;
+  }
+
+  /* Feature cards */
+  .card {
+    background: #66614e;
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    position: relative;
+  }
+
+  .card-top {
+    padding: 36px 24px 26px;
+    text-align: center;
+    transition: padding 0.45s ease;
+  }
+
+  .icon-circle {
+    width: 100px;
+    height: 100px;
+    background: #F2D869;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:28px auto 20px;
+    transition: width 0.45s ease, height 0.45s ease, margin 0.45s ease;
+  }
+
+  .icon-circle svg {
+    width:80px;
+    height:60px;
+    stroke: #55532E;
+    fill: none;
+    stroke-width: 1.8;
+    transition: width 0.45s ease, height 0.45s ease;
+  }
+
+  .card-top h3 {
+    font-weight: 700;
+    font-size:30px;
+    line-height:32px;
+	color:#FFF;
+    transition: font-size 0.45s ease;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    margin: 14px auto 16px;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Bottom panel: sits at the base of the card, grows upward toward mid position on hover */
+  .card-bottom {
+    background: rgba(0,0,0,0.14);
+    padding: 22px 26px 30px;
+    font-size:18px;
+    line-height:22px;
+	font-family:"sofia-pro";
+    text-align: center;
+    color: #EDECE3;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height:10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: height 0.45s ease;
+  }
+
+  .card-bottom span {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
+  }
+
+  /* HOVER STATE: box expands from bottom to roughly mid-card, icon shrinks to make room */
+  .card:hover .card-bottom {
+    height:50%;
+  }
+
+  .card:hover .card-bottom span {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card:hover .card-top {
+    padding: 22px 24px 14px;
+  }
+
+  .card:hover .icon-circle {
+    width:60px;
+    height:60px;
+    margin: 0 auto 10px;
+  }
+
+  .card:hover .icon-circle svg {
+    width:40px;
+    height:40px;
+  }
+
+  .card:hover .card-top h3 {
+    font-size:20px; line-height:22px;
+  }
+
+  .card:hover .dot {
+    opacity: 0;
+  }
+.jrnycntnt{padding-bottom:100px; min-height:auto;}
+#whatSection .ap-card p.app-jrny{
+	  text-transform:none;
+	  font-size:20px;
+	  line-height:25px;
+	  letter-spacing:0;
+  }
 /* MEDIA QUERY CSS STARTS HERE */
 @media only screen and (orientation:portrait){}
 @media screen and (max-width:1366px){
