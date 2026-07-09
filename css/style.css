@@ -245,10 +245,10 @@ a:focus, a:hover {
 	z-index: -1;
 	pointer-events: none;
 }
-.mobile-header.scrolled img{filter: grayscale(100%) brightness(0.9);}
-.mobile-header.scrolled p a{color:#000;}
+.mobile-header.scrolled img{filter: grayscale(100%) brightness(0.6);}
+.mobile-header.scrolled p a{color:#FFF;}
 .mobile-header::before{ opacity: 1;}
-.mobile-header.scrolled{ background-color:rgba(255,255,255,.65); /* let the ::before show through instead */ transition: 0.5s;}
+.mobile-header.scrolled{ background-color:rgba(255,255,255,.75); /* let the ::before show through instead */ transition: 0.5s;}
 .mobile-header.projctbdy img{filter:none;}
 .mobile-header.projctbdy p a{color:#000;}
 .sidebar {
