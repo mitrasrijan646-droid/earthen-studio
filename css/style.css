@@ -1349,13 +1349,9 @@ a:focus, a:hover {
 }
 .othrs-prjctsctnbx .othrimgbx:hover h3{transform: translateY(-8px);}
 .othrs-prjctsctnbx .othrimgbx:last-child{ margin-top:-60px;}
-.innrbnr .evntbxbnnr{min-height:80vh;}
+.innrbnr .evntbxbnnr{min-height:90vh;}
 .innrbnr .evntbxbnnr .bannrbx{top: 100px;}
-.innrbnr .evntbxbnnr .bannrbx .bannrbxcntnt h1{
-	color:#8e5b40;
-	font-style:italic;
-}
-.innrbnr .evntbxbnnr .imgbx img {object-fit: inherit; height:auto;}
+.innrbnr .evntbxbnnr .bannrbx .bannrbxcntnt h1{ color:#8e5b40; font-style:italic;}
 .prflcntn{
 	display:grid;
 	grid-template-columns:1fr 1fr;
