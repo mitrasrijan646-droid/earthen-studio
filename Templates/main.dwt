@@ -109,11 +109,11 @@
                         </a>
                     
                         <nav class="links">
-                          <a href="#home"><span class="idx">01</span>Home</a>
-                          <a href="#projects"><span class="idx">02</span>Projects</a>
-                          <a href="#services" class="group-gap"><span class="idx">03</span>Services</a>
-                          <a href="#about"><span class="idx">04</span>About Us</a>
-                          <a href="#contact"><span class="idx">05</span>Contact Us</a>
+                          <a href="../index.html"><span class="idx">01</span>Home</a>
+                          <a href="../project.html"><span class="idx">02</span>Projects</a>
+                          <a href="#" class="group-gap"><span class="idx">03</span>Services</a>
+                          <a href="../about.html"><span class="idx">04</span>About Us</a>
+                          <a href="#"><span class="idx">05</span>Contact Us</a>
                         </nav>
                     
                         <div class="panel-footer">
