@@ -241,14 +241,11 @@
 	</div>
 </section>
 
-<section class="ap-section sectnbx" id="whatSection">
-	<div class="container-fluid">
+<!-- <section class="journey sectnbx" id="whatSection">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-12 no-pad">
-				<!-- Regular img tag for parallax -->
-				<div class="ap-bg" id="whatBg">
-					<img src="images/about/about-card.jpg" alt="" class="ap-bg-img img-responsive" />
-				</div>
+				
 				<div class="container">
 					<div class="row">
 						<div class="col-md-8 col-md-offset-2">
@@ -270,7 +267,73 @@
 			</div>
 		</div>
 	</div>
-    <!-- Card content -->
+
+</section> -->
+
+<section class="journey">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+			
+				<h1 class="title">Our Journey</h1>
+				<div class="col-md-8 col-md-offset-2">
+					<p class="blurb"> Founded in 2019, Earthen Studio has led projects across new-build apartments and thoughtful revamps of older homes — each different in scale and story, same in spirit: complete, soothing, unmistakably considered. The studio moves fluently across styles — from pared-back contemporary interiors to opulent, heritage-inspired spaces layered with hand-painted murals, vintage silhouettes, and rich textures — shaping each home around what it calls for, not a fixed aesthetic.</p>
+				</div>
+				<div class="clearfix"></div>
+				
+				<div class="col-md-10 col-md-offset-1">
+					<div class="timeline" id="timeline">
+					<!-- connectors are injected by JS once circle positions are known -->
+					<div class="node" data-detail="Where it all started — Alipi Pandit opens Earthen Studio.">
+						<div class="year">2019</div>
+						<div class="circle-wrap">
+							<div class="ring"></div>
+							<button class="circle" type="button">
+							  <span>Founded<br>Earthen Studio</span>
+							</button>
+						</div>
+						<div class="detail">Where it all started.</div>
+					</div>
+
+					<div class="node" data-detail="The studio's first large-scale residential commission.">
+						<div class="year">2022</div>
+						<div class="circle-wrap">
+							<div class="ring"></div>
+							<button class="circle" type="button">
+							  <span>First<br>High Value<br>Project</span>
+							</button>
+						</div>
+						<div class="detail">A milestone in scale and trust.</div>
+					</div>
+
+					<div class="node" data-detail="A project showcased and recognised beyond the client alone.">
+						<div class="year">2024</div>
+						<div class="circle-wrap">
+							<div class="ring"></div>
+							<button class="circle" type="button">
+							  <span>First<br>Featured<br>Project</span>
+							</button>
+						</div>
+						<div class="detail">Work that stepped into the spotlight.</div>
+					</div>
+
+					<div class="node current" data-detail="The story is still being written.">
+						<div class="year">&amp;</div>
+						<div class="circle-wrap">
+							<div class="ring"></div>
+							<button class="circle" type="button">
+							  <span>Continuing<br>…</span>
+							</button>
+						</div>
+						<div class="detail">The story is still being written.</div>
+					</div>
+				</div>
+				</div>
+				
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <section class="lwrbxstcn sectnbx">
@@ -433,36 +496,39 @@ gsap.to(".logo-parallax", {
         });
     }, { threshold: 0.2 });
 
-    document.querySelectorAll('.bodywrppr h1, .designcntnbx, .ap-card, .ap-card h2, .ap-card p, .lwrbxwrppr h2, .lwrbxwrppr h1, .lwrbxwrppr a, .prflcntnbx h1, .prflcntnbx h2, .yllwbx h1, .yllwbx p, .blfsctn h1, .blfsctn h2').forEach(el => {
+    document.querySelectorAll('.bodywrppr h1, .designcntnbx, .ap-card, .ap-card h2, .ap-card p, .lwrbxwrppr h2, .lwrbxwrppr h1, .lwrbxwrppr a, .prflcntnbx h1, .prflcntnbx h2, .yllwbx h1, .yllwbx p, .blfsctn h1, .blfsctn h2, h1.title, p.blurb, .timeline').forEach(el => {
         observer.observe(el);
     });
 }
 </script>
 
-<script>
-/* ── What Section Parallax ── */
-{
-    const section = document.getElementById('whatSection');
-    const card    = document.getElementById('whatCard');
-    const bg      = document.getElementById('whatBg');
+<script type="text/javascript">
+  // Draw connecting lines precisely between circle centers, so the layout
+  // stays correct at any width without hand-tuned pixel offsets.
+  function drawConnectors(){
+    const timeline = document.getElementById('timeline');
+    timeline.querySelectorAll('.connector').forEach(el => el.remove());
+    if (window.innerWidth <= 860) return; // connectors hidden on wrap layout
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) card.classList.add('visible');
-        });
-    }, { threshold: 0.55 });
-    observer.observe(section);
+    const nodes = [...timeline.querySelectorAll('.circle-wrap')];
+    const tlRect = timeline.getBoundingClientRect();
 
-    function doParallaxWhat() {
-        const rect     = section.getBoundingClientRect();
-        const viewH    = window.innerHeight;
-        const progress = (viewH - rect.top) / (viewH + rect.height);
-        const shift    = (progress - 0.5) * 400;
-        bg.style.transform = `translateY(${shift}px)`;
+    for (let i = 0; i < nodes.length - 1; i++){
+      const a = nodes[i].getBoundingClientRect();
+      const b = nodes[i+1].getBoundingClientRect();
+      const line = document.createElement('div');
+      line.className = 'connector';
+      const left  = a.left - tlRect.left + a.width;
+      const width = (b.left - tlRect.left) - left;
+      const top   = (a.top - tlRect.top) + a.height / 2;
+      line.style.left  = left + 'px';
+      line.style.width = width + 'px';
+      line.style.top   = top + 'px';
+      timeline.appendChild(line);
     }
-    doParallaxWhat();
-    window.addEventListener('scroll', doParallaxWhat, { passive: true });
-}
+  }
+  window.addEventListener('load', drawConnectors);
+  window.addEventListener('resize', drawConnectors);
 </script>
 <!-- InstanceEndEditable -->
 </body>
