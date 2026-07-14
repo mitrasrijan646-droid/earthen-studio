@@ -1171,7 +1171,7 @@ a:focus, a:hover {
 .lwrbx{background:#817c6a;}
 .lwrbx .lrbxcntnr{
 	display:grid;
-	grid-template-columns:1fr 2fr;
+	grid-template-columns:1.5fr 2fr;
 	gap:90px;
 }
 .lwrbx .lrbxcntnr .lwrbxwrppr{padding:120px 0;}
