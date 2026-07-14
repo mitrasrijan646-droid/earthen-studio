@@ -1355,7 +1355,7 @@ a:focus, a:hover {
 .prflcntn{
 	display:grid;
 	grid-template-columns:1fr 1fr;
-	align-items:center;
+	align-items:flex-start;
 	gap:80px;
 }
 .prflcntnbx h1{
@@ -1383,7 +1383,7 @@ a:focus, a:hover {
 .prflcntnbx h2.animate{opacity: 1; transform: translateY(0px);}
 .yllwbx{
 	background:#fee485;
-	padding:50px 20px;
+	padding:20px;
 	transition: opacity 0.9s ease, transform 0.9s ease;
 	display:grid;
 	grid-template-columns:1fr 1fr;
@@ -1402,8 +1402,8 @@ a:focus, a:hover {
 }
 .yllwbx p{
 	margin-bottom:15px;
-	font-size:20px;
-	line-height:25px;
+	font-size:15px;
+	line-height:20px;
 	color:#000;
 	opacity: 0;
     transform: translateY(30px);
