@@ -1433,10 +1433,9 @@ a:focus, a:hover {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 24px;
     align-items: stretch;
-  }
-
+}
   /* Intro yellow panel */
-  .intro {
+.intro {
     background: #F2D869;
     border-radius: 18px;
     padding:24px 34px;
@@ -1444,15 +1443,17 @@ a:focus, a:hover {
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-  }
-
-  .intro p {
+	transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.intro:hover{transform: translateY(-5px);}
+.intro p {
     color: #000;
+	transition: opacity 0.9s ease, transform 0.9s ease;
     text-align: center;
-  }
-
+}
+.intro:hover {transform: translateY(-5px);}
   /* Feature cards */
-  .card {
+.card {
     background: #66614e;
     border-radius: 18px;
     overflow: hidden;
@@ -1460,15 +1461,15 @@ a:focus, a:hover {
     flex-direction: column;
     color: #fff;
     position: relative;
-  }
-
-  .card-top {
+	transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.card:hover{transform: translateY(-5px);}
+.card-top {
     padding: 36px 24px 26px;
     text-align: center;
     transition: padding 0.45s ease;
-  }
-
-  .icon-circle {
+}
+.icon-circle {
     width: 100px;
     height: 100px;
     background: #F2D869;
@@ -1478,36 +1479,32 @@ a:focus, a:hover {
     justify-content: center;
     margin:28px auto 20px;
     transition: width 0.45s ease, height 0.45s ease, margin 0.45s ease;
-  }
-
-  .icon-circle svg {
+}
+.icon-circle svg {
     width:80px;
     height:60px;
     stroke: #55532E;
     fill: none;
     stroke-width: 1.8;
     transition: width 0.45s ease, height 0.45s ease;
-  }
-
-  .card-top h3 {
+}
+.card-top h3 {
     font-weight: 700;
     font-size:30px;
     line-height:32px;
 	color:#FFF;
     transition: font-size 0.45s ease;
-  }
-
-  .dot {
+}
+.dot {
     width: 6px;
     height: 6px;
     background: #fff;
     border-radius: 50%;
     margin: 14px auto 16px;
     transition: opacity 0.3s ease;
-  }
-
+}
   /* Bottom panel: sits at the base of the card, grows upward toward mid position on hover */
-  .card-bottom {
+.card-bottom {
     background: rgba(0,0,0,0.14);
     padding: 22px 26px 30px;
     font-size:18px;
@@ -1525,53 +1522,31 @@ a:focus, a:hover {
     justify-content: center;
     overflow: hidden;
     transition: height 0.45s ease;
-  }
-
-  .card-bottom span {
+}
+.card-bottom span {
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 0.35s ease 0.1s, transform 0.35s ease 0.1s;
-  }
-
+}
   /* HOVER STATE: box expands from bottom to roughly mid-card, icon shrinks to make room */
-  .card:hover .card-bottom {
-    height:50%;
-  }
-
-  .card:hover .card-bottom span {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .card:hover .card-top {
-    padding: 22px 24px 14px;
-  }
-
-  .card:hover .icon-circle {
+.card:hover .card-bottom { height:50%;}
+.card:hover .card-bottom span {  opacity: 1; transform: translateY(0);}
+.card:hover .card-top { padding: 22px 24px 14px; }
+.card:hover .icon-circle {
     width:60px;
     height:60px;
     margin: 0 auto 10px;
   }
-
-  .card:hover .icon-circle svg {
-    width:40px;
-    height:40px;
-  }
-
-  .card:hover .card-top h3 {
-    font-size:20px; line-height:22px;
-  }
-
-  .card:hover .dot {
-    opacity: 0;
-  }
+.card:hover .icon-circle svg { width:40px; height:40px; }
+.card:hover .card-top h3 { font-size:20px; line-height:22px; }
+.card:hover .dot { opacity: 0; }
 .jrnycntnt{padding-bottom:100px; min-height:auto;}
 #whatSection .ap-card p.app-jrny{
-	  text-transform:none;
-	  font-size:20px;
-	  line-height:25px;
-	  letter-spacing:0;
-  }
+	text-transform:none;
+	font-size:20px;
+	line-height:25px;
+	letter-spacing:0;
+}
 /* MEDIA QUERY CSS STARTS HERE */
 @media only screen and (orientation:portrait){}
 @media screen and (max-width:1366px){
