@@ -1352,6 +1352,7 @@ a:focus, a:hover {
 .innrbnr .evntbxbnnr{min-height:90vh;}
 .innrbnr .evntbxbnnr .bannrbx{top: 100px;}
 .innrbnr .evntbxbnnr .bannrbx .bannrbxcntnt h1{ color:#8e5b40; font-style:italic;}
+.abtbxsctn{padding:200px 0;}
 .prflcntn{
 	display:grid;
 	grid-template-columns:1fr 1fr;
@@ -1375,7 +1376,7 @@ a:focus, a:hover {
 	color:#efd6ae; 
 	text-align:left; 
 	font-weight:400; 
-	font-size:30px;
+	font-size:25px;
 	opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.9s ease, transform 0.9s ease;
