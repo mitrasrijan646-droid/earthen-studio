@@ -1629,14 +1629,7 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
     text-decoration:none;
     width:fit-content;
   }
-  .logo svg{ width:60px; height:60px; }
-  .logo .word{
-    font-size:.72rem;
-    letter-spacing:.16em;
-    font-weight:700;
-    line-height:1.35;
-  }
-
+  .logo svg{ width:auto; height:40px; }
   /* ---------------- nav ---------------- */
   nav.links{
     margin-top: auto;
