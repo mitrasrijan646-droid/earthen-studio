@@ -394,6 +394,7 @@ a:focus, a:hover {
     height: 100%;
     object-fit: cover;
 }
+.innrbnr .evntbxbnnr .imgbx img {height:auto;}
 .bnnrsctn .evntbxbnnr .container { position: relative; z-index: 9;}
 .bnnrsctn .evntbxbnnr .bannrbx .bannrbxcntnt a.dscvrbttnnew{margin:20px 0 65px; border-radius:15px;}
 .bnnrsctn .evntbxbnnr .bannrbx .bannrbxcntnt h1{
@@ -1265,7 +1266,7 @@ a:focus, a:hover {
 }
 .othrs-prjctsctnbx .othrimgbx:hover h3{transform: translateY(-8px);}
 .othrs-prjctsctnbx .othrimgbx:last-child{ margin-top:-60px;}
-.innrbnr .evntbxbnnr{min-height:90vh;}
+.innrbnr .evntbxbnnr{min-height:80vh;}
 .innrbnr .evntbxbnnr .bannrbx{top: 100px;}
 .innrbnr .evntbxbnnr .bannrbx .bannrbxcntnt h1{ color:#8e5b40; font-style:italic;}
 .abtbxsctn{padding:200px 0;}
