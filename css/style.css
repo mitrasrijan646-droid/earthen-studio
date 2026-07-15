@@ -5,9 +5,9 @@
     --cream:#F4EBDD;
     --ink:#2E1F16;
     --line: rgba(244,235,221,0.28);
-	--amber-1:   #9c6a1c;
-    --amber-2:   #6a4512;
-    --amber-3:   #452c0c;
+	--amber-1:#704405;
+    --amber-2:#633b04;
+    --amber-3:#533102;
 }
 
 *{ box-sizing:border-box; }
@@ -1695,7 +1695,7 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
 
   .panel-footer a.social{
     display:inline-block;
-    font-size:20px;
+    font-size:25px;
     color: #FFF;
     text-decoration:none;
     border-bottom: 1px solid transparent;
