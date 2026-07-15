@@ -1649,20 +1649,19 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
   nav.links a{
     position:relative;
     display:flex;
+	font-size:40px;
     align-items:baseline;
-    gap:16px;
+    gap:10px;
     text-decoration:none;
-    font-weight:500;
-    font-size: clamp(2.1rem, 4.3vw, 3.05rem);
+    font-weight:400;
     color: var(--cream);
     line-height:1.5;
     width:fit-content;
     transition: color .35s ease, transform .35s cubic-bezier(.22,1,.36,1);
 	font-family: "Baskervville", serif;
   }
-
   nav.links a .idx{
-    font-size:16px;
+    font-size:20px;
 	font-family: "Baskervville", serif;
     letter-spacing:.08em;
     font-weight:700;
@@ -1672,7 +1671,6 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
     opacity:0;
     transition: opacity .35s ease, transform .35s ease;
   }
-
   nav.links a:hover,
   nav.links a:focus-visible{
     color:#ffffff;
@@ -1683,30 +1681,33 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
     opacity:1;
     transform: translateY(-2px) translateX(0);
   }
-
   nav.links a:focus-visible{ outline:none; }
-
   /* ---------------- footer ---------------- */
   .panel-footer{
     border-top: 1px solid var(--line);
     padding-top: 22px;
 	background:transparent;
+	display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .panel-footer .label{
-    font-style: italic;
+    font-style:normal;
     font-size:15px;
     color: #FFF;
     margin-bottom: 6px;
+	padding-left:0;
   }
 
   .panel-footer a.social{
     display:inline-block;
-    font-size: 1.7rem;
+    font-size:20px;
     color: #FFF;
     text-decoration:none;
     border-bottom: 1px solid transparent;
     transition: color .3s ease, border-color .3s ease, transform .3s ease;
+	font-family: "Baskervville", serif;
   }
   .panel-footer a.social:hover{
     color:#FFF;
@@ -1742,10 +1743,9 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
     border:none;
     color: var(--cream);
     cursor:pointer;
-    font-family:'Nunito Sans', sans-serif;
-    font-size:.7rem;
-    letter-spacing:.16em;
-    font-weight:700;
+    font-size:20px;
+    letter-spacing:0;
+    font-weight:400;
   }
   .close-btn svg{
     width:17px; height:17px;
