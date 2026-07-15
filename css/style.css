@@ -1712,7 +1712,7 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
   .panel-right{
     position:relative;
     flex:1;
-    background-image: url("../images/menu-bg.png");
+    background-image: url("../images/menu-bg.jpg");
     background-size:cover;
     background-position:center;
   }
