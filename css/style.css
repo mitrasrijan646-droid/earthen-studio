@@ -469,7 +469,7 @@ a:focus, a:hover {
     margin: 0;
     white-space: nowrap;   
 }
-.bodysctn{background:#8e5b40;}
+.bodysctn{background:#a1895b;}
 .bodysctnctnr{
 	display: grid;
     grid-template-columns: 1fr 3fr;
@@ -507,25 +507,22 @@ a:focus, a:hover {
     gap:20px;
 }
 .designcntnbx{ 
-	border:1px solid #cab2a5; 
-	padding:20px;
-	-webkit-box-shadow: 10px 13px 12px 0px rgba(0,0,0,0.35);
-	-moz-box-shadow: 10px 13px 12px 0px rgba(0,0,0,0.35);
-	box-shadow: 10px 13px 12px 0px rgba(0,0,0,0.35);
+	border:1px solid rgba(255,255,255, .3); 
+	padding:30px;
 	cursor:pointer;
 	transition: background 0.5s;
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 	opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.9s ease, transform 0.9s ease;
+	background:#bfa87e;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
 }
 .designcntnbx.animate{opacity: 1; transform: translateY(0px);}
-.designcntnbx:hover{
-	transform: translateY(-5px);
-	-webkit-box-shadow: 2px 5px 20px 0px rgba(0,0,0,0.40);
-	-moz-box-shadow: 2px 5px 20px 0px rgba(0,0,0,0.40);
-	box-shadow: 2px 5px 20px 0px rgba(0,0,0,0.40);
-}
+.designcntnbx:hover{ transform: translateY(-5px);}
 .designcntnbx img{width:100px; height:100px; margin:0 auto 25px; transition: 0.4s ease;}
 .designcntnbx h2{font-size:25px; color:#FFF; transition: 0.4s ease; font-family: "Baskervville", serif;}
 .designcntnbx:hover h2{transform: translateY(-10px);}
@@ -912,7 +909,7 @@ a:focus, a:hover {
 	border-radius:15px;
 }
 .text-card{
-    background:#b27352;
+    background:#bfa87e;
     border-radius: 15px;
     padding: 36px 30px;
     display: flex;
