@@ -273,7 +273,7 @@ a:focus, a:hover {
 .sidebar a {
     font-size:20px;
 }
-.sidebar a img{padding:0; outline:none; filter: none; width: 60%;}
+.sidebar a img{padding:0; outline:none; filter: none !important; width: 60%;}
 .openbtn {
     cursor:pointer;
     background-color:transparent;
