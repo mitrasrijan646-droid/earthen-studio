@@ -273,19 +273,7 @@ a:focus, a:hover {
 .sidebar a {
     font-size:20px;
 }
-.sidebar a img{padding:0; outline:none; filter: none;}
-.sidebar a.hvr-fade:hover{background:#890000; color:#FFF;}
-.sidebar .closebtn {
-	position: absolute;
-    top:30px;
-    right:0%;
-    font-size: 50px;
-    margin-left: 0;
-    color: #000;
-    padding: 0;
-	font-weight: 100;
-    border-bottom: none;
-}
+.sidebar a img{padding:0; outline:none; filter: none; width: 60%;}
 .openbtn {
     cursor:pointer;
     background-color:transparent;
