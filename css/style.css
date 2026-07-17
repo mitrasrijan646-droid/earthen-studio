@@ -267,16 +267,13 @@ a:focus, a:hover {
 	transform: translateX(100%);
 	background:rgba(255, 255 ,255, .98);
 	overflow-x: hidden;
-	transition: 0.5s;
+	/* transition: 0.5s; */
+	transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 	padding-top:0;
 }
-.sidebar.open {
-	transform: translateX(0);
-}
+.sidebar.open { transform: translateX(0);}
 .sidebar hr{margin-bottom:20px;}
-.sidebar a {
-    font-size:20px;
-}
+.sidebar a { font-size:20px;}
 .sidebar a img{padding:0; outline:none; filter: none !important; width: 60%;}
 .openbtn {
     cursor:pointer;
