@@ -54,7 +54,7 @@ p{
     margin: 0;
 	font-size:16px;
 	margin-bottom:10px;
-	letter-spacing: 0.02em;
+	letter-spacing:0;
 }
 a{line-height:17px; outline:none; color:#010000; text-decoration: none; font-family: "sofia-pro",sans-serif;}
 a:focus, a:hover {
@@ -1498,7 +1498,7 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
     display:flex;
     flex-direction:column;
     align-items:center;
-    width: 170px;
+    width: 100%;
 }
 .year{
     font-family: "Baskervville", serif;
@@ -1516,13 +1516,13 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
 }
 .circle-wrap{
     position:relative;
-    width:152px;
-    height:152px;
+    width:100%;
+    height:100%;
 }
 .ring{
     position:absolute;
     inset:-9px;
-    border-radius:50%;
+    border-radius:100%;
     border:1px solid #dcc9a0;
     opacity:0;
     transition: opacity .35s ease;
@@ -1531,15 +1531,15 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
 .circle{
     position:relative;
     z-index:1;
-    width:152px;
-    height:152px;
-    border-radius:50%;
+    width:100%;
+    height:290px;
+    border-radius:100%;
     background:#ede8dd;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding: 16px;
+    padding:40px;
     cursor:pointer;
     border:none;
     transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease, background-color .35s ease;
@@ -1547,10 +1547,10 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
   }
 .circle span{
     color:#000;
-    line-height:1.35;
+    line-height:30px;
 	font-family: "Baskervville", serif;
 	font-style:italic;
-	font-size:20px;
+	font-size:25px;
     transition: color .35s ease;
 }
 .node.current .circle{background: #7c4a12; }
@@ -1578,14 +1578,14 @@ p.blurb.animate{opacity: 1; transform: translateY(0px);}
 }
 /* --- detail line that appears beneath a hovered / focused circle --- */
 .detail{
-	font-size:16px;
+	font-size:25px;
     margin-top: 18px;
     max-width: 190px;
-    line-height:17px;
+    line-height:30px;
     color:#000;
 	font-family: "Baskervville", serif;
     background: rgba(255,255,255,.0);
-	font-weight:500;
+	font-weight:200;
     opacity:0;
     transform: translateY(-4px);
     transition: opacity .3s ease, transform .3s ease;
