@@ -315,7 +315,7 @@ a:focus, a:hover {
   align-items: center;
   gap: 10px;
   font-size: 16px;
-  padding:10px 15px 10px 15px;
+  padding: 10px 30px 10px 20px;
   position: relative;
   overflow: hidden;
   color: #FFF;
@@ -541,7 +541,6 @@ a:focus, a:hover {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    min-height: 520px;
     padding: 40px 0;
 }
 .ap-card{
@@ -596,7 +595,7 @@ a:focus, a:hover {
 .ap-card a.dscvrbttnnew:before{background:#FFF; z-index: -1;}
 .ap-card a.dscvrbttnnew svg { transition: transform 0.99s cubic-bezier(0.34, 1.56, 0.64, 1);}
 .ap-card a.dscvrbttnnew:hover{color:#3c3d40;}
-.ap-card a.dscvrbttnnew:hover svg { transform: translateX(145px);}
+.ap-card a.dscvrbttnnew:hover svg { transform: translateX(125px);}
 /* Section must be relative */
 #whatSection {
     position: relative;
@@ -634,8 +633,7 @@ a:focus, a:hover {
     display: flex;
     justify-content: flex-start;  /* card on left side */
     align-items: flex-start;
-    min-height: 520px;
-    padding:50px 0 0;
+    padding:150px 0;
 }
 #whatSection .ap-card {
     background:transparent;
@@ -655,7 +653,7 @@ a:focus, a:hover {
 .whatnavsctn{
 	display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 35px;
+    gap:220px;
     align-items: start;
 }
 .whatnavsctn a.dscvrbttnnew{color:#FFF; letter-spacing:1.3px;}
@@ -719,6 +717,10 @@ a:focus, a:hover {
 }
 .footerwrprbx p{color:#FFF;}
 .prdctlstsctn{}
+.prdctlstsctn nav ol.breadcrumb{margin-bottom:60px;}
+.prdctlstsctn nav ol.breadcrumb li{color:#000;}
+.prdctlstsctn nav ol.breadcrumb li a{color:#000;}
+/* .breadcrumb>li+li:before{color:#000;} */
 .prdctlstsctn h1{
 	text-transform:uppercase;
 	color:#3c3d40;
@@ -1260,7 +1262,7 @@ a:focus, a:hover {
 }
 .innrbnr .evntbxbnnr .bannrbx .bannrbxcntnt h1{ color:#8e5b40; font-style:italic;}
 .innrbnr .evntbxbnnr .bannrbx .bannrbxcntnt h2{color:#FFF; text-align:left;}
-.abtbxsctn{padding:200px 0;}
+.abtbxsctn{padding:300px 0;}
 .prflcntn{
 	display:grid;
 	grid-template-columns:1fr 1fr;
