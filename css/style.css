@@ -1801,6 +1801,91 @@ nav.links a:focus-visible{ outline:none; }
 .contctsctn .greybx h2{font-style:normal;}
 .contctsctn .greybx p {margin-bottom:10px;}
 .contctsctn .greybx p a{color:#FFF; outline:none;}
+.contact-section{background:#EDE7DB;}
+.contact-wrapper{
+	display:flex;
+	gap:64px;
+	flex-wrap:wrap;
+	margin:0 auto;
+}
+.contact-wrapper-box{flex:1 1 420px;}
+.contact-wrapper-box h3{
+	text-align:left;
+	font-size:16px;
+	letter-spacing:2px;
+	color:#8B4E33;
+	font-weight:300;
+	margin-bottom:10px;
+	font-family:"sofia-pro";
+}
+.contact-wrapper-box h1{
+	text-align:left;
+	color:#3D2C21;
+	margin-bottom:36px;
+}
+.form-card{
+	display:flex;
+	flex-direction:column;
+	gap:24px;
+}
+.form-card .frstrow{
+	display:flex;
+	gap:20px;
+	flex-wrap:wrap;
+}
+.form-card .frstrow label{
+	flex:1 1 200px;
+	display:flex;
+	flex-direction:column;
+	gap:8px;
+}
+.form-card .frstrow label span{
+	font-size:16px;
+	letter-spacing:1px;
+	color:#8B4E33;
+	font-family:"sofia-pro";
+}
+.form-card .frstrow label input{
+	border:none;
+	border-bottom:1.5px solid rgba(61,44,33,0.25);
+	background:transparent;
+	padding:8px 0;
+	font-size:16px;
+	color:#3D2C21;
+	outline:none;
+	font-family: 'Baskervville', serif;
+}
+.form-card .frstrow label select{
+	border:none;
+	border-bottom:1.5px solid rgba(61,44,33,0.25);
+	background:transparent;
+	padding:8px 0;
+	font-size:15px;
+	color:#3D2C21;
+	outline:none;
+	cursor:pointer;
+	font-family: 'Baskervville', serif;
+}
+.form-card .scndrow{}
+.form-card .scndrow label{
+	display:flex;
+	flex-direction:column;
+	gap:8px;
+}
+.form-card .scndrow label span{
+	font-size:12px;
+	letter-spacing:1px;
+	color:#6F6B4E;
+}
+.form-card .scndrow label textarea{
+	border:none;border-bottom:1.5px solid rgba(61,44,33,0.25);background:transparent;padding:8px 0;font-size:16px;color:#3D2C21;outline:none;resize:none;font-family:inherit; font-family: 'Baskervville', serif;
+}
+.contact-wrapper-box-map{
+	flex:1 1 380px;
+	display:flex;
+	flex-direction:column;
+	gap:20px;
+}
 /* MEDIA QUERY CSS STARTS HERE */
 @media only screen and (orientation:portrait){}
 @media screen and (max-width:1366px){
