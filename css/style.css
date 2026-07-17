@@ -258,15 +258,20 @@ a:focus, a:hover {
 .mobile-header.projctbdy.scrolled p a{color:#000;}
 .sidebar {
 	height: 100%;
-	width: 0;
+	width:100%;
 	position: fixed;
 	z-index: 999;
 	top: 0;
-	left: 0;
+	/* left: 0; */
+	right:0;
+	transform: translateX(100%);
 	background:rgba(255, 255 ,255, .98);
 	overflow-x: hidden;
 	transition: 0.5s;
 	padding-top:0;
+}
+.sidebar.open {
+	transform: translateX(0);
 }
 .sidebar hr{margin-bottom:20px;}
 .sidebar a {
@@ -291,24 +296,6 @@ a:focus, a:hover {
     flex-wrap: wrap;
     align-items: center;
     gap: 15px;
-}
-#main a i.fas{
-	color:#e11f26;
-    font-size:35px;
-    margin-right: 5px;
-    margin-top: 0;
-    position: absolute;
-    right:56px;
-    top:15px;
-}
-#main a i.fab{
-	color: #35d397;
-    font-size:40px;
-    margin-right: 5px;
-    margin-top: 0;
-    position: absolute;
-    right:50px;
-    top:0;
 }
 .dscvrbttnnew {
   display: inline-flex;
@@ -720,7 +707,6 @@ a:focus, a:hover {
 .prdctlstsctn nav ol.breadcrumb{margin-bottom:60px;}
 .prdctlstsctn nav ol.breadcrumb li{color:#000;}
 .prdctlstsctn nav ol.breadcrumb li a{color:#000;}
-/* .breadcrumb>li+li:before{color:#000;} */
 .prdctlstsctn h1{
 	text-transform:uppercase;
 	color:#3c3d40;

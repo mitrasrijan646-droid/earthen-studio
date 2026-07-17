@@ -497,29 +497,34 @@ $(window).on("load resize", function() {
 });
 </script>
 <script type="text/javascript">
-function openNav() {
-	const btn = document.querySelector('.openbtn');
-    btn.classList.toggle('active');
-	
-  document.getElementById("mySidebar").style.width = "100%";
-  document.getElementById("menu").style.marginright = "100%";
-}
-function closeNav() {
-  document.getElementById("mySidebar").style.width = "0";
-  document.getElementById("menu").style.marginright= "0";
-}
+//function openNav() {
+//	const btn = document.querySelector('.openbtn');
+//    btn.classList.toggle('active');
+//	
+//  document.getElementById("mySidebar").style.width = "100%";
+//  document.getElementById("menu").style.marginright = "100%";
+//}
+//function closeNav() {
+//  document.getElementById("mySidebar").style.width = "0";
+//  document.getElementById("menu").style.marginright= "0";
+//}
 
 //function openNav() {
-//  const btn = document.querySelector('.openbtn');
-//  btn.classList.add('active');
-//  document.getElementById("mySidebar").style.width = "100%";
+//	document.querySelector('.openbtn').classList.toggle('active');
+//	document.getElementById("mySidebar").classList.add("open");
 //}
-//
 //function closeNav() {
-//  const btn = document.querySelector('.openbtn');
-//  if (btn) btn.classList.remove('active');
-//  document.getElementById("mySidebar").style.width = "0";
+//	document.getElementById("mySidebar").classList.remove("open");
 //}
+
+function openNav() {
+	document.querySelector('.openbtn').classList.toggle('active');
+	document.getElementById("mySidebar").classList.add("open");
+}
+function closeNav() {
+	document.getElementById("mySidebar").classList.remove("open");
+}
+
 </script>
 
 <script>
