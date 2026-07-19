@@ -215,7 +215,7 @@
 								<div class="prdct-card prdct-card-gold">
 									<h1>Commercial<br class="visible-lg visible-md"/>Projects</h1>
 									<p>Functional, brand-forward spaces — from offices to retail — built to perform as well as they look.</p>
-									<a href="#" class="prdct-view-link ap-btn">
+									<a href="#" class="prdct-view-link ap-btn" data-toggle="modal" data-target="#exampleModal">
 										VIEW OUR PROJECTS
 										<span class="prdct-circle">
 											<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -269,7 +269,33 @@
 </footer>
 
 <!-- InstanceBeginEditable name="EditRegion5" -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="modalHeadline" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+		<div class="modal-content position-relative">
 
+			<button type="button" class="modal-x" data-dismiss="modal" aria-label="Close">&#10005;</button>
+
+			<div class="modal-body">
+				<div>
+					<p class="eyebrow">Commercial Project Showcase</p>
+					<h1 class="headline" id="modalHeadline">Coming Soon</h1>
+				</div>
+				<div>
+					<hr class="divider">
+					<p class="copy"> We're still shaping this part of the website. Our commercial work — offices, retail, and brand spaces — will be featured here soon!</p>
+				</div>
+
+				<div class="d-flex align-items-center flex-wrap gap-3">
+					<a href="project-residential.html" class="btn cta" id="ctaBtn">Check our Residential Projects <span class="arrow">&#8250;</span>
+					</a>
+					<button type="button" class="btn close-link" data-dismiss="modal">Close &#10005;</button>
+				</div>
+				
+			</div>
+
+		</div>
+    </div>
+</div>
 <!-- InstanceEndEditable -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -460,6 +486,19 @@ gsap.to(".logo-parallax", {
     }
 });
 </script>
+
+<!-- <script type="text/javascript">
+  const modalEl = document.getElementById('comingSoonModal');
+  const comingSoonModal = new bootstrap.Modal(modalEl, { backdrop: true, keyboard: true });
+
+  
+  window.addEventListener('DOMContentLoaded', () => comingSoonModal.show());
+
+  document.getElementById('ctaBtn').addEventListener('click', () => {
+    alert('Navigate to Residential Projects page here.');
+  });
+</script> -->
+
 <!-- InstanceEndEditable -->
 </body>
 <!-- InstanceEnd --></html>

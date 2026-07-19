@@ -8,6 +8,11 @@
 	--amber-1:#704405;
     --amber-2:#633b04;
     --amber-3:#533102;
+	--gold: #c7a400;
+    --gold-dark: #A98A00;
+    --ink: #000;
+    --grey: #000;
+    --line: #807b69;
 }
 
 *{ box-sizing:border-box; }
@@ -1220,6 +1225,7 @@ a:focus, a:hover {
 	display:grid;
 	grid-template-columns:1fr 1.5fr;
 	align-items:center;
+	margin-top:60px;
 }
 .othrs-prjctsctnbx h1{text-align:left; font-family:"sofia-pro";}
 .othrs-prjctsctnbx:last-child{ display:flex; gap:15px;}
@@ -1886,6 +1892,120 @@ nav.links a:focus-visible{ outline:none; }
 	flex-direction:column;
 	gap:20px;
 }
+/* ---------- Modal shell ---------- */
+  #exampleModal .modal-dialog{
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  #exampleModal .modal-content{
+    border:none;
+    border-radius:14px;
+    padding:100px 100px;
+	display:flex;
+	flex-wrap:wrap;
+    box-shadow:0 25px 60px rgba(0,0,0,0.25);
+	background:url(../images/pop-up-bg.jpg) no-repeat left top;
+	background-size:cover;
+  }
+  #exampleModal .modal-body{ 
+	padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+}
+  /* smooth custom fade/scale, overriding Bootstrap's default */
+  #exampleModal.fade .modal-dialog{
+    transform: scale(0.85) translateY(30px);
+    opacity:1;
+    transition: transform .4s cubic-bezier(.22,1,.36,1), opacity .3s ease;
+  }
+  #exampleModal.show .modal-dialog{
+    transform: scale(1) translateY(0);
+    opacity:1;
+  }
+  #exampleModal.fade .modal-backdrop,
+  .modal-backdrop.fade{
+    transition: opacity .3s ease;
+  }
+  .modal-x{
+    position:absolute;
+    top:18px;
+    right:20px;
+    width:34px;
+    height:34px;
+    border:none;
+    background:transparent;
+    color:#b9b9b9;
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+    border-radius:50%;
+    transition: color .2s ease, background .2s ease, transform .2s ease;
+  }
+  .modal-x:hover{
+    color:#333;
+    background:#f2f2f2;
+    transform: rotate(90deg);
+  }
+  .eyebrow{
+    color: var(--ink);
+    font-size:30px;
+    font-weight:400;
+    letter-spacing:0;
+	font-family: 'Baskervville', serif;
+  }
+  .headline{
+    color: var(--gold);
+    font-size:85px;
+    font-weight:400;
+    line-height:90px;
+    letter-spacing:0;
+  }
+  .divider{
+    width:150px;
+    height:2px;
+    background: var(--line);
+    border:none;
+    opacity:1;
+    margin:0 0 22px;
+  }
+  .copy{
+    color: var(--grey);
+    font-size:30px;
+    line-height:40px;
+	font-weight:200;
+    max-width:550px;
+  }
+  .cta{
+    background: var(--gold);
+    color:#FFF;
+    border:none;
+    border-radius:6px;
+    padding:25px 26px;
+    font-size:20px;
+    font-weight:200;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    transition: background .2s ease, transform .2s ease;
+	font-family:"sofia-pro";
+	outline:none;
+  }
+  .cta:hover{ background: var(--gold-dark); color:#fff; transform: translateY(-1px); }
+  .cta .arrow{ transition: transform .2s ease; display:inline-block; }
+  .cta:hover .arrow{ transform: translateX(4px); }
+  .close-link{
+    background:none;
+    border:none;
+    color: var(--ink);
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:0;
+    text-transform:uppercase;
+  }
+  .close-link:hover{ color: var(--gold-dark); }
 /* MEDIA QUERY CSS STARTS HERE */
 @media only screen and (orientation:portrait){}
 @media screen and (max-width:1366px){
