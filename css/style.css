@@ -1254,7 +1254,7 @@ a:focus, a:hover {
 }
 .innrbnr .evntbxbnnr .bannrbx .bannrbxcntnt h1{ color:#8e5b40; font-style:italic;}
 .innrbnr .evntbxbnnr .bannrbx .bannrbxcntnt h2{color:#FFF; text-align:left;}
-.abtbxsctn{padding:300px 0;}
+.abtbxsctn{}
 .prflcntn{
 	display:grid;
 	grid-template-columns:1fr 1fr;
@@ -1284,6 +1284,32 @@ a:focus, a:hover {
     transition: opacity 0.9s ease, transform 0.9s ease;
 }
 .prflcntnbx h2.animate{opacity: 1; transform: translateY(0px);}
+.team-section{align-items:center;}
+.team-section h1{color:#fee485; font-weight:400; text-transform:inherit; font-size:8rem;}
+.team-section h2{color:#fee485;}
+.team-section-wrppr{
+	display:grid;
+	grid-template-columns:1fr 1fr;
+	align-items:stretch;
+	gap:30px;
+}
+.teamwrpprbx{
+	transition: background 0.5s;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.teamwrpprbx:hover{transform: translateY(-5px);}
+.teamwrpprbx.animate{opacity: 1; transform: translateY(0px);}
+.teamwrpprbx h3{color:#FFF;}
+.teamwrpprbx .imgbx{
+	background:#bfa87e;
+	padding:50px;
+	height:100%;
+	margin-bottom:25px;
+	min-height:400px;
+}
 .yllwbx{
 	background:#fee485;
 	padding:20px;
@@ -1313,6 +1339,7 @@ a:focus, a:hover {
     transition: opacity 0.9s ease, transform 0.9s ease;
 }
 .yllwbx p.animate{opacity: 1; transform: translateY(0px);}
+.abtbxsctn hr{margin:150px 0; border-top: 1px solid #efd6ae;}
 .blfsctn{background:url(../images/about/about-bg.jpg) no-repeat left top #e8e4da fixed;}
 .blfsctn h1{
 	opacity: 0;
