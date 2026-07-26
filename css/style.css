@@ -1080,7 +1080,7 @@ a:focus, a:hover {
     gap:25px;
 }
 .frstrow .frstrowbx.rowbxup{margin-top:-95px;}
-.frstrow .frstrowbx:first-child{ padding:0 0 20px;}
+.frstrow .frstrowbx:first-child{ padding:50px 0;}
 .frstrow .frstrowbx h1{color:#fee485; text-align:left; font-style:italic; margin:0 0;}
 .frstrow .frstrowbx h2{
 	color:#fee485; 
