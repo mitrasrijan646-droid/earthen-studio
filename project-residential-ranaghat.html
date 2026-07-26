@@ -110,7 +110,7 @@
 <!-- InstanceBeginEditable name="banner" -->
 <section class="bodysctn sectnbx prjctsctn-gallery-details hero">
 
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-12 no-pad">
 				
@@ -132,7 +132,7 @@
 										</nav>
 									</div>
 						
-									<div>
+									<!-- <div>
 										<h1>Ranaghat</h1>
 										<h2>700 sq.ft.</h2>
 									</div>
@@ -140,7 +140,7 @@
 						
 									<div style="width:100%;">
 										<ul class="area-list" id="areaList"></ul>
-									</div>
+									</div> -->
 									
 								</div>
 								
@@ -149,19 +149,33 @@
 						</div>
 					</div>
 					
-					<div class="frstrowbx rowbxup">
-						<!-- <img src="images/project/resdential/mani-vista/1.jpg" class="img-responsive" alt=""/> -->
-						<div class="slider-panel" id="sliderPanel">
-							<button class="slide-nav slide-prev" id="prevBtn" aria-label="Previous image">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-							</button>
-							<button class="slide-nav slide-next" id="nextBtn" aria-label="Next image">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-							</button>
-							<span class="slide-counter" id="slideCounter"></span>
-						</div>
+				</div>
+				
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container featured-section" id="featuredSection">
+		<div class="row">
+			<div class="col-md-12 no-pad">
+			
+				<div class="slider-viewport">
+					<div class="slider-track" id="sliderTrack">
+						<!-- slides injected by JS -->
 					</div>
-
+				</div>
+				
+				<div class="slider-controls">
+					<div class="arrows">
+						<button class="arrow-btn" id="prevBtn" aria-label="Previous project">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+						</button>
+						<button class="arrow-btn" id="nextBtn" aria-label="Next project">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+						</button>
+					</div>
+					<div class="dots" id="dots"></div>
 				</div>
 				
 				<div class="clearfix"></div>
@@ -405,107 +419,154 @@ gsap.to(".logo-parallax", {
 </script>
 
 <!-- InstanceBeginEditable name="EditRegion6" -->
-<script type="text/javascript">
-/* ==========================================================
-   EDIT YOUR AREA / IMAGE DATA HERE.
-   Each area = a room label shown on the left + exactly 2 photos.
-   Order matters: images flatten in this order for the slider.
-   ========================================================== */
-const AREAS = [
-  { name: "Living Area",  images: ["images/project/resdential/ranaghat/living-area-1.jpg"] },
-  
-  { name: "Master Bedroom", images: ["images/project/resdential/ranaghat/master-bedroom-1.jpg"] },
-  
-  //{ name: "Guest Bedroom",  images: ["images/project/resdential/ranaghat/guest-bedroom-1.jpg"] },
-  
-  { name: "Corridor", images: ["images/project/resdential/ranaghat/corridor-1.jpg"] }
-  
+<script>
+/* ============================================================
+   EDIT YOUR PROJECT DATA HERE.
+   Each item in SLIDES = one slide = one photo + one translucent
+   card (project name, room label, description, link).
+   Swap "image" for your real project photography.
+   ============================================================ */
+const SLIDES = [
+  {
+    image: "images/project/resdential/ranaghat/living-area-1.jpg",
+    title: "Ranaghat",
+	eyebrow: "Living Area",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    cta: "View project"
+  },
+  {
+    image: "images/project/resdential/ranaghat/master-bedroom-1.jpg",
+    title: "Ranaghat",
+	eyebrow: "Master Bedroom",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    cta: "View project"
+  },
+  {
+    image: "images/project/resdential/ranaghat/corridor-1.jpg",
+    title: "Ranaghat",
+	eyebrow: "Corridor",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    cta: "View project"
+  },
 ];
 
-// Flatten into a single ordered list of slides, each tagged with its area index.
-const SLIDES = [];
-AREAS.forEach((area, areaIndex) => {
-  area.images.forEach(src => SLIDES.push({ src, areaIndex }));
+const track = document.getElementById('sliderTrack');
+const dotsWrap = document.getElementById('dots');
+const total = SLIDES.length;
+let position = 1; // 1-indexed within [clone-last, ...real, clone-first]
+let isAnimating = false;
+let autoplayTimer = null;
+const AUTOPLAY_MS = 6500;
+
+function buildSlide(slide){
+  const el = document.createElement('div');
+  el.className = 'slide';
+  el.innerHTML = `
+    <div class="slide-photo" style="background-image:url('${slide.image}')"></div>
+    <div class="text-card">
+		<div>
+			<h3>${slide.title}</h3>
+			<p class="eyebrow">${slide.eyebrow}</p>
+		</div>
+		<div><p class="description">${slide.description}</p></div>
+		<!--<a class="cta" href="#">${slide.cta} &rarr;</a>-->
+    </div>
+  `;
+  return el;
+}
+
+function init(){
+  track.appendChild(buildSlide(SLIDES[total - 1]));
+  SLIDES.forEach(s => track.appendChild(buildSlide(s)));
+  track.appendChild(buildSlide(SLIDES[0]));
+
+  SLIDES.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to project ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+
+  setPosition(position, false);
+  startAutoplay();
+}
+
+function setPosition(pos, animate = true){
+  track.style.transition = animate ? '' : 'none';
+  track.style.transform = `translateX(-${pos * 100}%)`;
+  updateDots();
+  if (!animate){
+    void track.offsetHeight;
+    track.style.transition = '';
+  }
+}
+
+function updateDots(){
+  const realIndex = ((position - 1) % total + total) % total;
+  [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === realIndex));
+}
+
+function goTo(i){
+  position = i + 1;
+  setPosition(position);
+  restartAutoplay();
+}
+
+function next(){
+  if (isAnimating) return;
+  position += 1;
+  setPosition(position);
+}
+
+function prev(){
+  if (isAnimating) return;
+  position -= 1;
+  setPosition(position);
+}
+
+track.addEventListener('transitionend', () => {
+  if (position === total + 1){
+    isAnimating = true;
+    position = 1;
+    setPosition(position, false);
+    isAnimating = false;
+  } else if (position === 0){
+    isAnimating = true;
+    position = total;
+    setPosition(position, false);
+    isAnimating = false;
+  }
 });
 
-const areaListEl = document.getElementById('areaList');
-const sliderPanel = document.getElementById('sliderPanel');
-const counterEl = document.getElementById('slideCounter');
-let current = 0;
-
-function buildAreaList(){
-  AREAS.forEach((area, i) => {
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <button class="area-item" data-area-index="${i}">
-        <svg viewBox="0 0 24 24"><path d="M12 3L21 12L12 21L3 12Z"/></svg>
-        <span>${area.name}</span>
-      </button>
-    `;
-    areaListEl.appendChild(li);
-  });
+function startAutoplay(){
+  autoplayTimer = setInterval(next, AUTOPLAY_MS);
+}
+function restartAutoplay(){
+  clearInterval(autoplayTimer);
+  startAutoplay();
 }
 
-function buildSlides(){
-  SLIDES.forEach((slide, i) => {
-    const img = document.createElement('img');
-    img.src = slide.src;
-    img.alt = AREAS[slide.areaIndex].name;
-    if (i === 0) img.classList.add('active');
-    sliderPanel.appendChild(img); // FIX: append in order instead of inserting before firstChild
-  });
-}
-
-function render(){
-  // update images
-  [...sliderPanel.querySelectorAll('img')].forEach((img, i) => {
-    img.classList.toggle('active', i === current);
-  });
-  // update active area in the list
-  const activeAreaIndex = SLIDES[current].areaIndex;
-  [...areaListEl.querySelectorAll('.area-item')].forEach(btn => {
-    btn.classList.toggle('active', Number(btn.dataset.areaIndex) === activeAreaIndex);
-  });
-  // update counter
-  counterEl.textContent = `${current + 1} / ${SLIDES.length}`;
-}
-
-function goToSlide(i){
-  current = (i + SLIDES.length) % SLIDES.length;
-  render();
-}
-function next(){ goToSlide(current + 1); }
-function prev(){ goToSlide(current - 1); }
-function goToArea(areaIndex){
-  const firstSlideOfArea = SLIDES.findIndex(s => s.areaIndex === areaIndex);
-  goToSlide(firstSlideOfArea);
-}
-
-buildAreaList();
-buildSlides();
-render();
-
-document.getElementById('nextBtn').addEventListener('click', next);
-document.getElementById('prevBtn').addEventListener('click', prev);
-
-areaListEl.addEventListener('click', (e) => {
-  const btn = e.target.closest('.area-item');
-  if (!btn) return;
-  goToArea(Number(btn.dataset.areaIndex));
-});
+document.getElementById('nextBtn').addEventListener('click', () => { next(); restartAutoplay(); });
+document.getElementById('prevBtn').addEventListener('click', () => { prev(); restartAutoplay(); });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowRight') next();
-  if (e.key === 'ArrowLeft') prev();
+  if (e.key === 'ArrowRight') { next(); restartAutoplay(); }
+  if (e.key === 'ArrowLeft') { prev(); restartAutoplay(); }
 });
 
-/* touch swipe on the image panel */
+const section = document.getElementById('featuredSection');
+section.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
+section.addEventListener('mouseleave', () => startAutoplay());
+
 let touchStartX = 0;
-sliderPanel.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive:true });
-sliderPanel.addEventListener('touchend', e => {
+track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive:true });
+track.addEventListener('touchend', e => {
   const dx = e.changedTouches[0].clientX - touchStartX;
-  if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+  if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); restartAutoplay(); }
 }, { passive:true });
+
+init();
 </script>
 
 <script type="text/javascript">
