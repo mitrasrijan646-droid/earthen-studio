@@ -380,6 +380,28 @@ gsap.to(".logo-parallax", {
 </script>
 
 <!-- InstanceBeginEditable name="EditRegion6" -->
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+    const iframe = document.getElementById('ytPreview');
+    const videoId = '6mXy_gKlb1I';
+    const baseSrc = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
+    const box = iframe.closest('.clntsctnbx');
+
+    let hoverTimeout;
+
+    box.addEventListener('mouseenter', () => {
+        clearTimeout(hoverTimeout);
+        hoverTimeout = setTimeout(() => {
+            iframe.src = `${baseSrc}&autoplay=1&mute=1&controls=0&loop=1&playlist=${videoId}`;
+        }, 200); // debounce: only fires if cursor stays for 200ms
+    });
+
+    box.addEventListener('mouseleave', () => {
+        clearTimeout(hoverTimeout);
+        iframe.src = baseSrc;
+    });
+});
+</script>
 <script>
 /* ============================================================
    EDIT YOUR PROJECT DATA HERE.
