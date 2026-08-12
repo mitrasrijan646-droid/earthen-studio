@@ -2207,24 +2207,18 @@ nav.links a:focus-visible{ outline:none; }
 		grid-auto-rows: unset;
 		gap: 14px;
 		padding: 0 4px;
-	  }
-
-	  .photo-card{
-		min-height: 220px;
-		border-radius: 12px;
-	  }
-
-	  .text-card{
-		order: -1; /* puts the text intro above the photos on mobile — delete this line if you'd rather keep photo-photo-text-photo order */
+	}
+	.photo-card{ min-height: 220px; border-radius: 12px; }
+	.text-card{
+		order: -1; 
 		padding: 26px 20px;
 		gap: 18px;
 		border-radius: 12px;
-	  }
+	 }
 	  .text-card h1{ font-size: 24px; }
 	  .text-card .eyebrow{ font-size: 20px; margin-bottom: 8px; }
 	  .text-card p{ font-size: 15px; line-height: 21px; }
 	  .cta-btn{ padding: 8px 0; font-size: 12px; margin-top: 8px; }
-
 	  .slider-controls{ margin-top: 18px; padding: 0 12px; }
 	  .arrow-btn{ width: 36px; height: 36px; }
 	  .arrow-btn svg{ width: 14px; height: 14px; }
@@ -2240,6 +2234,8 @@ nav.links a:focus-visible{ outline:none; }
 	  .othrs-prjctsctn{grid-template-columns: 1fr; gap: 60px;}
 	  .othrs-prjctsctnbx h1{text-align:center;}
 	  .othrs-prjctsctnbx .othrimgbx:last-child{margin-top:0;}
+	  .featured-section .text-card{width: min(450px, 82vw);}
+	  .rp-panel img{height:100%; object-fit:cover;}
 }
 @media screen and (max-width:767px){
 	.bnnrbxtxt:last-child{flex-direction: column;}
@@ -2258,11 +2254,13 @@ nav.links a:focus-visible{ outline:none; }
 	.projects-gallery { grid-template-columns: repeat(2, 1fr);}
 	#exampleModal .modal-content{padding:50px;}
 	#exampleModal .modal-body{align-items: center;}
-	.lwrbx .lrbxcntnr{grid-template-columns: 1fr;}
+	.lwrbx .lrbxcntnr{grid-template-columns: 1fr; gap: 44px;}
+	.lwrbx .lrbxcntnr .lwrbxwrppr:last-child{padding-top:40px;}
 	.prflcntnbx h1{font-size:50px;}
 	.blfsctn h2{font-size:50px;}
 	.timeline{grid-template-columns:1fr;}
 	.srvcntnr { grid-template-columns: repeat(2, 1fr);}
+	.lwrbx .lrbxcntnr .lwrbxwrppr{padding: 60px 0 20px;}
 }
 @media screen and (max-width:540px){}
 @media (max-width:480px){
@@ -2282,6 +2280,7 @@ nav.links a:focus-visible{ outline:none; }
 	.rp-panel{position:inherit;}
 	.othrs-prjctsctnbx .othrimgbx h3{font-size: 25px;}
 	.othrs-prjctsctnbx:last-child{gap:20px;}
+	.rp-panel img{object-fit: cover; height:100%;}
 }
 @media (max-width:390px){}
 @media (max-width:375px){}
