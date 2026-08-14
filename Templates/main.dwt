@@ -68,9 +68,10 @@
                         <nav class="links">
                           <a href="../index.html"><span class="idx">01</span>Home</a>
                           <a href="../project.html"><span class="idx">02</span>Projects</a>
-                          <a href="../service.html" class="group-gap"><span class="idx">03</span>Services</a>
-                          <a href="../about.html"><span class="idx">04</span>About Us</a>
-                          <a href="../contact.html"><span class="idx">05</span>Contact Us</a>
+                          <a href="../media.html"><span class="idx">03</span>Media</a>
+                          <a href="../service.html" class="group-gap"><span class="idx">04</span>Services</a>
+                          <a href="../about.html"><span class="idx">05</span>About Us</a>
+                          <a href="../contact.html"><span class="idx">06</span>Contact Us</a>
                         </nav>
                     
                         <div class="panel-footer">
