@@ -2227,16 +2227,18 @@ nav.links a:focus-visible{ outline:none; }
 .mediasctn .view-btn:active{transform:scale(.94) translateX(4px);}
 .last-card .info{
 	flex-direction: column;
-	align-items: flex-start;
-	gap:30px;
+    align-items: flex-start;
+    gap: 30px;
+    justify-content: center;
+    padding-top: 70px;
 }
 .last-card .info h3{
 	color:#ffe586;
-	font-size:75px;
-	line-height:82px;
+	font-size:60px;
+	line-height:60px;
 	font-weight:200;
 }
-.last-card .info p{font-family: "Baskervville", serif; font-size:40px; font-style:italic; color:#ffe586;}
+.last-card .info p{font-family: "Baskervville", serif; font-size:35px; font-style:italic; color:#ffe586;}
 .othrsprjct{
 	background:url(../images/media/others-project-bg.jpg) no-repeat left top;
 	background-size:cover;
