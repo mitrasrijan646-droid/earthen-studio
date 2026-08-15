@@ -18,7 +18,7 @@
 <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 <link href="css/font.css" rel="stylesheet" media="all">
 <!-- InstanceBeginEditable name="head" -->
-
+<link href="css/banner-slider.css" rel="stylesheet" media="all">
 <!-- InstanceEndEditable -->
 </head>
 
@@ -147,24 +147,83 @@
 		<div class="row">
 			<div class="col-md-12 no-pad">
 			
-				<div class="slider-viewport">
-					<div class="slider-track" id="sliderTrack">
-						<!-- slides injected by JS -->
+				<div class="project-slider" id="projectSlider" aria-roledescription="carousel" aria-label="Project gallery">
+					
+					<div class="slider-viewport">
+						<div class="slider-track-one" id="sliderTrack-one">
+							
+							<div class="slide has-text" role="group" aria-roledescription="slide" aria-label="1 of 8">
+								<div class="text-card">
+								  <h2>Goel's</h2>
+								  <p>A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care.</p>
+								</div>
+								
+								<div class="image-card">
+									<img src="images/project/resdential/goel/living-area-1.jpg" class="img-responsive" alt=""/>
+								</div>
+							</div>
+							
+							<!-- Slide 2: full-width image, no text card -->
+							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="2 of 8">
+								<div class="image-card">
+								  <img src="images/project/resdential/goel/living-area-2.jpg" alt="" />
+								</div>
+							</div>
+							
+							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="3 of 8">
+								<div class="image-card">
+								  <img src="images/project/resdential/goel/dining-area-1.jpg" alt="" />
+								</div>
+							</div>
+							
+							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="4 of 8">
+								<div class="image-card">
+								  <img src="images/project/resdential/goel/dining-area-2.jpg" alt="" />
+								</div>
+							</div>
+							
+							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="5 of 8">
+								<div class="image-card">
+								  <img src="images/project/resdential/goel/master-bedroom-1.jpg" alt="" />
+								</div>
+							</div>
+							
+							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="6 of 8">
+								<div class="image-card">
+								  <img src="images/project/resdential/goel/master-bedroom-2.jpg" alt="" />
+								</div>
+							</div>
+							
+							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="7 of 8">
+								<div class="image-card">
+								  <img src="images/project/resdential/goel/kid-bedroom-1.jpg" alt="" />
+								</div>
+							</div>
+							
+							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="8 of 8">
+								<div class="image-card">
+								  <img src="images/project/resdential/goel/kid-bedroom-2.jpg" alt="" />
+								</div>
+							</div>
+							
+						</div>
 					</div>
-				</div>
-				
-				<div class="slider-controls">
-					<div class="arrows">
-						<button class="arrow-btn" id="prevBtn" aria-label="Previous project">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-						</button>
-						<button class="arrow-btn" id="nextBtn" aria-label="Next project">
-							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-						</button>
+					
+					<div class="slider-controls-one">
+						<div class="slider-nav">
+							<button class="nav-btn" id="prevBtn" aria-label="Previous slide">
+								<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+							</button>
+							<button class="nav-btn" id="nextBtn" aria-label="Next slide">
+								<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+							</button>
+						</div>
+
+						<div class="slider-dots" id="sliderDots" role="tablist" aria-label="Choose slide"></div>
 					</div>
-					<div class="dots" id="dots"></div>
-				</div>
 				
+				</div>
+			
 				<div class="clearfix"></div>
 			</div>
 		</div>
@@ -382,188 +441,51 @@ gsap.to(".logo-parallax", {
 
 <!-- InstanceBeginEditable name="EditRegion6" -->
 <script type="text/javascript">
-/* ============================================================
-   EDIT YOUR PROJECT DATA HERE.
-   Each item in SLIDES = one slide = one photo + one translucent
-   card (project name, room label, description, link).
-   Swap "image" for your real project photography.
-   ============================================================ */
-const SLIDES = [
-  {
-    image: "images/project/resdential/goel/living-area-1.jpg",
-    title: "Goel's ",
-	eyebrow: "Living Area",
-    description: "A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care.",
-    cta: "View project"
-  },
-  {
-    image: "images/project/resdential/goel/living-area-2.jpg",
-    title: "Goel's ",
-	eyebrow: "Living Area",
-    description: "A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care.",
-    cta: "View project"
-  },
-  {
-    image: "images/project/resdential/goel/dining-area-1.jpg",
-    title: "Goel's ",
-	eyebrow: "Dining Area",
-    description: "A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care.",
-    cta: "View project"
-  },
-  {
-    image: "images/project/resdential/goel/dining-area-2.jpg",
-    title: "Goel's ",
-	eyebrow: "Dining Area",
-    description: "A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care.",
-    cta: "View project"
-  },
-  {
-    image: "images/project/resdential/goel/master-bedroom-1.jpg",
-    title: "Goel's ",
-	eyebrow: "Master Bedroom",
-    description: "A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care.",
-    cta: "View project"
-  },
-  {
-    image: "images/project/resdential/goel/master-bedroom-2.jpg",
-    title: "Goel's ",
-	eyebrow: "Master Bedroom",
-    description: "A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care.",
-    cta: "View project"
-  },
-  {
-    image: "images/project/resdential/goel/kid-bedroom-1.jpg",
-    title: "Goel's ",
-	eyebrow: "Kid Bedroom",
-    description: "A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care.",
-    cta: "View project"
-  },
-  {
-    image: "images/project/resdential/goel/kid-bedroom-2.jpg",
-    title: "Goel's ",
-	eyebrow: "Kid Bedroom",
-    description: "A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care.",
-    cta: "View project"
-  }
-];
+(function(){
+  const track   = document.getElementById('sliderTrack-one');
+  const slides  = Array.from(track.children);
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const dotsEl  = document.getElementById('sliderDots');
+  const total   = slides.length;
+  let index = 0;
 
-const track = document.getElementById('sliderTrack');
-const dotsWrap = document.getElementById('dots');
-const total = SLIDES.length;
-let position = 1; // 1-indexed within [clone-last, ...real, clone-first]
-let isAnimating = false;
-let autoplayTimer = null;
-const AUTOPLAY_MS = 6500;
-
-function buildSlide(slide){
-  const el = document.createElement('div');
-  el.className = 'slide';
-  el.innerHTML = `
-    <div class="slide-photo" style="background-image:url('${slide.image}')"></div>
-    <div class="text-card">
-		<div>
-			<h3>${slide.title}</h3>
-			<p class="eyebrow">${slide.eyebrow}</p>
-		</div>
-		<div><p class="description">${slide.description}</p></div>
-		<!--<a class="cta" href="#">${slide.cta} &rarr;</a>-->
-    </div>
-  `;
-  return el;
-}
-
-function init(){
-  track.appendChild(buildSlide(SLIDES[total - 1]));
-  SLIDES.forEach(s => track.appendChild(buildSlide(s)));
-  track.appendChild(buildSlide(SLIDES[0]));
-
-  SLIDES.forEach((_, i) => {
+  // Build dots
+  slides.forEach((_, i) => {
     const dot = document.createElement('button');
-    dot.className = 'dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', 'Go to project ' + (i + 1));
+    dot.className = 'dot';
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
     dot.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(dot);
+    dotsEl.appendChild(dot);
+  });
+  const dots = Array.from(dotsEl.children);
+
+  function render(){
+    track.style.transform = 'translateX(' + (-index * 100) + '%)';
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    // Loop, so both arrows stay enabled. If you prefer to stop at ends,
+    // uncomment the two lines below and remove the wraparound in goTo().
+    // prevBtn.disabled = index === 0;
+    // nextBtn.disabled = index === total - 1;
+  }
+
+  function goTo(i){
+    index = (i + total) % total; // wraps around
+    render();
+  }
+
+  prevBtn.addEventListener('click', () => goTo(index - 1));
+  nextBtn.addEventListener('click', () => goTo(index + 1));
+
+  // Keyboard support when the slider is focused
+  document.getElementById('projectSlider').addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goTo(index - 1);
+    if (e.key === 'ArrowRight') goTo(index + 1);
   });
 
-  setPosition(position, false);
-  startAutoplay();
-}
-
-function setPosition(pos, animate = true){
-  track.style.transition = animate ? '' : 'none';
-  track.style.transform = `translateX(-${pos * 100}%)`;
-  updateDots();
-  if (!animate){
-    void track.offsetHeight;
-    track.style.transition = '';
-  }
-}
-
-function updateDots(){
-  const realIndex = ((position - 1) % total + total) % total;
-  [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === realIndex));
-}
-
-function goTo(i){
-  position = i + 1;
-  setPosition(position);
-  restartAutoplay();
-}
-
-function next(){
-  if (isAnimating) return;
-  position += 1;
-  setPosition(position);
-}
-
-function prev(){
-  if (isAnimating) return;
-  position -= 1;
-  setPosition(position);
-}
-
-track.addEventListener('transitionend', () => {
-  if (position === total + 1){
-    isAnimating = true;
-    position = 1;
-    setPosition(position, false);
-    isAnimating = false;
-  } else if (position === 0){
-    isAnimating = true;
-    position = total;
-    setPosition(position, false);
-    isAnimating = false;
-  }
-});
-
-function startAutoplay(){
-  autoplayTimer = setInterval(next, AUTOPLAY_MS);
-}
-function restartAutoplay(){
-  clearInterval(autoplayTimer);
-  startAutoplay();
-}
-
-document.getElementById('nextBtn').addEventListener('click', () => { next(); restartAutoplay(); });
-document.getElementById('prevBtn').addEventListener('click', () => { prev(); restartAutoplay(); });
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowRight') { next(); restartAutoplay(); }
-  if (e.key === 'ArrowLeft') { prev(); restartAutoplay(); }
-});
-
-const section = document.getElementById('featuredSection');
-section.addEventListener('mouseenter', () => clearInterval(autoplayTimer));
-section.addEventListener('mouseleave', () => startAutoplay());
-
-let touchStartX = 0;
-track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive:true });
-track.addEventListener('touchend', e => {
-  const dx = e.changedTouches[0].clientX - touchStartX;
-  if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); restartAutoplay(); }
-}, { passive:true });
-
-init();
+  render();
+})();
 </script>
 
 <script type="text/javascript">
