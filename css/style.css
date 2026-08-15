@@ -369,6 +369,7 @@ a:focus, a:hover {
     height: 100%;
     object-fit: cover;
 }
+.bnnrsctn .evntbxbnnr .imgbx video{width:100%;}
 .bnnrsctn .evntbxbnnr .container { position: relative; z-index: 9;}
 .bnnrsctn .evntbxbnnr .bannrbx .bannrbxcntnt a.dscvrbttnnew{margin:20px 0 65px; border-radius:15px;}
 .bnnrsctn .evntbxbnnr .bannrbx .bannrbxcntnt h1{
