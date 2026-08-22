@@ -234,13 +234,18 @@
       /* Smaller breakout on tablet so it doesn't crowd the viewport edge */
       --breakout: 32px;
     }
-    .slide{
-      grid-template-columns: 1fr;
-    }
+    .project-slider {
+		position: relative;
+		padding-bottom: 60px;
+		width: auto;
+		margin-left: 0;
+	}
+	/* .slide{grid-template-columns: repeat(2, 1fr);} */
+	.
     .slide.has-text .text-card,
     .slide.has-text .image-card,
     .slide.image-only .image-card{
-      grid-column: span 1;
+      grid-column: span 4;
     }
     .text-card{
       min-height: auto;

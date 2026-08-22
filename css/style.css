@@ -2364,6 +2364,7 @@ nav.links a:focus-visible{ outline:none; }
 	  .featured-section .text-card{width: min(450px, 82vw);}
 	  .rp-panel img{height:100%; object-fit:cover;}
 	  .mediasctn .grid{grid-template-columns: repeat(2, 1fr);}
+	  
 }
 @media screen and (max-width:767px){
 	.bnnrbxtxt:last-child{flex-direction: column;}
