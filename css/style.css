@@ -1199,6 +1199,8 @@ a:focus, a:hover {
 }
 .clntsctnbx:first-child{margin:0 0; padding-right:3vw;}
 .familycntnr{grid-template-columns:1fr;}
+.familycntnr .familycntnrbx{align-items: center;}
+.familycntnr .familycntnrbx h1{text-align:center;}
 .clntsctnbx{
 	display: flex;
     flex-direction: column;
@@ -2364,7 +2366,11 @@ nav.links a:focus-visible{ outline:none; }
 	  .featured-section .text-card{width: min(450px, 82vw);}
 	  .rp-panel img{height:100%; object-fit:cover;}
 	  .mediasctn .grid{grid-template-columns: repeat(2, 1fr);}
-	  
+	  .card-bottom{
+		padding: 22px 20px 30px;
+		font-size: 17px;
+		line-height: 20px;
+	  }
 }
 @media screen and (max-width:767px){
 	.bnnrbxtxt:last-child{flex-direction: column;}
@@ -2395,6 +2401,7 @@ nav.links a:focus-visible{ outline:none; }
 	.mediasctn .info h3{text-align:center;}
 	.residential-projects-inner{grid-template-columns:1fr;}
 	.last-card .info h3{text-align:left;}
+	.slider-controls-one{padding:0 3vw;}
 }
 @media screen and (max-width:540px){}
 @media (max-width:480px){
@@ -2417,6 +2424,9 @@ nav.links a:focus-visible{ outline:none; }
 	.mediasctn .grid{grid-template-columns: repeat(1, 1fr);}
 	.lwrbx .lrbxcntnr .lwrbxwrppr.maroonbx{padding:20px 15px;}
 	.othrsprjct-inner .rp-tab-title{font-size:20px;}
+	.card:hover .card-bottom{height:100%;}
+	.card-bottom{background:rgba(102, 97, 78, .95);}
+	.card-top h3{font-size:25px;}
 }
 @media (max-width:390px){}
 @media (max-width:375px){}
