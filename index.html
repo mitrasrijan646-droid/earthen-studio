@@ -149,11 +149,11 @@
 								</div>
 								<div class="imgbx">
 									<!-- <img src="images/banner/banner-one.jpg" class="img-responsive" alt="Silica Sand"/> -->
-									<video id="myVideo" playsinline webkit-playsinline autoplay muted loop class="visible-lg visible-md">
+									<video id="myVideo" playsinline="playsinline" autoplay="autoplay" loop="loop" muted="muted" class="visible-lg visible-md">
 										<source src="video/video-banner.mp4" type="video/mp4">
 									</video>
 									
-									<video id="myVideo" playsinline webkit-playsinline autoplay muted loop class="visible-sm visible-xs">
+									<video id="myVideo" playsinline="playsinline" autoplay="autoplay" loop="loop" muted="muted" class="visible-sm visible-xs">
 										<source src="video/video-banner-mb.mp4" type="video/mp4">
 									</video>
 								</div>
@@ -554,17 +554,26 @@ gsap.to(".logo-parallax", {
 }
 </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const vid = document.getElementById('myVideo');
-  const playPromise = vid.play();
-  if (playPromise !== undefined) {
-    playPromise.catch(function (err) {
-      console.log('Autoplay was prevented:', err);
-      // Optionally show a play button here as fallback
-    });
-  }
+<script type="text/javascript">
+	window.addEventListener('load', function() {
+    var video = document.getElementById('myVideo');
+
+    setTimeout(function() {
+        video.muted = true;  // Ensure the video is muted
+        var playPromise = video.play();
+
+        if (playPromise !== undefined) {
+            playPromise.then(function() {
+                // Autoplay started successfully
+                console.log('Autoplay started');
+            }).catch(function(error) {
+                // Autoplay was prevented
+                console.log('Autoplay was prevented');
+            });
+        }
+    }, 10);  // Adjust this delay as needed
 });
+
 </script>
 <!-- InstanceEndEditable -->
 </body>
