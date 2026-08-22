@@ -149,11 +149,11 @@
 								</div>
 								<div class="imgbx">
 									<!-- <img src="images/banner/banner-one.jpg" class="img-responsive" alt="Silica Sand"/> -->
-									<video id="myVideo" playsinline="" autoplay="" muted="" loop="" class="visible-lg visible-md">
+									<video id="myVideo" playsinline webkit-playsinline autoplay muted loop class="visible-lg visible-md">
 										<source src="video/video-banner.mp4" type="video/mp4">
 									</video>
 									
-									<video id="myVideo" playsinline="" autoplay="" muted="" loop="" class="visible-sm visible-xs">
+									<video id="myVideo" playsinline webkit-playsinline autoplay muted loop class="visible-sm visible-xs">
 										<source src="video/video-banner-mb.mp4" type="video/mp4">
 									</video>
 								</div>
@@ -552,6 +552,19 @@ gsap.to(".logo-parallax", {
     doParallaxWhat();
     window.addEventListener('scroll', doParallaxWhat, { passive: true });
 }
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const vid = document.getElementById('myVideo');
+  const playPromise = vid.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(function (err) {
+      console.log('Autoplay was prevented:', err);
+      // Optionally show a play button here as fallback
+    });
+  }
+});
 </script>
 <!-- InstanceEndEditable -->
 </body>
