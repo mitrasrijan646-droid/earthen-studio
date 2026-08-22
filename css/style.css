@@ -2369,7 +2369,7 @@ nav.links a:focus-visible{ outline:none; }
 @media screen and (max-width:767px){
 	.bnnrbxtxt:last-child{flex-direction: column;}
 	.designcntn{grid-template-columns: repeat(2, 1fr);}
-	.bnnrsctn .evntbxbnnr{min-height:90vh;}
+	.bnnrsctn .evntbxbnnr{min-height:75vh;}
 	.whatnavsctn{grid-template-columns: repeat(2, 1fr); gap: 10px;}
 	.footerwrpr{ flex-direction:column; align-items:center;}
 	.footerwrprbx{align-items: center; gap: 36px;}
@@ -2393,6 +2393,8 @@ nav.links a:focus-visible{ outline:none; }
 	.mediasctn .info{ flex-direction: column; align-items: stretch; padding:15px;}
 	.mediasctn .view-btn{text-align:center;}
 	.mediasctn .info h3{text-align:center;}
+	.residential-projects-inner{grid-template-columns:1fr;}
+	.last-card .info h3{text-align:left;}
 }
 @media screen and (max-width:540px){}
 @media (max-width:480px){
@@ -2407,7 +2409,6 @@ nav.links a:focus-visible{ outline:none; }
 	.grid { grid-template-columns: 1fr; }
 	.srvcntnr { grid-template-columns: repeat(1, 1fr);}
 	.srvcntnr.contctsctn{grid-template-columns: repeat(1, 1fr);}
-	.residential-projects-inner{grid-template-columns:1fr;}
 	.rp-left{gap:0;}
 	.rp-panel{position:inherit;}
 	.othrs-prjctsctnbx .othrimgbx h3{font-size: 25px;}
@@ -2415,6 +2416,7 @@ nav.links a:focus-visible{ outline:none; }
 	.rp-panel img{object-fit: cover; height:100%;}
 	.mediasctn .grid{grid-template-columns: repeat(1, 1fr);}
 	.lwrbx .lrbxcntnr .lwrbxwrppr.maroonbx{padding:20px 15px;}
+	.othrsprjct-inner .rp-tab-title{font-size:20px;}
 }
 @media (max-width:390px){}
 @media (max-width:375px){}
