@@ -1,0 +1,41 @@
+@media (max-width: 980px){
+    .slide{ grid-template-columns: 1fr 1fr; }
+    .text-card{
+      grid-column: 1 / -1;
+      order:5;
+    }
+  }
+
+  @media (max-width: 560px){
+    .featured-section{ padding: 44px 0 40px; }
+    .featured-heading,
+    .slider-controls{ padding: 0 5vw; }
+
+    /* Instead of stacking the text card and 4 photos vertically,
+       lay them out as a horizontally swipeable row — text card
+       first, then each photo, all the same height. */
+    .slide{
+      display:flex;
+      grid-template-columns: none;
+      overflow-x:auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap:12px;
+      padding: 0 5vw;
+      scrollbar-width: none;
+    }
+    .slide::-webkit-scrollbar{ display:none; }
+
+    .photo-card,
+    .text-card{
+      flex: 0 0 50%;
+      scroll-snap-align:center;
+      min-height: 380px;
+    }
+
+    .text-card{ order:-1; padding:28px 22px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .slider-track{ transition:none; }
+  }
