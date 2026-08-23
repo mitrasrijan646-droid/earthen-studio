@@ -2384,8 +2384,8 @@ nav.links a:focus-visible{ outline:none; }
 	.panel-left{min-width:100%;}
 	.ap-card a.dscvrbttnnew:hover svg { transform: translateX(54px);}
 	.bnnrsctn .evntbxbnnr .bannrbx .bannrbxcntnt a.dscvrbttnnew{ margin: 10px 0 15px;}
-	.bodywrppr h1.hdngtxt{line-height: 32px; font-size: clamp(30px, 10vw, 100px);}
-	h1{font-size:35px;}
+	.bodywrppr h1.hdngtxt{line-height: 32px; font-size: clamp(30px, 10vw, 100px); text-align:center;}
+	h1{font-size:30px;}
 	.ap-card h2{font-size:35px;}
 	.projects-gallery { grid-template-columns: repeat(2, 1fr);}
 	#exampleModal .modal-content{padding:50px;}
@@ -2393,7 +2393,7 @@ nav.links a:focus-visible{ outline:none; }
 	.lwrbx .lrbxcntnr{grid-template-columns: 1fr; gap: 44px;}
 	.lwrbx .lrbxcntnr .lwrbxwrppr:last-child{padding-top:40px;}
 	.prflcntnbx h1{font-size:50px;}
-	.blfsctn h2{font-size:50px;}
+	.blfsctn h2{font-size:35px; line-height:45px;}
 	.timeline{grid-template-columns:1fr;}
 	.srvcntnr { grid-template-columns: repeat(2, 1fr);}
 	.lwrbx .lrbxcntnr .lwrbxwrppr{padding: 60px 0 20px;}
@@ -2403,6 +2403,10 @@ nav.links a:focus-visible{ outline:none; }
 	.residential-projects-inner{grid-template-columns:1fr;}
 	.last-card .info h3{text-align:left;}
 	.slider-controls-one{padding:0 3vw;}
+	.bodywrppr h1{text-align:center;}
+	.bodywrppr a.dscvrbttnnew{margin:0 auto; display:table;}
+	.bodywrppr a.dscvrbttnnew svg{top:10px;}
+	.lwrbxwrppr h2{font-size:30px;}
 }
 @media screen and (max-width:540px){}
 @media (max-width:480px){
@@ -2427,9 +2431,10 @@ nav.links a:focus-visible{ outline:none; }
 	.card:hover .card-bottom{height:100%;}
 	.card-bottom{background:rgba(102, 97, 78, .95);}
 	.card-top h3{font-size:25px;}
+	.bnnrbxtxt h2{font-size:25px; line-height:35px;}
 }
 @media (max-width:390px){
-	.bnnrsctn .evntbxbnnr{min-height:90vh;} 
+	.bnnrsctn .evntbxbnnr{min-height:75vh;} 
 	.bnnrsctn .evntbxbnnr .bannrbx{top:40px;}
 }
 @media (max-width:375px){}
