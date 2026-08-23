@@ -2250,7 +2250,7 @@ nav.links a:focus-visible{ outline:none; }
 .othrsprjct-inner{ grid-template-columns:5fr 4fr; align-items: start;}
 .othrsprjct-inner .rp-heading h2{
 	color:#000; 
-	font-size:70px; 
+	font-size: 50px;
 	font-weight:100;
 	text-transform:uppercase;
 }
@@ -2258,7 +2258,7 @@ nav.links a:focus-visible{ outline:none; }
 .othrsprjct-inner .rp-tab:hover{background:#807b69; transform: translateY(-2px);}
 .othrsprjct-inner .rp-tab:hover .rp-tab-title{color:#FFF;}
 .othrsprjct-inner .rp-tab-title{
-	font-size:30px;
+	font-size: 22px;
 	font-weight:200;
 	color:#807b69;
 }
@@ -2424,7 +2424,6 @@ nav.links a:focus-visible{ outline:none; }
 	.rp-panel img{object-fit: cover; height:100%;}
 	.mediasctn .grid{grid-template-columns: repeat(1, 1fr);}
 	.lwrbx .lrbxcntnr .lwrbxwrppr.maroonbx{padding:20px 15px;}
-	.othrsprjct-inner .rp-tab-title{font-size:20px;}
 	.card:hover .card-bottom{height:100%;}
 	.card-bottom{background:rgba(102, 97, 78, .95);}
 	.card-top h3{font-size:25px;}
