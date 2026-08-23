@@ -1245,7 +1245,7 @@ a:focus, a:hover {
 .othrs-prjctsctnbx .othrimgbx:last-child{ margin-top:-60px;}
 .innrbnr .evntbxbnnr{min-height:78vh;}
 .innrbnr .evntbxbnnr .bannrbx{top: 0;}
-.innrbnr .evntbxbnnr .imgbx img {height:auto;}
+.innrbnr .evntbxbnnr .imgbx img {height:100%;}
 .innrbnr .evntbxbnnr .bannrbx .bannrbxcntnt{
 	display:flex;
 	flex-direction: column;
