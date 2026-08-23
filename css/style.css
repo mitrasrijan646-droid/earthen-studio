@@ -706,6 +706,7 @@ a:focus, a:hover {
 }
 .footerwrprbx img{width:100%; height:100%; max-width:120px;}
 .footerwrprbx p{color:#FFF;}
+.footerwrprbx p a{color:#FFF; text-decoration:underline;}
 .prdctlstsctn nav ol.breadcrumb{margin-bottom:60px;}
 .prdctlstsctn nav ol.breadcrumb li{color:#000;}
 .prdctlstsctn nav ol.breadcrumb li a{color:#000;}
