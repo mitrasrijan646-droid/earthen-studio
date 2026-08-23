@@ -1230,7 +1230,7 @@ a:focus, a:hover {
 	align-items:center;
 	margin-top:60px;
 }
-.othrs-prjctsctnbx h1{text-align:left; font-family:"sofia-pro";}
+.othrs-prjctsctnbx h1{text-align:left; font-family:"sofia-pro"; margin:0;}
 .othrs-prjctsctnbx:last-child{ display:flex; gap:35px;}
 .othrs-prjctsctnbx .othrimgbx{position:relative; transition: opacity 0.9s ease, transform 0.9s ease;}
 .othrs-prjctsctnbx .othrimgbx:hover{transform: translateY(-10px);}
@@ -2354,8 +2354,8 @@ nav.links a:focus-visible{ outline:none; }
 	  .dots{ gap: 6px; }
 	  .dot{ width: 6px; height: 6px; }
 	  .dot.active{ width: 18px; }
+	  .clntsctn{grid-template-columns: 1fr; margin-bottom:0;}
 	  .frstrow{grid-template-columns:1fr;}
-	  .clntsctn{grid-template-columns: 1fr;}
 	  .clntsctnbx:first-child{padding-right:0;}
 	  .clntsctnbx{align-items: center;}
 	  .clntsctnbx h1{text-align:center;}
@@ -2428,6 +2428,9 @@ nav.links a:focus-visible{ outline:none; }
 	.card-bottom{background:rgba(102, 97, 78, .95);}
 	.card-top h3{font-size:25px;}
 }
-@media (max-width:390px){}
+@media (max-width:390px){
+	.bnnrsctn .evntbxbnnr{min-height:90vh;} 
+	.bnnrsctn .evntbxbnnr .bannrbx{top:40px;}
+}
 @media (max-width:375px){}
 @media (max-width:320px){}
