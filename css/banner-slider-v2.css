@@ -1,0 +1,269 @@
+:root{
+    --bg-olive: #8b7d4d;
+    --card-cream: #f5e29e;
+    --ink: #23231f;
+    --ink-soft: #3a382f;
+    --ring: rgba(245,226,158,0.55);
+    --ring-strong: #f5e29e;
+    --gap:10px;
+    --radius: 18px;
+
+    /* How much wider than the surrounding content column the slider
+       should be, on EACH side. Bump this up/down per breakpoint below. */
+    --breakout: 80px 0;
+  }
+
+  /* ---- Demo only: stand-in for your site's normal page container ---- */
+  .page-container{
+    max-width: 1300px; /* Earthen Studio's real content width */
+    margin: 0 auto;
+    padding: 60px 0;
+  }
+  /* --------------------------------------------------------------- */
+
+  .project-slider{
+    position: relative;
+	padding-bottom:60px;
+    /* Default / standard desktop: break out of the 1300px container by
+       --breakout on each side. This stays a FIXED overhang, so it does
+       not keep growing as the screen gets wider than the container. */
+    width: calc(100% + (var(--breakout) * 2));
+    margin-left: calc(var(--breakout) * -1);
+  }
+
+  /* Large screens (roughly 24" and up): stop tracking the container and
+     size the slider off the viewport instead, so it keeps elongating as
+     the screen gets wider. left/transform centers it independent of the
+     1300px container's own width. clamp() gives it a floor (matches the
+     standard breakout width) and a ceiling (so it doesn't stretch to an
+     absurd width on ultrawide/4K monitors) with fluid growth in between. */
+  @media (min-width: 1600px){
+    .project-slider{
+      width: clamp(1460px, 84vw, 1900px);
+      margin-left: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Track / slides */
+  .slider-viewport{
+    overflow: hidden;
+  }
+
+  .slider-track-one{
+    display: flex;
+    transition: transform .55s cubic-bezier(.65,.05,.36,1);
+  }
+
+  .slide{
+    flex: 0 0 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--gap);
+  }
+
+  /* Slide type 1: text card (1 col) + image (3 col) */
+  .slide.has-text .text-card{
+    grid-column: span 1;
+    background: var(--card-cream);
+    border-radius: var(--radius);
+    padding:35px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-height: 480px;
+	gap:15px;
+	overflow:auto;
+	/* Firefox: muted thumb + transparent track */
+    scrollbar-width: thin;
+    scrollbar-color: #b8b2a1 transparent;
+  }
+
+  .text-card h2{
+    text-align: left;
+    font-size:30px;
+    font-family: "sofia-pro";
+    font-weight:700;
+    margin:0;
+    color: var(--ink);
+    line-height: 1.15;
+  }
+
+  .text-card p{
+    font-family: "Baskervville", serif;
+    font-size: 15.5px;
+    line-height:1.7;
+    color: var(--ink-soft);
+    margin: 0;
+    font-weight: 300;
+  }
+
+  .slide.has-text .image-card{
+    grid-column: span 3;
+  }
+
+  /* Slide type 2: full-width image, no text card */
+  .slide.image-only .image-card{
+    grid-column: span 4;
+  }
+
+  .image-card{
+    
+    overflow: hidden;
+    max-height: 480px;
+    position: relative;
+    /* background: #d9d2b8; */ /* placeholder tone until real image loads */
+  }
+
+  .image-card img{
+	border-radius: var(--radius);
+    width: 100%;
+    height:100%;
+    max-height:480px;
+	object-fit:cover;
+    display: block;
+  }
+
+  /* Controls row */
+  .slider-controls-one{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 28px;
+  }
+
+  .slider-nav{
+    display: flex;
+    gap: 14px;
+  }
+
+  .nav-btn{
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1.5px solid var(--card-cream);
+    background: transparent;
+    color: var(--card-cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease, transform .2s ease;
+  }
+
+  .nav-btn svg{
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+  }
+
+  .nav-btn:hover{
+    background: var(--card-cream);
+    color: var(--bg-olive);
+  }
+
+  .nav-btn:active{
+    transform: scale(0.94);
+  }
+
+  .nav-btn:focus-visible{
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+
+  .nav-btn[disabled]{
+    opacity: .35;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  .slider-dots{
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: rgba(245,226,158,0.4);
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease, width .2s ease;
+  }
+
+  .dot:hover{
+    background: rgba(245,226,158,0.75);
+  }
+
+  .dot.active{
+    background: var(--card-cream);
+    width: 22px;
+    border-radius: 5px;
+  }
+
+  .dot:focus-visible{
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+  }
+  
+  /* Chrome, Edge, Safari (WebKit) */
+.slide.has-text .text-card::-webkit-scrollbar{
+    width: 6px;
+}
+ 
+.slide.has-text .text-card::-webkit-scrollbar-track{
+    background: transparent;
+}
+ 
+.slide.has-text .text-card::-webkit-scrollbar-thumb{
+    background-color: #b8b2a1;   /* dull/muted tone — tweak to match your palette */
+    border-radius: 10px;
+}
+ 
+.slide.has-text .text-card::-webkit-scrollbar-thumb:hover{
+    background-color: #a39c88;   /* slightly darker on hover */
+}
+
+  /* Responsive */
+  @media (max-width: 900px){
+    :root{
+      /* Smaller breakout on tablet so it doesn't crowd the viewport edge */
+      --breakout: 32px;
+    }
+    .project-slider {
+		position: relative;
+		padding-bottom: 60px;
+		width: auto;
+		margin-left: 0;
+	}
+	/* .slide{grid-template-columns: repeat(2, 1fr);} */
+	.
+    .slide.has-text .text-card,
+    .slide.has-text .image-card,
+    .slide.image-only .image-card{
+      grid-column: span 4;
+    }
+    .text-card{
+      min-height: auto;
+      padding: 36px 28px;
+    }
+    .image-card, .image-card img{
+      min-height: 300px;
+    }
+  }
+
+  @media (max-width: 560px){
+    :root{
+      /* On phones, just match the column width — no breakout */
+      --breakout: 0px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .slider-track{ transition: none; }
+    .nav-btn, .dot{ transition: none; }
+  }

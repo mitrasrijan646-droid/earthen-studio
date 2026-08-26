@@ -3,43 +3,68 @@
     --card-cream: #f5e29e;
     --ink: #23231f;
     --ink-soft: #3a382f;
-    --ring: rgba(245,226,158,0.55);
-    --ring-strong: #f5e29e;
-    --gap:10px;
+    --gap:4px;
     --radius: 18px;
 
     /* How much wider than the surrounding content column the slider
-       should be, on EACH side. Bump this up/down per breakpoint below. */
-    --breakout: 80px 0;
+       should be, on EACH side, at desktop/tablet sizes. */
+    --breakout: 80px;
+
+    /* Real photo dimensions: 1140 x 600 = 1.9:1 */
+    --img-ratio: 1140 / 600;
+
+    /* Fixed slider height, desktop/tablet only — mobile uses the real
+       ratio instead (see below). */
+    --slide-height: 540px;
+
+    /* Below this width, slides render as one-thing-per-slide (text card
+       alone, then each photo alone) instead of the desktop text+image
+       combo — matches the real site's mobile behavior. Also the point
+       where the slider goes fully edge-to-edge. */
+    --mobile-breakpoint: 700px;
   }
 
-  /* ---- Demo only: stand-in for your site's normal page container ---- */
+ /* ---- Demo only: stand-in for your site's normal page container ---- */
   .page-container{
     max-width: 1300px; /* Earthen Studio's real content width */
     margin: 0 auto;
-    padding: 60px 0;
+    padding: 60px 20px;
+  }
+  .demo-note{
+    font-size: 13px;
+    color: rgba(245,226,158,0.7);
+    margin: 0 0 40px 0;
+    max-width: 620px;
   }
   /* --------------------------------------------------------------- */
 
   .project-slider{
     position: relative;
-	padding-bottom:60px;
-    /* Default / standard desktop: break out of the 1300px container by
-       --breakout on each side. This stays a FIXED overhang, so it does
-       not keep growing as the screen gets wider than the container. */
-    width: calc(100% + (var(--breakout) * 2));
-    margin-left: calc(var(--breakout) * -1);
+	margin-bottom:60px;
+    /* Desktop/tablet: break out of the page container by --breakout on
+       each side — a fixed overhang, not tied to viewport width. */
+    /* width: calc(100% + (var(--breakout) * 2));
+    margin-left: calc(var(--breakout) * -1); */
   }
 
-  /* Large screens (roughly 24" and up): stop tracking the container and
-     size the slider off the viewport instead, so it keeps elongating as
-     the screen gets wider. left/transform centers it independent of the
-     1300px container's own width. clamp() gives it a floor (matches the
-     standard breakout width) and a ceiling (so it doesn't stretch to an
-     absurd width on ultrawide/4K monitors) with fluid growth in between. */
+  /* Large screens (roughly 24" and up): size off the viewport instead
+     of the container, so the slider keeps elongating as the screen
+     gets wider, with a floor/ceiling so it stays reasonable. */
   @media (min-width: 1600px){
     .project-slider{
-      width: clamp(1460px, 84vw, 1900px);
+      /* width: clamp(1460px, 84vw, 1900px); */
+      margin-left: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Mobile: true edge-to-edge, ignoring the page container's own
+     padding entirely — matches the reference screenshots, where the
+     card/photo touch the phone's screen edges directly. */
+  @media (max-width: 700px){
+    .project-slider{
+      width: 100vw;
       margin-left: 0;
       left: 50%;
       transform: translateX(-50%);
@@ -51,7 +76,7 @@
     overflow: hidden;
   }
 
-  .slider-track-one{
+  .slider-track{
     display: flex;
     transition: transform .55s cubic-bezier(.65,.05,.36,1);
   }
@@ -63,74 +88,123 @@
     gap: var(--gap);
   }
 
-  /* Slide type 1: text card (1 col) + image (3 col) */
-  .slide.has-text .text-card{
-    grid-column: span 1;
+  /* ---- Desktop/tablet combo slide: text card (1 col) + image (3 col) ---- */
+  .slide.has-text{
+    height: var(--slide-height);
+    /* minmax(0, 1fr) — not plain "auto" or "1fr" — stops long text from
+       growing the row past --slide-height. */
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .text-card{
     background: var(--card-cream);
     border-radius: var(--radius);
-    padding:35px;
+    padding: 48px 40px;
+    display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    max-height: 480px;
-	gap:15px;
-	overflow:auto;
-	/* Firefox: muted thumb + transparent track */
-    scrollbar-width: thin;
-    scrollbar-color: #b8b2a1 transparent;
+    justify-content: center;
+    overflow-y: auto; /* safety net for unusually long copy */
+	gap:20px;
+  }
+
+  .slide.has-text .text-card{
+    grid-column: span 1;
   }
 
   .text-card h2{
-    text-align: left;
-    font-size:30px;
-    font-family: "sofia-pro";
-    font-weight:700;
-    margin:0;
+    font-family:"sofia-pro";
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(28px, 2.4vw, 30px);
     color: var(--ink);
+	text-align:left;
     line-height: 1.15;
   }
 
   .text-card p{
-    font-family: "Baskervville", serif;
-    font-size: 15.5px;
-    line-height:1.7;
+   /*  font-size: 15.5px; */
+   font-size:16px;
+    line-height:25px;
     color: var(--ink-soft);
     margin: 0;
-    font-weight: 300;
+    font-weight:400;
   }
 
   .slide.has-text .image-card{
     grid-column: span 3;
   }
 
-  /* Slide type 2: full-width image, no text card */
+  /* Full-width image slide (desktop/tablet) */
   .slide.image-only .image-card{
     grid-column: span 4;
   }
 
   .image-card{
-    
+    border-radius: var(--radius);
     overflow: hidden;
-    max-height: 480px;
+    height: 100%;
     position: relative;
-    /* background: #d9d2b8; */ /* placeholder tone until real image loads */
+    background: #e7ddb9; /* letterbox fill either side, at desktop's fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slide.image-only .image-card{
+    height: var(--slide-height);
   }
 
   .image-card img{
-	border-radius: var(--radius);
     width: 100%;
-    height:100%;
-    max-height:480px;
-	object-fit:cover;
+    height: 100%;
+    /* object-fit: contain; full photo, no crop */
     display: block;
   }
 
-  /* Controls row */
-  .slider-controls-one{
+  /* ---- Mobile: standalone slides ---- */
+  @media (max-width: 700px){
+    .slide{
+      grid-template-columns: 1fr;
+    }
+
+    /* Text-only slide: no image alongside it, height follows its own
+       content — not the desktop's fixed --slide-height. */
+    .slide.text-only{
+      display: block;
+    }
+    .slide.text-only .text-card{
+      border-radius: var(--radius);
+      padding: 40px 28px;
+      min-height: 60vh; /* roomy card, matches the reference screenshot */
+    }
+
+    /* Image-only slide: fixed 540px height like desktop, cropping the
+       sides (object-fit: cover below) instead of shrinking the whole
+       photo to fit — a narrow mobile width against a 1.9:1 landscape
+       photo means cover crops left/right, not top/bottom, so nothing
+       important gets cut off vertically. */
+    .slide.image-only .image-card{
+      height: var(--slide-height);
+      border-radius: var(--radius);
+    }
+    .slide.image-only .image-card img{
+      object-fit: cover;
+    }
+  }
+
+  /* Controls row — stays inset within the normal page padding even
+     though the card/photo above it go edge-to-edge on mobile. */
+  .slider-controls{
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 28px;
+  }
+
+  @media (max-width: 700px){
+    .slider-controls{
+      padding: 0 20px; /* re-align with the page's normal side padding */
+    }
   }
 
   .slider-nav{
@@ -172,16 +246,11 @@
     outline-offset: 3px;
   }
 
-  .nav-btn[disabled]{
-    opacity: .35;
-    cursor: default;
-    pointer-events: none;
-  }
-
   .slider-dots{
     display: flex;
     align-items: center;
     gap: 9px;
+    flex-wrap: wrap;
   }
 
   .dot{
@@ -209,61 +278,8 @@
     outline: 2px solid #fff;
     outline-offset: 3px;
   }
-  
-  /* Chrome, Edge, Safari (WebKit) */
-.slide.has-text .text-card::-webkit-scrollbar{
-    width: 6px;
-}
- 
-.slide.has-text .text-card::-webkit-scrollbar-track{
-    background: transparent;
-}
- 
-.slide.has-text .text-card::-webkit-scrollbar-thumb{
-    background-color: #b8b2a1;   /* dull/muted tone — tweak to match your palette */
-    border-radius: 10px;
-}
- 
-.slide.has-text .text-card::-webkit-scrollbar-thumb:hover{
-    background-color: #a39c88;   /* slightly darker on hover */
-}
-
-  /* Responsive */
-  @media (max-width: 900px){
-    :root{
-      /* Smaller breakout on tablet so it doesn't crowd the viewport edge */
-      --breakout: 32px;
-    }
-    .project-slider {
-		position: relative;
-		padding-bottom: 60px;
-		width: auto;
-		margin-left: 0;
-	}
-	/* .slide{grid-template-columns: repeat(2, 1fr);} */
-	.
-    .slide.has-text .text-card,
-    .slide.has-text .image-card,
-    .slide.image-only .image-card{
-      grid-column: span 4;
-    }
-    .text-card{
-      min-height: auto;
-      padding: 36px 28px;
-    }
-    .image-card, .image-card img{
-      min-height: 300px;
-    }
-  }
-
-  @media (max-width: 560px){
-    :root{
-      /* On phones, just match the column width — no breakout */
-      --breakout: 0px;
-    }
-  }
 
   @media (prefers-reduced-motion: reduce){
     .slider-track{ transition: none; }
     .nav-btn, .dot{ transition: none; }
-  }
+}
