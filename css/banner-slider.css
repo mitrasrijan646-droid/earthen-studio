@@ -15,7 +15,7 @@
 
     /* Fixed slider height, desktop/tablet only — mobile uses the real
        ratio instead (see below). */
-    --slide-height: 540px;
+    --slide-height: 600px;
 
     /* Below this width, slides render as one-thing-per-slide (text card
        alone, then each photo alone) instead of the desktop text+image
@@ -102,9 +102,9 @@
     padding: 48px 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     overflow-y: auto; /* safety net for unusually long copy */
-	gap:20px;
+	gap:0;
   }
 
   .slide.has-text .text-card{
@@ -157,7 +157,7 @@
   .image-card img{
     width: 100%;
     height: 100%;
-    /* object-fit: contain; full photo, no crop */
+    object-fit: cover; /*full photo, no crop */
     display: block;
   }
 

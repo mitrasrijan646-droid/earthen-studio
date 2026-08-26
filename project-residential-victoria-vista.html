@@ -122,7 +122,7 @@
 								<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 								<li class="breadcrumb-item"><a href="project.html">Projects</a></li>
 								<li class="breadcrumb-item"><a href="project-residential.html">Residential</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Residential - Kundu’s</li>
+								<li class="breadcrumb-item active" aria-current="page">Victoria Vista - Kundu’s</li>
 							</ol>
 						</nav>
 					</div>
@@ -385,6 +385,10 @@ gsap.to(".logo-parallax", {
 	{ type: 'image', src: 'images/project/resdential/victoria-vista/guest-bedroom-2.jpg', alt: 'Project image 10' }
   ];
 
+  // ---- Autoplay settings ----
+  const AUTOPLAY_DELAY = 4500; // ms between auto-advances
+  let autoplayTimer = null;
+
   const root = document.getElementById('projectSlider');
   const mq = window.matchMedia('(max-width: 700px)');
 
@@ -514,16 +518,17 @@ gsap.to(".logo-parallax", {
       const dot = el('button', 'dot');
       dot.setAttribute('role', 'tab');
       dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-      dot.addEventListener('click', () => goTo(i));
+      dot.addEventListener('click', () => { goTo(i); restartAutoplay(); });
       dotsEl.appendChild(dot);
     });
     dots = Array.from(dotsEl.children);
 
-    prevBtn.addEventListener('click', () => goTo(index - 1));
-    nextBtn.addEventListener('click', () => goTo(index + 1));
+    prevBtn.addEventListener('click', () => { goTo(index - 1); restartAutoplay(); });
+    nextBtn.addEventListener('click', () => { goTo(index + 1); restartAutoplay(); });
 
     index = 0;
     render();
+    startAutoplay();
   }
 
   function render(){
@@ -536,9 +541,40 @@ gsap.to(".logo-parallax", {
     render();
   }
 
+  // ---- Autoplay controls ----
+  function startAutoplay(){
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      goTo(index + 1);
+    }, AUTOPLAY_DELAY);
+  }
+
+  function stopAutoplay(){
+    if (autoplayTimer){
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function restartAutoplay(){
+    startAutoplay();
+  }
+
+  // Pause on hover (desktop) and on touch (mobile), resume on leave/end.
+  root.addEventListener('mouseenter', stopAutoplay);
+  root.addEventListener('mouseleave', startAutoplay);
+  root.addEventListener('touchstart', stopAutoplay, { passive: true });
+  root.addEventListener('touchend', startAutoplay, { passive: true });
+
+  // Pause when the tab isn't visible, resume when it is again.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoplay();
+    else startAutoplay();
+  });
+
   root.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') goTo(index - 1);
-    if (e.key === 'ArrowRight') goTo(index + 1);
+    if (e.key === 'ArrowLeft') { goTo(index - 1); restartAutoplay(); }
+    if (e.key === 'ArrowRight') { goTo(index + 1); restartAutoplay(); }
   });
 
   // Rebuild only when crossing the mobile breakpoint, not on every

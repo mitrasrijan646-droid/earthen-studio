@@ -126,16 +126,11 @@
 								<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 								<li class="breadcrumb-item"><a href="project.html">Projects</a></li>
 								<li class="breadcrumb-item"><a href="project-residential.html">Residential</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Residential - Goel's</li>
+								<li class="breadcrumb-item active" aria-current="page">Golpark - Goel's</li>
 							</ol>
 						</nav>
 					</div>
 				 	
-					<!--<div>
-						<h1>Mani Vista</h1>
-						<h2>1800 sq.ft.</h2>
-					</div> -->
-					
 				</div>
 			</div>
 			
@@ -147,82 +142,7 @@
 		<div class="row">
 			<div class="col-md-12 no-pad">
 			
-				<div class="project-slider" id="projectSlider" aria-roledescription="carousel" aria-label="Project gallery">
-					
-					<div class="slider-viewport">
-						<div class="slider-track-one" id="sliderTrack-one">
-							
-							<div class="slide has-text" role="group" aria-roledescription="slide" aria-label="1 of 8">
-								<div class="text-card">
-								  <h2>Goel's</h2>
-								  <p>A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care.</p>
-								</div>
-								
-								<div class="image-card">
-									<img src="images/project/resdential/goel/living-area-1.jpg" class="img-responsive" alt=""/>
-								</div>
-							</div>
-							
-							<!-- Slide 2: full-width image, no text card -->
-							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="2 of 8">
-								<div class="image-card">
-								  <img src="images/project/resdential/goel/living-area-2.jpg" alt="" />
-								</div>
-							</div>
-							
-							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="3 of 8">
-								<div class="image-card">
-								  <img src="images/project/resdential/goel/dining-area-1.jpg" alt="" />
-								</div>
-							</div>
-							
-							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="4 of 8">
-								<div class="image-card">
-								  <img src="images/project/resdential/goel/dining-area-2.jpg" alt="" />
-								</div>
-							</div>
-							
-							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="5 of 8">
-								<div class="image-card">
-								  <img src="images/project/resdential/goel/master-bedroom-1.jpg" alt="" />
-								</div>
-							</div>
-							
-							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="6 of 8">
-								<div class="image-card">
-								  <img src="images/project/resdential/goel/master-bedroom-2.jpg" alt="" />
-								</div>
-							</div>
-							
-							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="7 of 8">
-								<div class="image-card">
-								  <img src="images/project/resdential/goel/kid-bedroom-1.jpg" alt="" />
-								</div>
-							</div>
-							
-							<div class="slide image-only" role="group" aria-roledescription="slide" aria-label="8 of 8">
-								<div class="image-card">
-								  <img src="images/project/resdential/goel/kid-bedroom-2.jpg" alt="" />
-								</div>
-							</div>
-							
-						</div>
-					</div>
-					
-					<div class="slider-controls-one">
-						<div class="slider-nav">
-							<button class="nav-btn" id="prevBtn" aria-label="Previous slide">
-								<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-							</button>
-							<button class="nav-btn" id="nextBtn" aria-label="Next slide">
-								<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-							</button>
-						</div>
-
-						<div class="slider-dots" id="sliderDots" role="tablist" aria-label="Choose slide"></div>
-					</div>
-				
-				</div>
+				<div class="project-slider" id="projectSlider" aria-roledescription="carousel" aria-label="Project gallery"></div>
 			
 				<div class="clearfix"></div>
 			</div>
@@ -442,49 +362,229 @@ gsap.to(".logo-parallax", {
 <!-- InstanceBeginEditable name="EditRegion6" -->
 <script type="text/javascript">
 (function(){
-  const track   = document.getElementById('sliderTrack-one');
-  const slides  = Array.from(track.children);
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const dotsEl  = document.getElementById('sliderDots');
-  const total   = slides.length;
+  // ---- Slide content: one small data array drives everything below.
+  // type: 'text' or 'image'. On desktop/tablet, the first 'text' record
+  // is combined with the very next 'image' record into one slide. On
+  // mobile, every record becomes its own standalone slide.
+  const slideData = [
+    {
+      type: 'text',
+      title: "Goel's Golpark",
+      body: "A project that redefines luxury: not as novelty or opulence, but as the preservation of what truly matters, paired with contemporary clarity. Goel’s residence design demonstrates that considered material choices and respect for the existing marble flooring can make interiors feel both authentic and modern. The apartment emerges neither as a restored relic nor as a wholly new creation, but as a home that entwines old with new, where every surface and shaft of light contributes to a quiet narrative of continuity and care."
+    },
+    { type: 'image', src: 'images/project/resdential/goel/living-area-1.jpg', alt:''},
+    { type: 'image', src: 'images/project/resdential/goel/living-area-2.jpg', alt:''},
+    { type: 'image', src: 'images/project/resdential/goel/dining-area-1.jpg', alt:''},
+    { type: 'image', src: 'images/project/resdential/goel/dining-area-2.jpg', alt:''},
+    { type: 'image', src: 'images/project/resdential/goel/master-bedroom-1.jpg', alt:''},
+    { type: 'image', src: 'images/project/resdential/goel/master-bedroom-2.jpg', alt:''},
+	{ type: 'image', src: 'images/project/resdential/goel/kid-bedroom-1.jpg', alt:''},
+	{ type: 'image', src: 'images/project/resdential/goel/kid-bedroom-2.jpg', alt:''}
+  ];
+
+  // ---- Autoplay settings ----
+  const AUTOPLAY_DELAY = 4500; // ms between auto-advances
+  let autoplayTimer = null;
+
+  const root = document.getElementById('projectSlider');
+  const mq = window.matchMedia('(max-width: 700px)');
+
+  let track, dotsEl, prevBtn, nextBtn, slides, dots, total;
   let index = 0;
 
-  // Build dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'dot';
-    dot.setAttribute('role', 'tab');
-    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-    dot.addEventListener('click', () => goTo(i));
-    dotsEl.appendChild(dot);
-  });
-  const dots = Array.from(dotsEl.children);
+  function el(tag, cls, html){
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html !== undefined) e.innerHTML = html;
+    return e;
+  }
+
+  function makeImageCard(record){
+    const card = el('div', 'image-card');
+    const img = document.createElement('img');
+    img.src = record.src;
+    img.alt = record.alt || '';
+    card.appendChild(img);
+    return card;
+  }
+
+  function buildSlideList(isMobile){
+    const list = [];
+
+    if (isMobile){
+      // One slide per record — no combining.
+      slideData.forEach((record) => {
+        if (record.type === 'text'){
+          list.push({ kind: 'text-only', record });
+        } else {
+          list.push({ kind: 'image-only', record });
+        }
+      });
+    } else {
+      // Combine the first text record with the very next image record.
+      let combined = false;
+      for (let i = 0; i < slideData.length; i++){
+        const record = slideData[i];
+        if (!combined && record.type === 'text' && slideData[i + 1] && slideData[i + 1].type === 'image'){
+          list.push({ kind: 'has-text', textRecord: record, imageRecord: slideData[i + 1] });
+          combined = true;
+          i++; // skip the image record we just consumed
+        } else if (record.type === 'image') {
+          list.push({ kind: 'image-only', record });
+        } else if (record.type === 'text') {
+          // A text record with no following image — render as its own
+          // text-only slide (fallback, shouldn't normally happen).
+          list.push({ kind: 'text-only', record });
+        }
+      }
+    }
+
+    return list;
+  }
+
+  function renderSlideEl(item, i, count){
+    const label = (i + 1) + ' of ' + count;
+
+    if (item.kind === 'has-text'){
+      const slide = el('div', 'slide has-text');
+      slide.setAttribute('role', 'group');
+      slide.setAttribute('aria-roledescription', 'slide');
+      slide.setAttribute('aria-label', label);
+
+      const textCard = el('div', 'text-card',
+        '<h2></h2><p></p>');
+      textCard.querySelector('h2').textContent = item.textRecord.title;
+      textCard.querySelector('p').textContent = item.textRecord.body;
+
+      slide.appendChild(textCard);
+      slide.appendChild(makeImageCard(item.imageRecord));
+      return slide;
+    }
+
+    if (item.kind === 'text-only'){
+      const slide = el('div', 'slide text-only');
+      slide.setAttribute('role', 'group');
+      slide.setAttribute('aria-roledescription', 'slide');
+      slide.setAttribute('aria-label', label);
+
+      const textCard = el('div', 'text-card', '<h2></h2><p></p>');
+      textCard.querySelector('h2').textContent = item.record.title;
+      textCard.querySelector('p').textContent = item.record.body;
+
+      slide.appendChild(textCard);
+      return slide;
+    }
+
+    // image-only
+    const slide = el('div', 'slide image-only');
+    slide.setAttribute('role', 'group');
+    slide.setAttribute('aria-roledescription', 'slide');
+    slide.setAttribute('aria-label', label);
+    slide.appendChild(makeImageCard(item.record));
+    return slide;
+  }
+
+  function build(){
+    const isMobile = mq.matches;
+    const list = buildSlideList(isMobile);
+
+    root.innerHTML =
+      '<div class="slider-viewport"><div class="slider-track" id="sliderTrack"></div></div>' +
+      '<div class="slider-controls">' +
+        '<div class="slider-nav">' +
+          '<button class="nav-btn" id="prevBtn" aria-label="Previous slide">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>' +
+          '</button>' +
+          '<button class="nav-btn" id="nextBtn" aria-label="Next slide">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' +
+          '</button>' +
+        '</div>' +
+        '<div class="slider-dots" id="sliderDots" role="tablist" aria-label="Choose slide"></div>' +
+      '</div>';
+
+    track  = document.getElementById('sliderTrack');
+    dotsEl = document.getElementById('sliderDots');
+    prevBtn = document.getElementById('prevBtn');
+    nextBtn = document.getElementById('nextBtn');
+
+    list.forEach((item, i) => track.appendChild(renderSlideEl(item, i, list.length)));
+    slides = Array.from(track.children);
+    total = slides.length;
+
+    slides.forEach((_, i) => {
+      const dot = el('button', 'dot');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', () => { goTo(i); restartAutoplay(); });
+      dotsEl.appendChild(dot);
+    });
+    dots = Array.from(dotsEl.children);
+
+    prevBtn.addEventListener('click', () => { goTo(index - 1); restartAutoplay(); });
+    nextBtn.addEventListener('click', () => { goTo(index + 1); restartAutoplay(); });
+
+    index = 0;
+    render();
+    startAutoplay();
+  }
 
   function render(){
     track.style.transform = 'translateX(' + (-index * 100) + '%)';
     dots.forEach((d, i) => d.classList.toggle('active', i === index));
-    // Loop, so both arrows stay enabled. If you prefer to stop at ends,
-    // uncomment the two lines below and remove the wraparound in goTo().
-    // prevBtn.disabled = index === 0;
-    // nextBtn.disabled = index === total - 1;
   }
 
   function goTo(i){
-    index = (i + total) % total; // wraps around
+    index = (i + total) % total; // loops
     render();
   }
 
-  prevBtn.addEventListener('click', () => goTo(index - 1));
-  nextBtn.addEventListener('click', () => goTo(index + 1));
+  // ---- Autoplay controls ----
+  function startAutoplay(){
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      goTo(index + 1);
+    }, AUTOPLAY_DELAY);
+  }
 
-  // Keyboard support when the slider is focused
-  document.getElementById('projectSlider').addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') goTo(index - 1);
-    if (e.key === 'ArrowRight') goTo(index + 1);
+  function stopAutoplay(){
+    if (autoplayTimer){
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function restartAutoplay(){
+    startAutoplay();
+  }
+
+  // Pause on hover (desktop) and on touch (mobile), resume on leave/end.
+  root.addEventListener('mouseenter', stopAutoplay);
+  root.addEventListener('mouseleave', startAutoplay);
+  root.addEventListener('touchstart', stopAutoplay, { passive: true });
+  root.addEventListener('touchend', startAutoplay, { passive: true });
+
+  // Pause when the tab isn't visible, resume when it is again.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoplay();
+    else startAutoplay();
   });
 
-  render();
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') { goTo(index - 1); restartAutoplay(); }
+    if (e.key === 'ArrowRight') { goTo(index + 1); restartAutoplay(); }
+  });
+
+  // Rebuild only when crossing the mobile breakpoint, not on every
+  // resize pixel, so we don't tear down the DOM constantly.
+  let wasMobile = mq.matches;
+  window.addEventListener('resize', () => {
+    if (mq.matches !== wasMobile){
+      wasMobile = mq.matches;
+      build();
+    }
+  });
+
+  build();
 })();
 </script>
 
