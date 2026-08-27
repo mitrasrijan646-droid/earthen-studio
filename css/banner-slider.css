@@ -175,7 +175,7 @@
     .slide.text-only .text-card{
       border-radius: var(--radius);
       padding: 40px 28px;
-      min-height: 60vh; /* roomy card, matches the reference screenshot */
+      min-height:90vh; /* roomy card, matches the reference screenshot */
     }
 
     /* Image-only slide: fixed 540px height like desktop, cropping the

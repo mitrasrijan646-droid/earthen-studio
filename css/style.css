@@ -278,7 +278,7 @@ a:focus, a:hover {
 .sidebar.open { transform: translateX(0);}
 .sidebar hr{margin-bottom:20px;}
 .sidebar a { font-size:20px;}
-.sidebar a img{padding:0; outline:none; filter: none !important; width: 100%; max-width:120px; height:100%;}
+.sidebar a img{padding:0; outline:none; filter: brightness(0) invert(1) !important;}
 .openbtn {
     cursor:pointer;
     background-color:transparent;
@@ -703,8 +703,9 @@ a:focus, a:hover {
     flex-wrap: wrap;
     justify-content: space-between;
     gap:25px;
+	align-items: flex-start;
 }
-.footerwrprbx img{width:100%; height:100%; max-width:120px;}
+.footerwrprbx img{width:auto; height:auto; filter: brightness(0) invert(1);}
 .footerwrprbx p{color:#FFF;}
 .footerwrprbx p a{color:#FFF; text-decoration:underline;}
 .prdctlstsctn nav ol.breadcrumb{margin-bottom:60px;}
@@ -748,10 +749,10 @@ a:focus, a:hover {
 .prdct-card{
 	padding: 100px 100px 100px 70px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: stretch;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap:40px;
 }
 .prdct-card:hover{ transform: translateY(-4px);}
@@ -2364,7 +2365,7 @@ nav.links a:focus-visible{ outline:none; }
 	  .othrs-prjctsctn{grid-template-columns: 1fr; gap: 60px;}
 	  .othrs-prjctsctnbx h1{text-align:center;}
 	  .othrs-prjctsctnbx .othrimgbx:last-child{margin-top:0;}
-	  .featured-section .text-card{width: min(450px, 82vw);}
+	  .featured-section .text-card{width: min(450px, 97vw);}
 	  .rp-panel img{height:100%; object-fit:cover;}
 	  .mediasctn .grid{grid-template-columns: repeat(2, 1fr);}
 	  .card-bottom{
