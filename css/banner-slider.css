@@ -102,9 +102,9 @@
     padding: 48px 40px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     overflow-y: auto; /* safety net for unusually long copy */
-	gap:0;
+	gap:30px;
   }
 
   .slide.has-text .text-card{
@@ -175,7 +175,7 @@
     .slide.text-only .text-card{
       border-radius: var(--radius);
       padding: 40px 28px;
-      min-height:90vh; /* roomy card, matches the reference screenshot */
+      min-height:600px; /* roomy card, matches the reference screenshot */
     }
 
     /* Image-only slide: fixed 540px height like desktop, cropping the
