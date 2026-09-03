@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"><!-- InstanceBegin template="/Templates/main.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -23,7 +24,39 @@
   .form-msg.show{ display:block !important; }
   .form-card.is-hidden{ display:none !important; }
 
-  /* Thank-you modal popup — visibility controlled entirely via JavaScript inline styles below, not CSS classes, to avoid any conflict with existing site styles. */
+  /* Thank-you modal popup */
+  .modal-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(30,20,15,0.55);
+    z-index:999999;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+  }
+  .modal-overlay.show{
+    display:flex;
+  }
+  .modal-overlay .thank-you{
+    display:block !important;
+  }
+  .thank-you{
+    background:#fff;
+    border-radius:14px;
+    max-width:460px;
+    width:100%;
+    padding:44px 32px 34px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.25);
+    opacity:0;
+    transform:translateY(16px) scale(0.98);
+    transition:opacity .35s ease, transform .35s ease;
+  }
+  .modal-overlay.show .thank-you{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
 </style>
 <!-- InstanceEndEditable -->
 </head>
@@ -271,8 +304,8 @@
 						</form>
 
 						<!-- Thank-you popup modal, hidden by default, shown by the script on success -->
-						<div class="es-modal-overlay" id="thankYouOverlay">
-						  <div class="es-modal-card" id="thankYou">
+						<div class="modal-overlay" id="thankYouOverlay">
+						  <div class="thank-you" id="thankYou">
 						      <div style="width:64px;height:64px;margin:0 auto 22px;border-radius:50%;background:#F5EFE3;display:flex;align-items:center;justify-content:center;">
 						          <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
 						            <circle cx="12" cy="12" r="11" stroke="#8B4E33" stroke-width="1.4"/>
@@ -333,8 +366,7 @@
 </footer>
 
 <!-- InstanceBeginEditable name="EditRegion5" -->
- <!-- Thank-you message, hidden by default, shown by the script on success -->
-
+<!-- (thank-you block moved up next to the form — this region intentionally left empty) -->
 <!-- InstanceEndEditable -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -431,63 +463,28 @@ gsap.to(".logo-parallax", {
   const submitLabel = document.getElementById('submitLabel');
   const formMsg     = document.getElementById('formMsg');
   const thankYouOverlay = document.getElementById('thankYouOverlay');
-  const thankYou    = document.getElementById('thankYou');
   const tyName      = document.getElementById('tyName');
   const tyBack      = document.getElementById('tyBack');
 
-  // Move the modal to be a direct child of <body>, and apply every style
-  // needed directly via JavaScript with setProperty(...,'important'). This
-  // bypasses the site's stylesheet completely, so no existing CSS rule
-  // (regardless of class name, specificity, or !important) can interfere.
+  // Move the modal to be a direct child of <body>. This guarantees
+  // position:fixed works correctly regardless of any CSS transform,
+  // filter, or perspective on ancestor elements (e.g. from GSAP
+  // animations elsewhere on the page), which would otherwise silently
+  // turn position:fixed into position:absolute relative to that ancestor.
   document.body.appendChild(thankYouOverlay);
-
-  function applyImportant(el, styles){
-    Object.keys(styles).forEach(function(prop){
-      el.style.setProperty(prop, styles[prop], 'important');
-    });
-  }
-
-  // Base (hidden) state for the overlay — applied once immediately.
-  applyImportant(thankYouOverlay, {
-    'display': 'none',
-    'position': 'fixed',
-    'top': '0',
-    'left': '0',
-    'right': '0',
-    'bottom': '0',
-    'width': '100%',
-    'height': '100%',
-    'margin': '0',
-    'padding': '20px',
-    'box-sizing': 'border-box',
-    'background': 'rgba(30,20,15,0.55)',
-    'z-index': '2147483647',
-    'align-items': 'center',
-    'justify-content': 'center'
-  });
-
-  // Base (visible-content) state for the inner card — always block/visible
-  // whenever its parent overlay is shown.
-  applyImportant(thankYou, {
-    'display': 'block',
-    'background': '#ffffff',
-    'margin': '0',
-    'border-radius': '14px',
-    'max-width': '460px',
-    'width': '100%',
-    'padding': '44px 32px 34px',
-    'text-align': 'center',
-    'box-shadow': '0 20px 60px rgba(0,0,0,0.25)'
-  });
 
   function openThankYouModal(firstName){
     tyName.textContent = firstName || 'there';
-    thankYouOverlay.style.setProperty('display', 'flex', 'important');
+    thankYouOverlay.classList.add('show');
     document.body.style.overflow = 'hidden'; // prevent background scroll while modal is open
+
+    clearTimeout(window.__thankYouRevertTimer);
+    window.__thankYouRevertTimer = setTimeout(closeThankYouModal, 5000);
   }
 
   function closeThankYouModal(){
-    thankYouOverlay.style.setProperty('display', 'none', 'important');
+    clearTimeout(window.__thankYouRevertTimer);
+    thankYouOverlay.classList.remove('show');
     document.body.style.overflow = '';
   }
 
@@ -563,6 +560,7 @@ gsap.to(".logo-parallax", {
 
   tyBack.addEventListener('click', closeThankYouModal);
 </script>
+
 
 <script type="text/javascript">
 {

@@ -21,9 +21,8 @@
 <style>
   .field-error{ border-color:#b3423a !important; box-shadow:0 0 0 3px rgba(179,66,58,0.12) !important; }
   .form-msg.show{ display:block !important; }
+  .thank-you.show{ display:block !important; }
   .form-card.is-hidden{ display:none !important; }
-
-  /* Thank-you modal popup — visibility controlled entirely via JavaScript inline styles below, not CSS classes, to avoid any conflict with existing site styles. */
 </style>
 <!-- InstanceEndEditable -->
 </head>
@@ -270,23 +269,23 @@
 						
 						</form>
 
-						<!-- Thank-you popup modal, hidden by default, shown by the script on success -->
-						<div class="es-modal-overlay" id="thankYouOverlay">
-						  <div class="es-modal-card" id="thankYou">
-						      <div style="width:64px;height:64px;margin:0 auto 22px;border-radius:50%;background:#F5EFE3;display:flex;align-items:center;justify-content:center;">
-						          <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
-						            <circle cx="12" cy="12" r="11" stroke="#8B4E33" stroke-width="1.4"/>
-						            <path d="M7 12.5l3 3 7-7" stroke="#8B4E33" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-						          </svg>
-						      </div>
-						      <h3 style="margin:0 0 10px;font-size:24px;">Thank you, <span id="tyName" style="color:#8B4E33;font-weight:600;">there</span>.</h3>
-						      <p style="margin:0 auto;max-width:400px;color:#7a7267;font-size:15px;line-height:1.6;">
-						          Your message has landed safely in our inbox. We're looking forward to learning more about your project and will be in touch within 1–2 business days.
-						      </p>
-						      <button id="tyBack" style="margin-top:26px;background:none;border:none;color:#8B4E33;font-size:13px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;cursor:pointer;padding:6px;">
-						          Close
-						      </button>
-						  </div>
+						<!-- Thank-you message, hidden by default, shown by the script on success.
+						     Moved here (next to the form) from the bottom of the page, where it
+						     was invisible to users because it appeared below the footer. -->
+						<div class="thank-you" id="thankYou">
+						    <div style="width:64px;height:64px;margin:0 auto 22px;border-radius:50%;background:#F5EFE3;display:flex;align-items:center;justify-content:center;">
+						        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+						          <circle cx="12" cy="12" r="11" stroke="#8B4E33" stroke-width="1.4"/>
+						          <path d="M7 12.5l3 3 7-7" stroke="#8B4E33" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+						        </svg>
+						    </div>
+						    <h3 style="margin:0 0 10px;font-size:24px;">Thank you, <span id="tyName" style="color:#8B4E33;font-weight:600;">there</span>.</h3>
+						    <p style="margin:0 auto;max-width:400px;color:#7a7267;font-size:15px;line-height:1.6;">
+						        Your message has landed safely in our inbox. We're looking forward to learning more about your project and will be in touch within 1–2 business days.
+						    </p>
+						    <button id="tyBack" style="margin-top:26px;background:none;border:none;color:#8B4E33;font-size:13px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;cursor:pointer;padding:6px;">
+						        Send another message
+						    </button>
 						</div>
 					</div>
 					<div class="contact-wrapper-box-map">
@@ -333,8 +332,7 @@
 </footer>
 
 <!-- InstanceBeginEditable name="EditRegion5" -->
- <!-- Thank-you message, hidden by default, shown by the script on success -->
-
+<!-- (thank-you block moved up next to the form — this region intentionally left empty) -->
 <!-- InstanceEndEditable -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -430,71 +428,9 @@ gsap.to(".logo-parallax", {
   const submitBtn   = document.getElementById('submitBtn');
   const submitLabel = document.getElementById('submitLabel');
   const formMsg     = document.getElementById('formMsg');
-  const thankYouOverlay = document.getElementById('thankYouOverlay');
   const thankYou    = document.getElementById('thankYou');
   const tyName      = document.getElementById('tyName');
   const tyBack      = document.getElementById('tyBack');
-
-  // Move the modal to be a direct child of <body>, and apply every style
-  // needed directly via JavaScript with setProperty(...,'important'). This
-  // bypasses the site's stylesheet completely, so no existing CSS rule
-  // (regardless of class name, specificity, or !important) can interfere.
-  document.body.appendChild(thankYouOverlay);
-
-  function applyImportant(el, styles){
-    Object.keys(styles).forEach(function(prop){
-      el.style.setProperty(prop, styles[prop], 'important');
-    });
-  }
-
-  // Base (hidden) state for the overlay — applied once immediately.
-  applyImportant(thankYouOverlay, {
-    'display': 'none',
-    'position': 'fixed',
-    'top': '0',
-    'left': '0',
-    'right': '0',
-    'bottom': '0',
-    'width': '100%',
-    'height': '100%',
-    'margin': '0',
-    'padding': '20px',
-    'box-sizing': 'border-box',
-    'background': 'rgba(30,20,15,0.55)',
-    'z-index': '2147483647',
-    'align-items': 'center',
-    'justify-content': 'center'
-  });
-
-  // Base (visible-content) state for the inner card — always block/visible
-  // whenever its parent overlay is shown.
-  applyImportant(thankYou, {
-    'display': 'block',
-    'background': '#ffffff',
-    'margin': '0',
-    'border-radius': '14px',
-    'max-width': '460px',
-    'width': '100%',
-    'padding': '44px 32px 34px',
-    'text-align': 'center',
-    'box-shadow': '0 20px 60px rgba(0,0,0,0.25)'
-  });
-
-  function openThankYouModal(firstName){
-    tyName.textContent = firstName || 'there';
-    thankYouOverlay.style.setProperty('display', 'flex', 'important');
-    document.body.style.overflow = 'hidden'; // prevent background scroll while modal is open
-  }
-
-  function closeThankYouModal(){
-    thankYouOverlay.style.setProperty('display', 'none', 'important');
-    document.body.style.overflow = '';
-  }
-
-  // Close the modal if the user clicks the dark overlay outside the card
-  thankYouOverlay.addEventListener('click', (e) => {
-    if (e.target === thankYouOverlay) closeThankYouModal();
-  });
 
   function setFieldError(el, hasError){
     el.classList.toggle('field-error', hasError);
@@ -548,8 +484,10 @@ gsap.to(".logo-parallax", {
       const data = await response.json();
 
       if (data.status === 'success') {
-        openThankYouModal(fname.value.trim().split(' ')[0]);
-        form.reset();
+        tyName.textContent = fname.value.trim().split(' ')[0] || 'there';
+        form.classList.add('is-hidden');
+        thankYou.classList.add('show');
+        thankYou.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else {
         showFormMessage(data.message || 'Something went wrong. Please try again.');
       }
@@ -561,8 +499,13 @@ gsap.to(".logo-parallax", {
     }
   });
 
-  tyBack.addEventListener('click', closeThankYouModal);
+  tyBack.addEventListener('click', () => {
+    thankYou.classList.remove('show');
+    form.classList.remove('is-hidden');
+    form.reset();
+  });
 </script>
+
 
 <script type="text/javascript">
 {

@@ -2098,54 +2098,6 @@ nav.links a:focus-visible{ outline:none; }
     padding:6px;
   }
 .ty-back:hover{ text-decoration:underline;}
-/* .featured-section{padding:0 0 60px;}
-.featured-section .slider-viewport{padding-bottom:0;}
-.featured-section .slider-controls{padding:0 40px;}
-.featured-section .slider-track{
-    display:flex;
-    transition: transform 0.65s cubic-bezier(.65,0,.35,1);
-    will-change: transform;
-	aspect-ratio:0;
-}
-.featured-section .slide{
-    flex: 0 0 100%;
-	padding:0 25px;
-    position:relative;
-	grid-template-columns:auto;
-}
-.featured-section .slide-photo{
-    position:relative;
-    width:100%;
-    height:100%;
-    min-height:700px;
-    border-radius:25px;
-    overflow:hidden;
-    background-size:cover;
-    background-position:center;
-}
-.featured-section .slide-photo::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(100deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0) 45%);
-}
-.featured-section .text-card{
-    position:absolute;
-    top:45%;
-    right: 50px;
-    transform: translateY(-50%);
-    width: min(450px, 34vw);
-	background: #bfa87e;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius:25px;
-    padding:40px 34px;
-	gap:10px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.2);
-}
-.featured-section .text-card h3{margin:0; text-align:left; color:#FFF; margin:0 0 10px; font-size:35px;}
-.featured-section .text-card .eyebrow{ font-size:25px;}
-.featured-section .text-card p.description{ margin:0 0 22px;} */
 .mediasctn{ display:flex; flex-direction:column;}
 .mediasctn nav ol.breadcrumb{margin-bottom:0;}
 .mediasctn .grid{
@@ -2295,6 +2247,7 @@ nav.links a:focus-visible{ outline:none; }
   .text-card .eyebrow{ font-size: 24px; margin-bottom: 10px; }
   .text-card p{ font-size: 16px; line-height: 22px; }
   .cta-btn{ margin-top: 12px; font-size: 13px; }
+  .bnnrsctn .evntbxbnnr{min-height: 75vh;}
 }
 @media(min-width: 981px) and ( max-width: 1024px) {} 
 @media screen and (min-width:768px) and (max-width:991px) {}
@@ -2462,6 +2415,7 @@ nav.links a:focus-visible{ outline:none; }
 	.card:hover .card-bottom{height:100%;}
 	.card-bottom{background:rgba(102, 97, 78, .95);}
 	.card-top h3{font-size:25px;}
+	 nav.links{height: 60vh; padding: 0 0;}
 	.bnnrbxtxt h2{font-size:25px; line-height:35px;}
 }
 @media (max-width:390px){

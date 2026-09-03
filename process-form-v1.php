@@ -6,27 +6,15 @@ header('Content-Type: application/json');
 $to_email = "info@earthenstudio.co";
 // ─────────────────────────────────────────────
 
-// Strip any CR/LF from a value so it can never be used to inject
-// extra headers (e.g. "Bcc:") into the outgoing email.
-function clean_header_value(string $value): string {
-    return trim(str_replace(["\r", "\n"], '', $value));
-}
-
-$name    = clean_header_value($_POST['fname']   ?? '');
-$phone   = clean_header_value($_POST['phone']   ?? '');
-$email   = clean_header_value($_POST['email']   ?? '');
-$project = clean_header_value($_POST['project'] ?? '');
-$message = trim($_POST['message'] ?? ''); // body text, not a header — no CR/LF stripping needed
+$name    = trim($_POST['fname']   ?? '');
+$phone   = trim($_POST['phone']   ?? '');
+$email   = trim($_POST['email']   ?? '');
+$project = trim($_POST['project'] ?? '');
+$message = trim($_POST['message'] ?? '');
 
 // basic check so it doesn't email you an empty form
 if ($name === '' || $email === '' || $message === '') {
     echo json_encode(['status' => 'error', 'message' => 'Please fill in all fields.']);
-    exit;
-}
-
-// basic server-side email format check (mirrors the client-side check)
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    echo json_encode(['status' => 'error', 'message' => 'Please enter a valid email address.']);
     exit;
 }
 
@@ -38,14 +26,7 @@ $body .= "Email: $email\n";
 $body .= "Project Type: $project\n";
 $body .= "Message:\n$message\n";
 
-// IMPORTANT: "From" must be an address on YOUR OWN domain, not the visitor's.
-// Most mail servers silently reject or spam-filter mail whose From: domain
-// doesn't match the sending server — this was the most likely reason mail()
-// was failing. The visitor's address goes in Reply-To instead, so hitting
-// "Reply" in your inbox still goes to them.
-$from_email = "no-reply@earthenstudio.co"; // <-- use a real address on your domain
-$headers  = "From: $from_email\r\n";
-$headers .= "Reply-To: $email";
+$headers = "From: $email\r\nReply-To: $email";
 
 error_reporting(E_ALL);
 ini_set('display_errors', 0); // don't show raw PHP errors on page, we'll capture it below instead
