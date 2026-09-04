@@ -381,10 +381,6 @@ gsap.to(".logo-parallax", {
 <!-- InstanceBeginEditable name="EditRegion6" -->
 <script type="text/javascript">
 (function(){
-  // ---- Slide content: one small data array drives everything below.
-  // type: 'text' or 'image'. On desktop/tablet, the first 'text' record
-  // is combined with the very next 'image' record into one slide. On
-  // mobile, every record becomes its own standalone slide.
   const slideData = [
     {
       type: 'text',
@@ -399,8 +395,7 @@ gsap.to(".logo-parallax", {
     { type: 'image', src: 'images/project/resdential/ranaghat/guest-bedroom-2.jpg', alt: '' }
   ];
 
-  // ---- Autoplay settings ----
-  const AUTOPLAY_DELAY = 4500; // ms between auto-advances
+  const AUTOPLAY_DELAY = 4500;
   let autoplayTimer = null;
 
   const root = document.getElementById('projectSlider');
@@ -408,6 +403,7 @@ gsap.to(".logo-parallax", {
 
   let track, dotsEl, prevBtn, nextBtn, slides, dots, total;
   let index = 0;
+  let hasClones = false;
 
   function el(tag, cls, html){
     const e = document.createElement(tag);
@@ -427,9 +423,7 @@ gsap.to(".logo-parallax", {
 
   function buildSlideList(isMobile){
     const list = [];
-
     if (isMobile){
-      // One slide per record — no combining.
       slideData.forEach((record) => {
         if (record.type === 'text'){
           list.push({ kind: 'text-only', record });
@@ -438,24 +432,20 @@ gsap.to(".logo-parallax", {
         }
       });
     } else {
-      // Combine the first text record with the very next image record.
       let combined = false;
       for (let i = 0; i < slideData.length; i++){
         const record = slideData[i];
         if (!combined && record.type === 'text' && slideData[i + 1] && slideData[i + 1].type === 'image'){
           list.push({ kind: 'has-text', textRecord: record, imageRecord: slideData[i + 1] });
           combined = true;
-          i++; // skip the image record we just consumed
+          i++;
         } else if (record.type === 'image') {
           list.push({ kind: 'image-only', record });
         } else if (record.type === 'text') {
-          // A text record with no following image — render as its own
-          // text-only slide (fallback, shouldn't normally happen).
           list.push({ kind: 'text-only', record });
         }
       }
     }
-
     return list;
   }
 
@@ -467,12 +457,9 @@ gsap.to(".logo-parallax", {
       slide.setAttribute('role', 'group');
       slide.setAttribute('aria-roledescription', 'slide');
       slide.setAttribute('aria-label', label);
-
-      const textCard = el('div', 'text-card',
-        '<h2></h2><p></p>');
+      const textCard = el('div', 'text-card', '<h2></h2><p></p>');
       textCard.querySelector('h2').textContent = item.textRecord.title;
       textCard.querySelector('p').textContent = item.textRecord.body;
-
       slide.appendChild(textCard);
       slide.appendChild(makeImageCard(item.imageRecord));
       return slide;
@@ -483,16 +470,13 @@ gsap.to(".logo-parallax", {
       slide.setAttribute('role', 'group');
       slide.setAttribute('aria-roledescription', 'slide');
       slide.setAttribute('aria-label', label);
-
       const textCard = el('div', 'text-card', '<h2></h2><p></p>');
       textCard.querySelector('h2').textContent = item.record.title;
       textCard.querySelector('p').textContent = item.record.body;
-
       slide.appendChild(textCard);
       return slide;
     }
 
-    // image-only
     const slide = el('div', 'slide image-only');
     slide.setAttribute('role', 'group');
     slide.setAttribute('aria-roledescription', 'slide');
@@ -525,74 +509,110 @@ gsap.to(".logo-parallax", {
     nextBtn = document.getElementById('nextBtn');
 
     list.forEach((item, i) => track.appendChild(renderSlideEl(item, i, list.length)));
-    slides = Array.from(track.children);
-    total = slides.length;
+    const realSlides = Array.from(track.children);
+    total = realSlides.length;
 
-    slides.forEach((_, i) => {
+    // Dots reflect REAL slides only — never the clones.
+    realSlides.forEach((_, i) => {
       const dot = el('button', 'dot');
       dot.setAttribute('role', 'tab');
       dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-      dot.addEventListener('click', () => { goTo(i); restartAutoplay(); });
+      dot.addEventListener('click', () => { goToReal(i); restartAutoplay(); });
       dotsEl.appendChild(dot);
     });
     dots = Array.from(dotsEl.children);
 
-    prevBtn.addEventListener('click', () => { goTo(index - 1); restartAutoplay(); });
-    nextBtn.addEventListener('click', () => { goTo(index + 1); restartAutoplay(); });
+    // Clone first/last slide for a seamless wrap-around.
+    hasClones = total > 1;
+    if (hasClones){
+      const firstClone = realSlides[0].cloneNode(true);
+      const lastClone  = realSlides[total - 1].cloneNode(true);
+      firstClone.setAttribute('aria-hidden', 'true');
+      lastClone.setAttribute('aria-hidden', 'true');
+      track.appendChild(firstClone);
+      track.insertBefore(lastClone, realSlides[0]);
+    }
 
-    index = 0;
-    render();
+    slides = Array.from(track.children);
+    index = hasClones ? 1 : 0; // start on the first REAL slide
+
+    prevBtn.addEventListener('click', () => { step(-1); restartAutoplay(); });
+    nextBtn.addEventListener('click', () => { step(1); restartAutoplay(); });
+    track.addEventListener('transitionend', onTransitionEnd);
+
+    render(true); // position instantly, no animation on first paint
     startAutoplay();
   }
 
-  function render(){
+  function realIndex(){
+    return hasClones ? (index - 1 + total) % total : index;
+  }
+
+  function updateDots(){
+    const r = realIndex();
+    dots.forEach((d, i) => d.classList.toggle('active', i === r));
+  }
+
+  function render(instant){
+    if (instant) track.style.transition = 'none';
     track.style.transform = 'translateX(' + (-index * 100) + '%)';
-    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    if (instant){
+      void track.offsetHeight; // force reflow so the jump applies before re-enabling
+      track.style.transition = '';
+    }
+    updateDots();
   }
 
-  function goTo(i){
-    index = (i + total) % total; // loops
-    render();
+  function step(dir){
+    index += dir;
+    render(false);
   }
 
-  // ---- Autoplay controls ----
-  function startAutoplay(){
-    stopAutoplay();
-    autoplayTimer = setInterval(() => {
-      goTo(index + 1);
-    }, AUTOPLAY_DELAY);
+  function goToReal(i){
+    index = hasClones ? i + 1 : i;
+    render(false);
   }
 
-  function stopAutoplay(){
-    if (autoplayTimer){
-      clearInterval(autoplayTimer);
-      autoplayTimer = null;
+  // After a real transition finishes, if we've landed on a clone,
+  // snap instantly to the matching real slide — same visual spot,
+  // no animation, so the loop feels seamless instead of "fast".
+  function onTransitionEnd(e){
+    if (e.target !== track || !hasClones) return;
+    if (index === 0){
+      index = total;
+      render(true);
+    } else if (index === total + 1){
+      index = 1;
+      render(true);
     }
   }
 
-  function restartAutoplay(){
-    startAutoplay();
+  function startAutoplay(){
+    stopAutoplay();
+    autoplayTimer = setInterval(() => { step(1); }, AUTOPLAY_DELAY);
   }
 
-  // Pause on hover (desktop) and on touch (mobile), resume on leave/end.
+  function stopAutoplay(){
+    if (autoplayTimer){ clearInterval(autoplayTimer); autoplayTimer = null; }
+  }
+
+  function restartAutoplay(){ startAutoplay(); }
+
   root.addEventListener('mouseenter', stopAutoplay);
   root.addEventListener('mouseleave', startAutoplay);
   root.addEventListener('touchstart', stopAutoplay, { passive: true });
   root.addEventListener('touchend', startAutoplay, { passive: true });
 
-  // Pause when the tab isn't visible, resume when it is again.
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) stopAutoplay();
     else startAutoplay();
   });
 
   root.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') { goTo(index - 1); restartAutoplay(); }
-    if (e.key === 'ArrowRight') { goTo(index + 1); restartAutoplay(); }
+    if (e.key === 'ArrowLeft')  { step(-1); restartAutoplay(); }
+    if (e.key === 'ArrowRight') { step(1);  restartAutoplay(); }
   });
 
-  // Rebuild only when crossing the mobile breakpoint, not on every
-  // resize pixel, so we don't tear down the DOM constantly.
   let wasMobile = mq.matches;
   window.addEventListener('resize', () => {
     if (mq.matches !== wasMobile){
