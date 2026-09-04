@@ -2332,6 +2332,7 @@ nav.links a:focus-visible{ outline:none; }
 		font-size: 17px;
 		line-height: 20px;
 	  }
+	  .lwrbxwrppr h1{text-align:center;}
 }
 @media screen and (max-width:767px){
 	.bnnrbxtxt:last-child{flex-direction: column;}
@@ -2391,6 +2392,7 @@ nav.links a:focus-visible{ outline:none; }
 		border-bottom-right-radius: 15px;
 		border-bottom-left-radius: 15px;
 	}
+	.lrbxcntnr{grid-template-columns:1fr;}
 }
 @media screen and (max-width:540px){}
 @media (max-width:480px){

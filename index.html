@@ -510,28 +510,50 @@ gsap.to(".logo-parallax", {
     const card    = document.getElementById('apCard');
     const bg      = document.getElementById('apBg');
 
-    /* Card entrance animation */
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) card.classList.add('visible');
-        });
-    }, { threshold: 0.25 });
-    observer.observe(section);
+    if (section && bg) {
 
-    /* Parallax — runs on every scroll tick */
-    function doParallax() {
-        const rect     = section.getBoundingClientRect();
-        const viewH    = window.innerHeight;
-        const progress = (viewH - rect.top) / (viewH + rect.height);
-        const shift    = (progress - 0.5) * 400;   /* ← increased to 200 for strong effect */
-        bg.style.transform = `translateY(${shift}px)`;
+        /* Card entrance animation */
+        if (card) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) card.classList.add('visible');
+                });
+            }, { threshold: 0.25 });
+            observer.observe(section);
+        }
+
+        /* Parallax — rAF-throttled, runs once per frame max */
+        let ticking = false;
+        let rect = section.getBoundingClientRect();
+
+        function updateRect() {
+            rect = section.getBoundingClientRect();
+        }
+
+        function doParallax() {
+            const viewH    = window.innerHeight;
+            const progress = (viewH - rect.top) / (viewH + rect.height);
+            const shift    = (progress - 0.5) * 400;
+            bg.style.transform = `translate3d(0, ${shift}px, 0)`;
+            ticking = false;
+        }
+
+        function onScroll() {
+            updateRect();
+            if (!ticking) {
+                requestAnimationFrame(doParallax);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('resize', updateRect, { passive: true });
+
+        /* Run once on load so it's positioned correctly */
+        doParallax();
+
+        /* Run on every scroll, batched via rAF */
+        window.addEventListener('scroll', onScroll, { passive: true });
     }
-
-    /* Run once on load so it's positioned correctly */
-    doParallax();
-
-    /* Run on every scroll */
-    window.addEventListener('scroll', doParallax, { passive: true });
 }
 </script>
 
@@ -542,22 +564,45 @@ gsap.to(".logo-parallax", {
     const card    = document.getElementById('whatCard');
     const bg      = document.getElementById('whatBg');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) card.classList.add('visible');
-        });
-    }, { threshold: 0.55 });
-    observer.observe(section);
+    if (section && bg) {
 
-    function doParallaxWhat() {
-        const rect     = section.getBoundingClientRect();
-        const viewH    = window.innerHeight;
-        const progress = (viewH - rect.top) / (viewH + rect.height);
-        const shift    = (progress - 0.5) * 400;
-        bg.style.transform = `translateY(${shift}px)`;
+        if (card) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) card.classList.add('visible');
+                });
+            }, { threshold: 0.55 });
+            observer.observe(section);
+        }
+
+        let ticking = false;
+        let rect = section.getBoundingClientRect();
+
+        function updateRect() {
+            rect = section.getBoundingClientRect();
+        }
+
+        function doParallaxWhat() {
+            const viewH    = window.innerHeight;
+            const progress = (viewH - rect.top) / (viewH + rect.height);
+            const shift    = (progress - 0.5) * 400;
+            bg.style.transform = `translate3d(0, ${shift}px, 0)`;
+            ticking = false;
+        }
+
+        function onScroll() {
+            updateRect();
+            if (!ticking) {
+                requestAnimationFrame(doParallaxWhat);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('resize', updateRect, { passive: true });
+
+        doParallaxWhat();
+        window.addEventListener('scroll', onScroll, { passive: true });
     }
-    doParallaxWhat();
-    window.addEventListener('scroll', doParallaxWhat, { passive: true });
 }
 </script>
 
