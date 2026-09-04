@@ -370,63 +370,49 @@ gsap.to(".logo-parallax", {
     });
 }
 </script>
-
-<script type="text/javascript">
-{
-    const section = document.getElementById('apSection');
-    const card    = document.getElementById('apCard');
-    const bg      = document.getElementById('apBg');
-
-    /* Card entrance animation */
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) card.classList.add('visible');
-        });
-    }, { threshold: 0.25 });
-    observer.observe(section);
-
-    /* Parallax — runs on every scroll tick */
-    function doParallax() {
-        const rect     = section.getBoundingClientRect();
-        const viewH    = window.innerHeight;
-        const progress = (viewH - rect.top) / (viewH + rect.height);
-        const shift    = (progress - 0.5) * 400;   /* ← increased to 200 for strong effect */
-        bg.style.transform = `translateY(${shift}px)`;
-    }
-
-    /* Run once on load so it's positioned correctly */
-    doParallax();
-
-    /* Run on every scroll */
-    window.addEventListener('scroll', doParallax, { passive: true });
-}
-</script>
-
 <script>
 /* ── What Section Parallax ── */
 {
     const section = document.getElementById('whatSection');
-    const card    = document.getElementById('whatCard');
     const bg      = document.getElementById('whatBg');
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) card.classList.add('visible');
-        });
-    }, { threshold: 0.55 });
-    observer.observe(section);
+    // Guard: only observe if elements exist
+    if (section && bg) {
 
-    function doParallaxWhat() {
-        const rect     = section.getBoundingClientRect();
-        const viewH    = window.innerHeight;
-        const progress = (viewH - rect.top) / (viewH + rect.height);
-        const shift    = (progress - 0.5) * 400;
-        bg.style.transform = `translateY(${shift}px)`;
+        let ticking = false;
+        let lastRect = null;
+
+        function updateRect() {
+            lastRect = section.getBoundingClientRect();
+        }
+
+        function doParallaxWhat() {
+            if (!lastRect) updateRect();
+            const viewH    = window.innerHeight;
+            const progress = (viewH - lastRect.top) / (viewH + lastRect.height);
+            const shift    = (progress - 0.5) * 400;
+            bg.style.transform = `translate3d(0, ${shift}px, 0)`;
+            ticking = false;
+        }
+
+        function onScroll() {
+            updateRect();
+            if (!ticking) {
+                requestAnimationFrame(doParallaxWhat);
+                ticking = true;
+            }
+        }
+
+        // Recalculate rect on resize too (layout can change)
+        window.addEventListener('resize', updateRect, { passive: true });
+
+        updateRect();
+        doParallaxWhat();
+        window.addEventListener('scroll', onScroll, { passive: true });
     }
-    doParallaxWhat();
-    window.addEventListener('scroll', doParallaxWhat, { passive: true });
 }
 </script>
+
 <script type="text/javascript">
 	gsap.from(".project-card", {
     opacity:0,
@@ -441,18 +427,6 @@ gsap.to(".logo-parallax", {
     }
 });
 </script>
-
-<!-- <script type="text/javascript">
-  const modalEl = document.getElementById('comingSoonModal');
-  const comingSoonModal = new bootstrap.Modal(modalEl, { backdrop: true, keyboard: true });
-
-  
-  window.addEventListener('DOMContentLoaded', () => comingSoonModal.show());
-
-  document.getElementById('ctaBtn').addEventListener('click', () => {
-    alert('Navigate to Residential Projects page here.');
-  });
-</script> -->
 
 <!-- InstanceEndEditable -->
 </body>
