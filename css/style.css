@@ -303,7 +303,7 @@ a:focus, a:hover {
   align-items: center;
   gap: 10px;
   font-size: 16px;
-  padding: 10px 30px 10px 20px;
+  padding: 15px 30px 15px 20px;
   position: relative;
   overflow: hidden;
   color: #FFF;
@@ -328,6 +328,7 @@ a:focus, a:hover {
   height: 30px;
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
   fill:#fee485;
+  top:2px;
 }
 .dscvrbttnnew:hover::before { transform: translateX(0);}
 .dscvrbttnnew:hover {border-color: rgba(0, 0, 0, 0.5); color:#fee485;}
@@ -431,7 +432,7 @@ a:focus, a:hover {
 .bnnrbxtxt h2{
 	text-align:left;
 	color:#FFF;
-	font-weight:200;
+	font-weight:500;
 	font-family:"sofia-pro";
 	text-transform:uppercase;
 }
@@ -457,7 +458,7 @@ a:focus, a:hover {
     justify-content: space-around;
     gap:50px;
 }
-.bodywrppr a.dscvrbttnnew{border-radius:15px; padding:15px;}
+.bodywrppr a.dscvrbttnnew{border-radius:15px;}
 .bodywrppr a.dscvrbttnnew svg{transition: transform 0.99s cubic-bezier(0.34, 1.56, 0.64, 1);}
 .bodywrppr a.dscvrbttnnew:hover svg{transform: translateX(10px);}
 .bodywrppr h1.hdngtxt{
@@ -810,10 +811,11 @@ a:focus, a:hover {
 	color: inherit;
 	width: fit-content;
 	opacity: 0;
-    transform: translateY(30px);
+    /* transform: translateY(10px); */
     transition: opacity 0.9s ease, transform 0.9s ease;
 }
-.prdct-view-link.animate{opacity: 1;  transform: translateY(0px);}
+.prdct-view-link.animate{opacity: 1; }
+ 
 .prdct-circle {
 	width: 32px;
 	height: 32px;
@@ -823,11 +825,24 @@ a:focus, a:hover {
 	align-items: center;
 	justify-content: center;
 	flex-shrink: 0;
-	transition: background-color 0.25s ease, color 0.25s ease;
+	overflow: hidden;
+	transition: transform 0.55s ease;
 }
-.prdct-circle svg { width: 14px; height: 14px;}
-.prdct-view-link:hover{transform: translateY(-5px);}
-.prdct-view-link:hover .prdct-circle{transform: transform: scale(1.08);}
+.prdct-circle svg {
+	width: 14px;
+	height: 14px;
+	transition: transform 0.50s ease;
+}
+ 
+/* circle itself scales up slightly */
+.prdct-view-link:hover .prdct-circle {
+	transform:  translatex(10px);
+}
+ 
+/* icon nudges independently, inside the circle */
+.prdct-view-link:hover .prdct-circle svg {
+	transform: translatex(4px);
+}
 .prjctsctn{margin-top:60px;}
 .prjctsctn-gallery{padding-bottom:60px;}
 .prjctsctncntnr{
@@ -956,6 +971,7 @@ a:focus, a:hover {
     border-radius:4px;
 }
 .cta-btn{
+	text-decoration:underline;
   align-self: flex-start;
   margin-top: 18px;
   padding: 10px 0;
@@ -967,7 +983,7 @@ a:focus, a:hover {
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
-.cta-btn:hover{ background: var(--clay); color: #fff;}
+.cta-btn:hover{ background: var(--clay); color: #fff; text-decoration:underline;}
 .slide-counter{ font-size:0.85rem; color: rgba(243,233,221,0.7);}
 .residential-projects-inner {
     display: grid;
