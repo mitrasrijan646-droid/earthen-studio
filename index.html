@@ -17,6 +17,7 @@
 <link rel="preload" href="css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="css/style.css"></noscript>
 <link href="css/font.css" rel="stylesheet" media="all">
+<script src="https://www.google.com/recaptcha/enterprise.js?render=6LckeLktAAAAAGK2ZlCYw5FeCGax8kUsloSukq7q"></script>
 <!-- InstanceBeginEditable name="head" -->
 
 <!-- InstanceEndEditable -->
@@ -483,7 +484,18 @@ gsap.to(".logo-parallax", {
   }
 });
 </script>
-
+<script type="text/javascript">
+function onClick(e) {
+  e.preventDefault();
+  grecaptcha.enterprise.ready(async () => {
+    const token = await grecaptcha.enterprise.execute('6LckeLktAAAAAGK2ZlCYw5FeCGax8kUsloSukq7q', {action: 'LOGIN'});
+    // IMPORTANT: The 'token' that results from execute is an encrypted response sent by
+    // reCAPTCHA to the end user's browser.
+    // This token must be validated by creating an assessment.
+    // See https://cloud.google.com/recaptcha/docs/create-assessment
+  });
+}
+</script>
 <!-- InstanceBeginEditable name="EditRegion6" -->
 
 <script type="text/javascript">

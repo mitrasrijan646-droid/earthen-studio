@@ -145,9 +145,9 @@
     height: 100%;
     position: relative;
     background: #e7ddb9; /* letterbox fill either side, at desktop's fixed height */
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
   }
 
   .slide.image-only .image-card{
@@ -159,7 +159,6 @@
     height: 100%;
     object-fit: cover; /*full photo, no crop */
     display: block;
-	min-height:100vh;
   }
 
   /* ---- Mobile: standalone slides ---- */
